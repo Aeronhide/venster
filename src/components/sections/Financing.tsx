@@ -12,7 +12,11 @@ const steps = [
 
 export function Financing() {
   return (
-    <Section id="financiering" ariaLabelledby="financing-title">
+    <Section
+      id="financiering"
+      ariaLabelledby="financing-title"
+      className="!pt-0"
+    >
       <Container>
         <div className="mx-auto max-w-[1488px]">
           {/* Title — Tilda 44px × 1.44 ≈ 63px */}

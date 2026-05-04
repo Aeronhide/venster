@@ -1,20 +1,22 @@
-import { Container } from "@/components/ui/Container";
+import Image from "next/image";
 import { Section } from "@/components/ui/Section";
 
 const partners = [
-  { name: "VEKA", style: "font-black text-2xl tracking-tight text-black" },
-  { name: "Roto", style: "font-bold text-2xl text-[#c40000]" },
-  { name: "VBH", style: "font-bold text-2xl text-fg-muted" },
-  { name: "OPP", style: "font-bold text-xl text-[#9bbcd6]" },
-  { name: "Dr.Hahn", style: "font-bold text-xl text-black" },
-  { name: "greenteQ", style: "font-bold text-xl text-[#85a86c]" },
+  { name: "VEKA", src: "/images/partners/veka.svg" },
+  { name: "Roto", src: "/images/partners/roto.svg" },
+  { name: "Saint-Gobain", src: "/images/partners/saint.svg" },
+  { name: "Hoppe", src: "/images/partners/hoppe.svg" },
+  { name: "Dr. Hahn", src: "/images/partners/hahn.svg" },
+  { name: "greenteQ", src: "/images/partners/greente.svg" },
 ];
 
 export function Partners() {
   return (
-    <Section ariaLabelledby="partners-title" className="bg-white !py-12 sm:!py-16">
-      <Container>
-        <div className="mx-auto max-w-7xl">
+    <Section
+      ariaLabelledby="partners-title"
+      className="!py-12 sm:!py-16"
+    >
+      <div className="w-full px-2 sm:px-4 lg:px-6">
         <div className="grid gap-6 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-16">
           <h2
             id="partners-title"
@@ -33,14 +35,19 @@ export function Partners() {
           {partners.map((p) => (
             <li
               key={p.name}
-              className="flex h-20 items-center justify-center rounded-md bg-white px-4 ring-1 ring-border/40 shadow-sm"
+              className="flex h-[100px] items-center justify-center rounded-[16px] bg-white px-6"
             >
-              <span className={p.style}>{p.name}</span>
+              <Image
+                src={p.src}
+                alt={p.name}
+                width={140}
+                height={56}
+                className="h-[56px] w-auto max-w-full object-contain"
+              />
             </li>
           ))}
         </ul>
-        </div>
-      </Container>
+      </div>
     </Section>
   );
 }

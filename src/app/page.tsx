@@ -31,20 +31,22 @@ export default function Home() {
         <Products />
         <Features />
         <Financing />
-        <Partners />
-        <Certification />
-        <WhyChoose />
-        <Process />
-        <Team />
-        <InstallationForm />
-        <Projects />
-        <RAL />
-        <Transport />
-        <Recognition />
-        <CatalogForm />
-        <Sketches />
-        <Promotion />
-        <Contact />
+        <div className="bg-[#F5F5F5]">
+          <Partners />
+          <Certification />
+          <WhyChoose />
+          <Process />
+          <Team />
+          <InstallationForm />
+          <Projects />
+          <RAL />
+          <Transport />
+          <Recognition />
+          <CatalogForm />
+          <Sketches />
+          <Promotion />
+          <Contact />
+        </div>
       </main>
       <Footer />
       <StructuredData />

@@ -1,141 +1,165 @@
-import Image from "next/image";
-import { Container } from "@/components/ui/Container";
-import { Section } from "@/components/ui/Section";
-import { CheckIcon } from "@/components/ui/Icon";
+import Image from 'next/image';
+import { Container } from '@/components/ui/Container';
+import { Section } from '@/components/ui/Section';
+import { CheckIcon } from '@/components/ui/Icon';
 
 type Reason = { title: string; body: React.ReactNode };
 
 const reasons: Reason[] = [
   {
-    title: "Gecertificeerde Duitse systemen",
+    title: 'Gecertificeerde Duitse systemen',
     body: (
       <>
-        Wij werken met gevestigde Europese leveranciers zoals{" "}
-        <strong className="font-bold">VEKA-profielen</strong> en{" "}
-        <strong className="font-bold">ROTO-beslag,</strong> veelvuldig
-        toegepast in residentiële projecten binnen de EU.
+        Wij werken met gevestigde Europese leveranciers zoals{' '}
+        <strong className='font-bold'>VEKA-profielen</strong> en{' '}
+        <strong className='font-bold'>ROTO-beslag,</strong> veelvuldig toegepast
+        in residentiële projecten binnen de EU.
       </>
     ),
   },
   {
-    title: "Transparante garantie",
+    title: 'Transparante garantie',
     body: (
       <>
-        Wij bieden een{" "}
-        <strong className="font-bold">10-jarige fabrieksgarantie</strong> op
+        Wij bieden een{' '}
+        <strong className='font-bold'>10-jarige fabrieksgarantie</strong> op
         profielen, beglazing en beslag, duidelijk vastgelegd in onze
         contractdocumentatie.
       </>
     ),
   },
   {
-    title: "Gecontroleerde productie en levering",
-    body: "Alle ramen en deuren worden in-house geproduceerd, kwaliteitsgecontroleerd en veilig verpakt vóór levering naar Nederland.",
+    title: 'Gecontroleerde productie en levering',
+    body: 'Alle ramen en deuren worden in-house geproduceerd, kwaliteitsgecontroleerd en veilig verpakt vóór levering naar Nederland.',
   },
   {
-    title: "Betrouwbare levertijden",
+    title: 'Betrouwbare levertijden',
     body: (
       <>
-        De standaard productietijd en levering bedraagt ongeveer{" "}
-        <strong className="font-bold">45 kalenderdagen,</strong> afhankelijk
-        van configuratie en projectspecificaties.
+        De standaard productietijd en levering bedraagt ongeveer{' '}
+        <strong className='font-bold'>45 kalenderdagen,</strong> afhankelijk van
+        configuratie en projectspecificaties.
       </>
     ),
   },
 ];
 
-const sideCards = [
+type SideCard = { title: React.ReactNode; body: string; icon: string };
+
+const sideCards: SideCard[] = [
   {
-    title: "In-house productie",
-    body: "Productie, assemblage en verpakking worden volledig binnen ons eigen productieproces uitgevoerd.",
+    title: (
+      <>
+        In-house
+        <br />
+        productie
+      </>
+    ),
+    body: 'Productie, assemblage en verpakking worden volledig binnen ons eigen productieproces uitgevoerd.',
+    icon: '/images/box.svg',
   },
   {
-    title: "Technisch advies",
-    body: "Ondersteuning door ervaren projectmanagers, gespecialiseerd in residentiële raam- en deurprojecten.",
+    title: (
+      <>
+        Technisch
+        <br />
+        advies
+      </>
+    ),
+    body: 'Ondersteuning door ervaren projectmanagers, gespecialiseerd in residentiële raam- en deurprojecten.',
+    icon: '/images/tech_call.svg',
   },
   {
-    title: "Kwaliteitscontrole",
-    body: "Kwaliteitscontroles worden uitgevoerd in cruciale productiefasen en vóór verzending.",
+    title: 'Kwaliteitscontrole',
+    body: 'Kwaliteitscontroles worden uitgevoerd in cruciale productiefasen en vóór verzending.',
+    icon: '/images/doc_check.svg',
   },
 ];
 
 export function WhyChoose() {
   return (
     <Section
-      id="voordelen"
-      ariaLabelledby="why-choose-title"
-      className="bg-white"
+      id='voordelen'
+      ariaLabelledby='why-choose-title'
+      className='bg-[#F5F5F5]'
     >
       <Container>
-        <div className="mx-auto max-w-[1675px]">
+        <div className='mx-auto max-w-[1675px]'>
           {/* Title — Tilda 44px × 1.44 ≈ 63px, color #082b4b, weight 900, uppercase */}
           <h2
-            id="why-choose-title"
-            className="text-[28px] font-black uppercase leading-[1.3] tracking-tight text-[#082b4b] sm:text-[40px] lg:text-[63px] lg:leading-[1.55]"
+            id='why-choose-title'
+            className='text-[28px] font-black uppercase leading-[1.3] tracking-tight text-[#082b4b] sm:text-[40px] lg:text-[63px] lg:leading-[1.55]'
           >
-            Waarom huiseigenaren in Nederland voor VALENT kiezen
+            Waarom huiseigenaren in
+            <br />
+            Nederland voor VALENT kiezen
           </h2>
 
-          {/* Two columns: big blue card on left, 3 stacked white cards on right.
-              Tilda blue card 780×617, side cards 367×201 each — ratio ~2.13:1 */}
-          <div className="mt-10 grid gap-6 lg:grid-cols-[780fr_367fr] lg:gap-[44px]">
-            {/* Big blue radial-gradient card */}
-            <div className="relative overflow-hidden rounded-[22px] bg-[radial-gradient(ellipse_at_right,#7ba6e6_0%,#3b7ddd_45%,#3b7ddd_100%)] px-6 py-10 sm:px-10 sm:py-12 lg:px-[80px] lg:py-[88px]">
-              <ul className="relative z-10 space-y-8">
-                {reasons.map((r) => (
-                  <li key={r.title} className="flex gap-5">
-                    {/* Blue check tile — Tilda 31×30 ≈ 45×43, white check */}
-                    <span className="mt-1 grid size-[45px] shrink-0 place-items-center rounded-[6px] bg-white/20 ring-1 ring-white/40">
-                      <CheckIcon className="text-white" width={22} height={22} />
-                    </span>
-                    <div className="flex-1">
-                      {/* Title — Tilda 18px × 1.44 ≈ 26px, weight bold */}
-                      <h3 className="text-[18px] font-bold uppercase leading-[1.2] text-white lg:text-[26px]">
-                        {r.title}
-                      </h3>
-                      {/* Body — Tilda 18px × 1.44 ≈ 26px */}
-                      <p className="mt-2 text-[16px] leading-[1.5] text-white/95 lg:text-[26px] lg:leading-[1.4]">
-                        {r.body}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+          {/* 2 columns: blue card (with person image inside, on the right) | white cards */}
+          <div className='mt-10 grid gap-6 lg:grid-cols-[780fr_367fr] lg:gap-[20px]'>
+            {/* Big blue radial-gradient card. Inside: bullets on the left, person image on the right */}
+            <div className='overflow-hidden rounded-[22px] bg-[radial-gradient(ellipse_at_right,#7ba6e6_0%,#3b7ddd_45%,#3b7ddd_100%)] px-6 pt-8 sm:px-8 sm:pt-10 lg:px-[44px] lg:pt-[48px]'>
+              <div className='flex flex-col gap-8 lg:flex-row lg:items-end lg:gap-[40px]'>
+                <ul className='flex-1 space-y-8 pb-8 sm:pb-10 lg:pb-[48px]'>
+                  {reasons.map((r) => (
+                    <li key={r.title} className='flex gap-5'>
+                      <span className='mt-1 grid size-[45px] shrink-0 place-items-center rounded-[6px] bg-white/20 ring-1 ring-white/40'>
+                        <CheckIcon
+                          className='text-white'
+                          width={22}
+                          height={22}
+                        />
+                      </span>
+                      <div className='flex-1'>
+                        <h3 className='text-[18px] font-bold uppercase leading-[1.2] text-white lg:text-[26px]'>
+                          {r.title}
+                        </h3>
+                        <p className='mt-2 text-[16px] leading-[1.5] text-white/95 lg:text-[26px] lg:leading-[1.4]'>
+                          {r.body}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Installer photo — pinned bottom of card, 2× larger */}
+                <Image
+                  src='/images/why-choose-installer.png'
+                  alt='Valent-installateur'
+                  width={520}
+                  height={680}
+                  className='hidden h-auto w-[520px] max-w-[45%] shrink-0 self-end object-contain object-bottom lg:block'
+                  sizes='520px'
+                />
+              </div>
             </div>
 
-            {/* 3 stacked side cards */}
-            <ul className="grid gap-4 lg:gap-6">
-              {sideCards.map((c, i) => (
+            {/* Side cards — equal-height grid so each card content can center vertically */}
+            <ul className='grid gap-4 lg:h-full lg:grid-rows-3 lg:gap-6'>
+              {sideCards.map((c) => (
                 <li
-                  key={c.title}
-                  className="relative overflow-hidden rounded-[16px] bg-white p-6 ring-1 ring-[#e5e7eb] lg:p-8"
+                  key={c.body}
+                  className='flex flex-col justify-center rounded-[16px] bg-white p-5 ring-1 ring-[#e5e7eb] lg:p-6'
                 >
-                  {/* Optional installer photo behind first card on desktop */}
-                  {i === 0 && (
-                    <Image
-                      src="/images/why-choose-installer.webp"
-                      alt=""
-                      fill
-                      sizes="(min-width: 1024px) 28vw, 80vw"
-                      className="pointer-events-none absolute inset-0 z-0 object-cover opacity-10"
-                    />
-                  )}
-                  <div className="relative z-10 flex items-start justify-between gap-4">
-                    <div>
-                      {/* Title — Tilda 26px × 1.44 ≈ 37px, weight bold */}
-                      <h3 className="text-[20px] font-bold uppercase text-[#082b4b] lg:text-[37px] lg:leading-[1.2]">
-                        {c.title}
-                      </h3>
-                      {/* Body — Tilda 16px × 1.44 ≈ 23px */}
-                      <p className="mt-3 text-[15px] leading-[1.5] text-[#505050] lg:text-[23px]">
-                        {c.body}
-                      </p>
-                    </div>
-                    {/* Blue circle icon — Tilda 55×1.44 ≈ 79 */}
-                    <span className="grid size-[56px] shrink-0 place-items-center rounded-full bg-[radial-gradient(circle_at_center,#3b7ddd_0%,#7ba6e6_100%)] text-white lg:size-[79px]">
-                      <CheckIcon className="text-white" width={28} height={28} />
+                  {/* Title + icon row — fixed min-height so 1-line and 2-line titles produce the same row size */}
+                  <div className='flex min-h-[56px] items-center justify-between gap-4 lg:min-h-[79px]'>
+                    <h3 className='text-[20px] font-bold text-[#050505] [text-shadow:var(--t396-shadow-text-x,0px)_var(--t396-shadow-text-y,0px)_var(--t396-shadow-text-blur,0px)_rgba(var(--t396-shadow-text-color),var(--t396-shadow-text-opacity,100%))] lg:text-[37px] lg:leading-[1.2]'>
+                      {c.title}
+                    </h3>
+                    <span className='grid size-[56px] shrink-0 place-items-center rounded-[16px] bg-[radial-gradient(circle_at_center,#3b7ddd_0%,#7ba6e6_100%)] lg:size-[79px]'>
+                      <Image
+                        src={c.icon}
+                        alt=''
+                        width={40}
+                        height={40}
+                        className='h-[28px] w-[28px] lg:h-[40px] lg:w-[40px]'
+                      />
                     </span>
                   </div>
+                  {/* Body below */}
+                  <p className='mt-3 text-[15px] leading-[1.5] text-[#918e8e] [text-shadow:var(--t396-shadow-text-x,0px)_var(--t396-shadow-text-y,0px)_var(--t396-shadow-text-blur,0px)_rgba(var(--t396-shadow-text-color),var(--t396-shadow-text-opacity,100%))] lg:text-[23px]'>
+                    {c.body}
+                  </p>
                 </li>
               ))}
             </ul>

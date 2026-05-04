@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'TildaSans';
+  src: url('/fonts/TildaSans-VF.woff2') format('woff2-variations'),
+       url('/fonts/TildaSans-VF.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 @theme {
   --color-bg: #ffffff;
@@ -15,7 +23,7 @@
   --color-brand-ink: #082b4b;
   --color-accent: #c40000;
 
-  --font-sans: var(--font-roboto), Roboto, Arial, sans-serif;
+  --font-sans: 'TildaSans', var(--font-roboto), Roboto, Arial, sans-serif;
 
   --container-7xl: 80rem;
 
