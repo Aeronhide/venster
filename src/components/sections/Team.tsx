@@ -9,6 +9,8 @@ type Member = {
   image: string;
 };
 
+// Tilda blocks rec1763549301 (title) + rec1763549311 (T923 carousel of 4 cards).
+// Title fontsize 50 → 72. Card 260 wide. Card title fs 20 → 29. Body fs ≈14 → 20.
 const team: Member[] = [
   {
     name: "Ion Banari – Project & Accountability",
@@ -38,40 +40,42 @@ const team: Member[] = [
 
 export function Team() {
   return (
-    <Section ariaLabelledby="team-title" className="bg-white">
+    <Section ariaLabelledby="team-title" className="bg-[#f5f5f5]">
       <Container>
         <h2
           id="team-title"
-          className="text-center text-3xl font-black uppercase leading-tight tracking-tight text-brand-ink sm:text-4xl lg:text-[44px] lg:leading-[1.15]"
+          className="text-center text-[28px] font-black uppercase leading-[1.3] tracking-tight text-[#082b4b] sm:text-[40px] lg:text-[72px]"
         >
-          Ons project- en
-          <br />
-          ondersteuningsteam
+          Ons project- en ondersteuningsteam
         </h2>
 
-        <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mx-auto mt-[40px] grid max-w-[1500px] gap-[20px] sm:grid-cols-2 lg:mt-[60px] lg:grid-cols-4">
           {team.map((m) => (
             <li
               key={m.name}
-              className="flex flex-col overflow-hidden rounded-2xl bg-white p-4 shadow-sm ring-1 ring-border/40"
+              className="flex flex-col overflow-hidden rounded-[16px] bg-white"
             >
-              <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-surface">
+              <div className="relative aspect-square w-full overflow-hidden bg-[#f5f5f5]">
                 <Image
                   src={m.image}
                   alt={m.name}
                   fill
-                  sizes="(min-width: 1024px) 22vw, 45vw"
+                  sizes="(min-width: 1024px) 374px, (min-width: 640px) 45vw, 90vw"
                   loading="lazy"
                   className="object-cover"
                 />
               </div>
-              <h3 className="mt-5 text-sm font-bold text-brand-ink">
-                {m.name}
-              </h3>
-              <p className="mt-1 text-xs font-bold text-brand-ink">{m.role}</p>
-              <p className="mt-3 text-xs leading-relaxed text-fg-muted">
-                {m.body}
-              </p>
+
+              <div className="flex flex-1 flex-col p-[24px] text-center">
+                <h3 className="text-[20px] font-semibold leading-[1.3] text-[#082b4b]">
+                  {m.name}
+                </h3>
+                <p className="mt-[12px] text-[16px] leading-[1.5] text-[#191919]">
+                  <strong className="font-bold">{m.role}</strong>
+                  <br />
+                  {m.body}
+                </p>
+              </div>
             </li>
           ))}
         </ul>

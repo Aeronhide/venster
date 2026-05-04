@@ -10,6 +10,8 @@ type Step = {
   image: string;
 };
 
+// Tilda block rec1763499311. Spec is the 1200-breakpoint values × 1.44.
+// Card 224x464 → ~322x668. Image 196x133 → ~282x192. Title fs 22 → 32. Body/bullets fs 14 → 20.
 const steps: Step[] = [
   {
     n: "01",
@@ -56,51 +58,51 @@ const steps: Step[] = [
 
 export function Process() {
   return (
-    <Section
-      id="proces"
-      ariaLabelledby="process-title"
-      className="bg-white"
-    >
+    <Section id="proces" ariaLabelledby="process-title" className="bg-white">
       <Container>
         <h2
           id="process-title"
-          className="text-center text-3xl font-black uppercase leading-tight tracking-tight text-brand-ink sm:text-4xl lg:text-[40px] lg:leading-[1.2]"
+          className="mx-auto max-w-[1100px] text-center text-[28px] font-black uppercase leading-[1.2] tracking-tight text-[#082b4b] sm:text-[40px] lg:text-[63px]"
         >
-          Een helder en gecontroleerd proces
-          <br />
-          — van eerste contact tot installatie
+          Een helder en gecontroleerd proces — van eerste contact tot installatie
         </h2>
 
-        <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        <ol className="mx-auto mt-12 grid max-w-[1728px] gap-[14px] sm:grid-cols-2 lg:mt-[80px] lg:grid-cols-5">
           {steps.map((s) => (
             <li
               key={s.n}
-              className="flex flex-col rounded-2xl bg-white p-5 ring-1 ring-border/40 shadow-sm"
+              className="flex flex-col rounded-[16px] bg-[#f5f5f5] p-[20px]"
             >
-              <div className="relative">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-surface">
-                  <Image
-                    src={s.image}
-                    alt=""
-                    fill
-                    sizes="(min-width: 1024px) 18vw, (min-width: 640px) 45vw, 90vw"
-                    loading="lazy"
-                    className="object-cover"
-                  />
-                </div>
-                <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 grid h-9 w-9 place-items-center rounded-md bg-brand text-sm font-bold text-white shadow">
+              <div className="relative h-[192px] w-full overflow-hidden rounded-[12px] bg-white">
+                <Image
+                  src={s.image}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 282px, (min-width: 640px) 45vw, 90vw"
+                  loading="lazy"
+                  className="object-cover"
+                />
+              </div>
+
+              <div className="mt-[24px] flex items-center gap-[12px]">
+                <span className="grid h-[62px] w-[62px] place-items-center rounded-[16px] bg-[#226CD5] text-[20px] font-bold text-white">
                   {s.n}
                 </span>
+                <h3 className="text-[22px] font-bold leading-[1.2] text-[#082b4b]">
+                  {s.title}
+                </h3>
               </div>
-              <h3 className="mt-7 text-center text-base font-bold text-brand-ink">
-                {s.title}
-              </h3>
-              <p className="mt-3 text-xs leading-relaxed text-fg-muted">
+
+              <p className="mt-[16px] text-[16px] leading-[1.4] text-[#7b7b7b]">
                 {s.body}
               </p>
-              <ul className="mt-3 space-y-1 text-[11px] text-fg-muted/90">
+
+              <ul className="mt-[16px] space-y-[8px] text-[16px] leading-[1.4] text-[#082b4b]">
                 {s.bullets.map((b) => (
-                  <li key={b}>• {b}</li>
+                  <li key={b} className="flex items-start gap-[8px]">
+                    <span aria-hidden className="text-[#226CD5]">✔</span>
+                    <span>{b}</span>
+                  </li>
                 ))}
               </ul>
             </li>

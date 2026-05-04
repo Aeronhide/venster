@@ -95,14 +95,14 @@ export function Header() {
         {/* Right cluster — phone+hours, phone icon, WhatsApp, CTA */}
         <div className="hidden lg:flex items-center gap-[16px]">
           {/* Phone + hours stacked — Tilda 14/10 × 1.44 = 20/14 */}
-          <div className="flex flex-col leading-tight">
+          <div className="flex flex-col items-end gap-[8px] leading-tight">
             <a
               href={PHONE_HREF}
               className="text-[20px] font-bold leading-[28px] text-[#226CD5]"
             >
               {PHONE_DISPLAY}
             </a>
-            <span className="text-[14px] leading-[20px] text-fg-subtle">
+            <span className="text-[14px] leading-[20px] text-black">
               {HOURS}
             </span>
           </div>

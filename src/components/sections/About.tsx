@@ -2,33 +2,50 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 
+// Tilda block rec1763457411 — "Over VALENT"
+// Outer container: 1161x679 rounded 16, white bg
+// Left blue card: 530x597 #c6e0f7 rounded 12
+//   Title: 44px (×1.44 = 63px), font-weight 700, uppercase, color #082b4b
+//   Body: 16px (×1.44 = 23px), color #3e3e3e, line-height 1.7
+//   Lightbulb: 46×46 (×1.44 = 66×66) rounded 8 (→12), radial gradient #3b7ddd → #7ba6e6
+//   Inner SVG: 22×22 (×1.44 = 32×32)
+// Right video poster: 530×351 rounded 12 (×1.44 → 763×505)
+
 const VIDEO_POSTER = "/images/about-video-poster.webp";
 
 export function About() {
   return (
-    <Section id="over-ons" ariaLabelledby="over-ons-title" className="bg-surface">
+    <Section
+      id="rec1763457411"
+      ariaLabelledby="over-ons-title"
+      className="bg-[#f5f5f5]"
+    >
       <Container>
-        <div className="mx-auto max-w-7xl rounded-2xl bg-white p-4 sm:p-6 lg:p-10">
-          <div className="grid gap-6 lg:grid-cols-2 lg:items-stretch">
-            <article className="relative rounded-xl bg-[#c6e0f7] p-8 sm:p-10 lg:p-12">
-              <span className="absolute right-6 top-6 grid size-[54px] place-items-center rounded-lg bg-[radial-gradient(circle,#3b7ddd_0%,#3b7ddd_40%,#5b92e2_70%,#7ba6e6_100%)]">
+        <div className="mx-auto max-w-[1672px] rounded-[16px] bg-white p-4 sm:p-6 lg:p-[40px]">
+          <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
+            {/* Left blue card */}
+            <article className="relative rounded-[12px] bg-[#c6e0f7] p-8 sm:p-10 lg:p-[52px]">
+              <span
+                aria-hidden
+                className="absolute right-[52px] top-[42px] grid h-[66px] w-[66px] place-items-center rounded-[12px] bg-[radial-gradient(circle_at_center,#3b7ddd_0%,#3b7ddd_40%,#7ba6e6_100%)]"
+              >
                 <Image
-                  src="/icons/lightbulb-idea.svg"
+                  src="/images/idea.svg"
                   alt=""
-                  width={26}
-                  height={26}
-                  className="invert brightness-0"
+                  width={32}
+                  height={32}
+                  className="h-[32px] w-[32px]"
                 />
               </span>
 
               <h2
                 id="over-ons-title"
-                className="max-w-[10ch] text-4xl font-black uppercase tracking-tight text-brand-ink sm:text-5xl lg:text-[64px] lg:leading-[1.05]"
+                className="max-w-[550px] text-[40px] font-bold uppercase leading-[1.3] text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[52px] lg:text-[63px]"
               >
-                Over Valent
+                Over VALENT
               </h2>
 
-              <div className="mt-6 space-y-4 text-base leading-7 text-[#3e3e3e]">
+              <div className="mt-[28px] max-w-[665px] space-y-[16px] text-[18px] leading-[1.7] text-[#3e3e3e] [font-family:Roboto,Arial,sans-serif] sm:text-[20px] lg:text-[23px]">
                 <p>
                   VALENT is een Europese fabrikant van PVC ramen en deuren, die
                   huiseigenaren in heel Nederland voorziet van gecertificeerde,
@@ -37,7 +54,7 @@ export function About() {
                 <p>
                   Onze productie en technische activiteiten worden uitgevoerd
                   door een toegewijd backofficeteam, terwijl onze projecten in
-                  Nederland worden uitgevoerd via lokale meet- en
+                  Nederland worden uitgevoerd via lokale meet-en
                   installatiepartners.
                 </p>
                 <p>
@@ -51,45 +68,44 @@ export function About() {
                   <strong className="font-bold">
                     8 jaar productie-ervaring en duizenden voltooide projecten
                   </strong>{" "}
-                  zijn onze producten <strong className="font-bold">CE-gecertificeerd</strong>,
+                  zijn onze producten{" "}
+                  <strong className="font-bold">CE-gecertificeerd,</strong>{" "}
                   afgestemd op landspecifieke regelgeving en veilig
                   getransporteerd om een vlekkeloze installatie te garanderen.
                 </p>
                 <p>
                   Wij geloven dat vertrouwen wordt opgebouwd door transparantie,
-                  duidelijke communicatie en consistente resultaten. Daarom
-                  kiezen onze klanten voor VALENT voor{" "}
-                  <strong className="font-bold">eerlijke prijzen</strong>,{" "}
+                  duidelijke communicatie en consistente resultaten.
+                </p>
+                <p>
+                  Daarom kiezen onze klanten voor VALENT voor{" "}
                   <strong className="font-bold">
-                    Europese kwaliteit en betrouwbare service.
+                    eerlijke prijzen, Europese kwaliteit en betrouwbare service.
                   </strong>
                 </p>
               </div>
             </article>
 
+            {/* Right video poster — fixed ~500px tall, doesn't stretch with left card */}
             <button
               type="button"
-              className="group relative block overflow-hidden rounded-xl bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
               aria-label="Speel introductievideo Valent af"
+              className="group relative block h-[500px] w-full overflow-hidden rounded-[12px] bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#226CD5]"
             >
               <Image
                 src={VIDEO_POSTER}
                 alt=""
-                width={1280}
-                height={720}
-                className="h-full w-full object-cover"
+                fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
               />
-              <span className="pointer-events-none absolute inset-0 grid place-items-center">
-                <span className="grid h-[68px] w-[98px] place-items-center rounded-xl bg-[rgba(23,35,34,0.9)] shadow-[0_2px_6px_rgba(0,0,0,0.35)]">
-                  <span
-                    aria-hidden
-                    className="block h-0 w-0 translate-x-[2px] border-y-[10px] border-l-[16px] border-y-transparent border-l-white"
-                  />
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-0 grid place-items-center"
+              >
+                <span className="grid h-[98px] w-[140px] place-items-center rounded-[16px] bg-[rgba(23,35,34,0.9)] shadow-[0_4px_10px_rgba(0,0,0,0.35)]">
+                  <span className="block h-0 w-0 translate-x-[3px] border-y-[14px] border-l-[22px] border-y-transparent border-l-white" />
                 </span>
-              </span>
-              <span className="absolute right-3 top-3 inline-flex items-center gap-2 rounded-md bg-white/95 px-3 py-1 text-xs font-bold uppercase text-brand-ink shadow">
-                Valent
               </span>
             </button>
           </div>

@@ -2,66 +2,67 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 
-const PROMO_IMG = "/images/promo-bg.webp";
+// Tilda block rec1342840611 (T396, light gray card with promo offer + ventilator photo).
+// Card #f5f5f5 with 22px radius. Top tag fs 47 -> 68px uppercase #333.
+// Main title fs 32 -> 46px #333 with strong on "20% korting" and "gratis".
+// Subtitle fs 14 -> 20px #333. "%" badge: 48x40 #71a6f1 round-full, "%" 30 -> 43px white.
+// Image right (1000x600 -> 1440x864). CTA "PLAN EEN BEZOEK" fs 20 -> 29px white #226cd5.
+
 const VENT_IMG = "/images/promo-ventilator.webp";
 
 export function Promotion() {
   return (
     <Section ariaLabel="Actie 20% korting" className="bg-white">
       <Container>
-        <article className="relative overflow-hidden rounded-[22px] bg-brand-ink text-white">
-          <Image
-            src={PROMO_IMG}
-            alt=""
-            role="presentation"
-            fill
-            sizes="(min-width: 1024px) 1024px, 100vw"
-            className="absolute inset-0 -z-10 object-cover opacity-30"
-          />
+        <div className="mx-auto max-w-[1670px]">
+          <h2 className="text-center text-[28px] font-bold uppercase leading-[1.2] text-[#333333] [font-family:Roboto,Arial,sans-serif] sm:text-[44px] lg:text-[68px]">
+            Bekijk de laatste promoties
+          </h2>
 
-          <div className="relative grid gap-8 p-6 sm:p-10 lg:grid-cols-[3fr_2fr] lg:p-14">
-            <div>
-              <span className="absolute right-6 top-6 grid size-10 place-items-center rounded-md bg-brand text-white">
-                <span className="text-base font-bold">%</span>
-              </span>
+          <article className="relative mt-[40px] overflow-hidden rounded-[22px] bg-[#f5f5f5] p-[40px] text-[#333333] sm:p-[60px] lg:p-[80px]">
+            <div className="grid items-center gap-[40px] lg:grid-cols-[1fr_1fr]">
+              <div className="max-w-[770px]">
+                <h3 className="text-[26px] font-medium leading-[1.3] text-[#333333] [font-family:Roboto,Arial,sans-serif] sm:text-[34px] lg:text-[46px]">
+                  Profiteer van{" "}
+                  <strong className="font-bold">20% korting</strong> op ramen en
+                  ontvang <strong className="font-bold">gratis</strong> een
+                  ventilatierooster voor een van jouw ramen
+                </h3>
 
-              <h2 className="text-2xl font-bold leading-snug sm:text-3xl lg:text-[36px]">
-                Profiteer van{" "}
-                <span className="text-brand-soft underline decoration-brand-soft underline-offset-4">
-                  20% korting
-                </span>{" "}
-                op ramen en ontvang gratis een ventilatierooster voor een van
-                jouw ramen
-              </h2>
+                <p className="mt-[28px] max-w-[470px] text-[17px] font-medium leading-[1.3] text-[#333333] [font-family:Roboto,Arial,sans-serif] sm:text-[20px]">
+                  Geef de promotiecode{" "}
+                  <strong className="font-bold">VENTILATIEROOSTER</strong> door
+                  aan de manager en profiteer van de aanbieding
+                </p>
 
-              <p className="mt-4 text-sm text-white/85">
-                Geef de promocode{" "}
-                <strong className="font-bold text-white">
-                  VENTILATIEROOSTER
-                </strong>{" "}
-                door aan de manager om te profiteren van de aanbieding.
-              </p>
+                <a
+                  href="#zeropopup"
+                  className="mt-[36px] inline-flex h-[86px] w-full max-w-[400px] items-center justify-center rounded-[16px] bg-[#226CD5] text-[29px] font-bold capitalize text-white [font-family:Roboto,Arial,sans-serif]"
+                >
+                  Plan een bezoek
+                </a>
+              </div>
 
-              <a
-                href="#contact"
-                className="mt-6 inline-flex items-center justify-center rounded-md bg-[#226cd5] px-8 py-3 text-sm font-bold uppercase text-white shadow-[var(--shadow-cta)]"
-              >
-                Plan een bezoek
-              </a>
+              <div className="relative aspect-[1000/600] w-full">
+                <Image
+                  src={VENT_IMG}
+                  alt="Ventilatierooster gemonteerd op een raam"
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 90vw"
+                  loading="lazy"
+                  className="object-contain"
+                />
+              </div>
             </div>
 
-            <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-black/30">
-              <Image
-                src={VENT_IMG}
-                alt="Ventilatierooster bij raam"
-                fill
-                sizes="(min-width: 1024px) 35vw, 90vw"
-                loading="lazy"
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </article>
+            <span
+              aria-hidden
+              className="absolute right-[60px] top-[40px] grid h-[58px] w-[70px] place-items-center rounded-full bg-[#71a6f1] text-[43px] font-bold leading-none text-white [font-family:Roboto,Arial,sans-serif] sm:right-[80px]"
+            >
+              %
+            </span>
+          </article>
+        </div>
       </Container>
     </Section>
   );

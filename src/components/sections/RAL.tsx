@@ -2,57 +2,64 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 
+// Tilda block rec1337102051 (T396, dark card with factory video).
+// Card 1160x499 black with 22px radius. Title fs 30 -> 43px. Body fs 15 -> 22px (#d2d2d2).
+// "Kwaliteit" tag fs 12 -> 17px on #006bd5. Video tile 604x345 -> aspect 604/345 (~1.75:1).
+// Sizes use raw px from spec * 1.44 zoom (per project_tilda_zoom_144 memory).
+
 const VIDEO_POSTER = "/images/ral-poster.webp";
+const YOUTUBE_URL = "https://www.youtube.com/watch?v=K16eBIkdkzU";
 
 export function RAL() {
   return (
     <Section ariaLabel="RAL keurmerk" className="bg-white">
       <Container>
-        <article className="overflow-hidden rounded-[22px] bg-[#1f2530] p-6 text-white sm:p-10 lg:p-14">
-          <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center">
-            <div>
-              <span className="inline-flex items-center rounded-md bg-brand px-3 py-1 text-xs font-bold uppercase text-white">
-                Kwaliteit
-              </span>
-              <h2 className="mt-4 text-2xl font-bold leading-tight sm:text-3xl lg:text-[32px]">
-                Onze producten zijn bekroond met het{" "}
-                <span className="text-brand-soft">RAL-keurmerk</span> – de
-                hoogste kwaliteitsstandaard in Europa
-              </h2>
-              <p className="mt-5 text-sm leading-relaxed text-white/80">
-                Uitgerust met de nieuwste automatische Elumatec-installaties en
-                -machines, computerondersteund. Dit voorkomt mogelijke
-                menselijke fouten die kunnen optreden in het productieproces
-                van isolerende kozijnen (isolerende ramen en deuren).
-              </p>
-            </div>
+        <article className="mx-auto grid max-w-[1670px] gap-[40px] overflow-hidden rounded-[32px] bg-black p-[60px] text-white lg:grid-cols-[610px_1fr] lg:items-center lg:p-[80px]">
+          <div className="max-w-[610px]">
+            <span className="inline-flex h-[27px] items-center justify-center rounded-[7px] bg-[#006bd5] px-[14px] text-[17px] font-semibold text-white [font-family:Roboto,Arial,sans-serif]">
+              Kwaliteit
+            </span>
 
-            <button
-              type="button"
-              aria-label="Speel video over RAL-keurmerk af"
-              className="group relative block overflow-hidden rounded-xl bg-black"
-            >
-              <Image
-                src={VIDEO_POSTER}
-                alt=""
-                width={1200}
-                height={700}
-                className="h-full w-full object-cover opacity-90"
-                sizes="(min-width: 1024px) 55vw, 100vw"
-              />
-              <span className="pointer-events-none absolute inset-0 grid place-items-center">
-                <span className="grid h-[68px] w-[98px] place-items-center rounded-xl bg-[rgba(23,35,34,0.9)] shadow-[0_2px_6px_rgba(0,0,0,0.35)]">
-                  <span
-                    aria-hidden
-                    className="block h-0 w-0 translate-x-[2px] border-y-[10px] border-l-[16px] border-y-transparent border-l-white"
-                  />
-                </span>
-              </span>
-              <span className="absolute right-3 top-3 inline-flex items-center gap-2 rounded-md bg-white/95 px-3 py-1 text-xs font-bold uppercase text-brand-ink">
-                Valent
-              </span>
-            </button>
+            <h2 className="mt-[28px] text-[43px] font-bold leading-[1.3] text-white [font-family:Roboto,Arial,sans-serif]">
+              Onze producten zijn bekroond met het RAL-keurmerk &ndash; de
+              hoogste kwaliteitsstandaard in Europa
+            </h2>
+
+            <p className="mt-[24px] text-[22px] font-semibold leading-[1.3] text-[#d2d2d2] [font-family:Roboto,Arial,sans-serif]">
+              Uitgerust met de nieuwste automatische Elumatec-installaties en
+              -machines, computerondersteund.
+              <br />
+              Dit voorkomt mogelijke menselijke fouten die kunnen optreden in
+              het productieproces
+              <br />
+              van isolerende kozijnen (isolerende ramen en deuren)
+            </p>
           </div>
+
+          <a
+            href={YOUTUBE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Speel video over RAL-keurmerk af"
+            className="group relative block aspect-[604/345] w-full overflow-hidden rounded-[22px] bg-black"
+          >
+            <Image
+              src={VIDEO_POSTER}
+              alt=""
+              role="presentation"
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover opacity-90"
+            />
+            <span className="pointer-events-none absolute inset-0 grid place-items-center">
+              <span className="grid h-[98px] w-[140px] place-items-center rounded-[16px] bg-black/70 transition-colors group-hover:bg-black/85">
+                <span
+                  aria-hidden
+                  className="block h-0 w-0 translate-x-[3px] border-y-[14px] border-l-[22px] border-y-transparent border-l-white"
+                />
+              </span>
+            </span>
+          </a>
         </article>
       </Container>
     </Section>

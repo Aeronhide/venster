@@ -1,28 +1,27 @@
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 
+// Tilda block rec1337102091 — full-width centered text + 5-star line.
+// Title fs 30 -> 43px (#333333). "AANBEVOLEN" highlighted color rgb(48, 47, 178).
+// Stars fs 30 -> 43px below title.
+
 export function Recognition() {
   return (
-    <Section
-      ariaLabel="Erkenning en aanbevelingen"
-      className="bg-white !py-12 sm:!py-16"
-    >
+    <Section ariaLabel="Erkenning en aanbevelingen" className="bg-white">
       <Container>
-        <div className="text-center">
-          <p className="text-xl font-bold text-brand-ink sm:text-2xl">
-            We voeren jaarlijks meer dan
-          </p>
-          <p className="mt-2 text-xl font-bold text-brand-ink sm:text-2xl">
-            480 projecten uit en al onze beoordelingen hebben de status
-          </p>
-          <p className="mt-3 text-2xl font-black uppercase text-[#3b3bc5] sm:text-3xl">
-            Aanbevolen
-          </p>
-          <div
-            aria-hidden
-            className="mx-auto mt-4 h-3 w-48 bg-[repeating-linear-gradient(to_right,#191919_0_8px,transparent_8px_14px)] sm:w-64"
-          />
-        </div>
+        <p className="mx-auto max-w-[1240px] text-center text-[28px] font-bold leading-[1.3] text-[#333333] [font-family:Roboto,Arial,sans-serif] sm:text-[36px] lg:text-[43px]">
+          We voeren jaarlijks meer dan
+          <br />
+          480 projecten uit en al onze beoordelingen hebben de status{" "}
+          <span className="text-[rgb(48,47,178)]">AANBEVOLEN</span>
+        </p>
+
+        <p
+          aria-label="Vijf van vijf sterren"
+          className="mt-[40px] text-center text-[28px] leading-[1] [font-family:Roboto,Arial,sans-serif] sm:text-[36px] lg:text-[43px]"
+        >
+          <span aria-hidden>⭐⭐⭐⭐⭐</span>
+        </p>
       </Container>
     </Section>
   );
