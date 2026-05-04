@@ -27,7 +27,6 @@ const projects = [
 
 export function Projects() {
   const [active, setActive] = useState(0);
-  const visible = projects[active] ?? projects[0];
 
   return (
     <Section ariaLabelledby="projects-title" className="bg-white">
@@ -39,55 +38,64 @@ export function Projects() {
           ONZE AFGERONDE PROJECTEN IN NEDERLAND!
         </h2>
 
-        <div className="relative mx-auto mt-[40px] max-w-[1238px] lg:mt-[90px]">
+        <div className="mx-auto mt-[40px] flex max-w-[960px] items-center gap-[16px] lg:mt-[90px]">
+          {/* Prev button — outside slider, vertically centered */}
+          <button
+            type="button"
+            aria-label="Vorig project"
+            onClick={() =>
+              setActive((i) => (i - 1 + projects.length) % projects.length)
+            }
+            className="grid h-[56px] w-[56px] shrink-0 place-items-center rounded-full bg-white text-[#082b4b] shadow ring-1 ring-black/5 hover:bg-[#f5f5f5]"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+
+          {/* Slider image — fade transition between projects */}
           <div className="relative aspect-[860/550] w-full overflow-hidden rounded-[16px] bg-black">
-            <Image
-              key={visible}
-              src={visible}
-              alt={`Project ${active + 1}`}
-              fill
-              sizes="(min-width: 1024px) 1238px, 92vw"
-              className="object-cover"
-              priority={active === 0}
-            />
-
-            <span className="pointer-events-none absolute left-1/2 top-[24px] inline-flex -translate-x-1/2 items-center justify-center rounded-[16px] bg-[#226CD5] px-[24px] py-[12px] text-[14px] font-bold capitalize text-white [font-family:Roboto,Arial,sans-serif] lg:text-[18px]">
-              Gerealiseerde projecten
-            </span>
-
-            <button
-              type="button"
-              aria-label="Vorig project"
-              onClick={() =>
-                setActive((i) => (i - 1 + projects.length) % projects.length)
-              }
-              className="absolute left-[16px] top-1/2 grid h-[56px] w-[56px] -translate-y-1/2 place-items-center rounded-full bg-white/90 text-[28px] text-[#082b4b] shadow hover:bg-white"
-            >
-              ‹
-            </button>
-            <button
-              type="button"
-              aria-label="Volgend project"
-              onClick={() => setActive((i) => (i + 1) % projects.length)}
-              className="absolute right-[16px] top-1/2 grid h-[56px] w-[56px] -translate-y-1/2 place-items-center rounded-full bg-white/90 text-[28px] text-[#082b4b] shadow hover:bg-white"
-            >
-              ›
-            </button>
-          </div>
-
-          <div className="mt-[20px] flex flex-wrap justify-center gap-[8px]">
-            {projects.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                aria-label={`Ga naar project ${i + 1}`}
-                onClick={() => setActive(i)}
-                className={`h-[8px] w-[8px] rounded-full transition-colors ${
-                  i === active ? "bg-[#082b4b]" : "bg-[#c7c7c7]"
+            {projects.map((src, i) => (
+              <Image
+                key={src}
+                src={src}
+                alt={`Project ${i + 1}`}
+                fill
+                sizes="(min-width: 1024px) 1238px, 92vw"
+                priority={i === 0}
+                loading={i === 0 ? "eager" : "lazy"}
+                className={`object-cover transition-opacity duration-500 ease-in-out ${
+                  i === active ? "opacity-100" : "opacity-0"
                 }`}
               />
             ))}
           </div>
+
+          {/* Next button — outside slider, vertically centered */}
+          <button
+            type="button"
+            aria-label="Volgend project"
+            onClick={() => setActive((i) => (i + 1) % projects.length)}
+            className="grid h-[56px] w-[56px] shrink-0 place-items-center rounded-full bg-white text-[#082b4b] shadow ring-1 ring-black/5 hover:bg-[#f5f5f5]"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="mx-auto mt-[20px] flex max-w-[960px] flex-wrap justify-center gap-[8px]">
+          {projects.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              aria-label={`Ga naar project ${i + 1}`}
+              onClick={() => setActive(i)}
+              className={`h-[8px] w-[8px] rounded-full ${
+                i === active ? "bg-[#082b4b]" : "bg-[#c7c7c7]"
+              }`}
+            />
+          ))}
         </div>
       </Container>
     </Section>
