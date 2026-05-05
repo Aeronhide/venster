@@ -18,9 +18,9 @@ const CLS = {
   featuresWrap:
     "absolute left-[5%] top-[8.5%] flex w-[42%] flex-col gap-[1.4cqi]",
   featuresTitleCard:
-    "rounded-[14px] bg-[#473536] shadow-[5px_5px_10px_rgba(0,0,0,0.15)] px-[3.2cqi] py-[2.4cqi]",
+    "rounded-[14px] bg-[#473536] shadow-[5px_5px_10px_rgba(0,0,0,0.15)] px-[1.6cqi] py-[1.2cqi]",
   featuresListCard:
-    "rounded-[14px] bg-[#473536] shadow-[5px_5px_10px_rgba(0,0,0,0.15)] px-[3.2cqi] py-[2.6cqi]",
+    "rounded-[14px] bg-[#473536] shadow-[5px_5px_10px_rgba(0,0,0,0.15)] px-[1.6cqi] py-[1.3cqi]",
   formCard:
     "absolute left-[53%] top-[8.5%] w-[42%] rounded-[14px] bg-[#082b4b]/85 backdrop-blur-[6px] shadow-[5px_5px_10px_rgba(0,0,0,0.15)] px-[3.5cqi] py-[3cqi]",
   statsCard:
@@ -106,14 +106,14 @@ export function HeroPvcRamen() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t.pvcRamen.ratingAria}
-            className="inline-flex h-[3.6cqi] w-[14cqi] items-center justify-center rounded-[10cqi] bg-white px-[0.6cqi] shadow-[3px_3px_8px_rgba(0,0,0,0.15)]"
+            className="flex h-[10.3%] w-[23.75%] items-center justify-center rounded-[16px] bg-white px-1.5"
           >
             <Image
               src={GOOGLE_BADGE}
               alt=""
               width={188}
               height={34}
-              className="h-auto w-[90%] object-contain"
+              className="h-auto w-[92%] object-contain"
             />
           </a>
         </div>
@@ -204,12 +204,12 @@ function FeaturesCardMobile() {
   const t = useT();
   return (
     <div className="flex flex-col gap-3 sm:gap-4">
-      <article className="rounded-[14px] bg-[#473536] px-5 py-5 sm:px-7 sm:py-6">
+      <article className="rounded-[14px] bg-[#473536] px-3 py-3 sm:px-4 sm:py-3">
         <h1 className="text-[28px] font-bold uppercase leading-[1] tracking-tight text-white sm:text-[36px]">
           {t.pvcRamen.headline}
         </h1>
       </article>
-      <article className="rounded-[14px] bg-[#473536] px-5 py-5 sm:px-7 sm:py-6">
+      <article className="rounded-[14px] bg-[#473536] px-3 py-3 sm:px-4 sm:py-3">
         <ul className="space-y-3 sm:space-y-4">
           {t.pvcRamen.features.map((f) => (
             <li
@@ -227,11 +227,11 @@ function FeaturesCardMobile() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={t.pvcRamen.ratingAria}
-        className="inline-flex h-[42px] w-full max-w-[220px] items-center justify-center rounded-[12px] bg-white px-2 shadow-[3px_3px_8px_rgba(0,0,0,0.15)]"
+        className="inline-flex h-[56px] w-full max-w-[285px] items-center justify-center rounded-[14px] bg-white px-3 sm:h-[68px]"
       >
         <Image
           src={GOOGLE_BADGE}
-          alt=""
+          alt="Google reviews"
           width={188}
           height={34}
           className="h-auto w-[90%] object-contain"

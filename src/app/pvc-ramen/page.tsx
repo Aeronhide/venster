@@ -1,4 +1,3 @@
-import { Header } from "@/components/sections/Header";
 import { HeroPvcRamen } from "@/components/sections/HeroPvcRamen";
 import { PvcProfiles } from "@/components/sections/PvcProfiles";
 import { PvcShowroom } from "@/components/sections/PvcShowroom";
@@ -16,36 +15,29 @@ import { Recognition } from "@/components/sections/Recognition";
 import { Team } from "@/components/sections/Team";
 import { CatalogForm } from "@/components/sections/CatalogForm";
 import { Contact } from "@/components/sections/Contact";
-import { Footer } from "@/components/sections/Footer";
-import { StructuredData } from "@/components/StructuredData";
 
 export default function PvcRamenPage() {
   return (
     <>
-      <Header />
-      <main id="main">
-        <HeroPvcRamen />
-        <PvcProfiles />
-        <PvcShowroom />
-        <PvcLamination />
-        <PvcGlassTypes />
-        <PvcRoto />
-        <PvcAccessories />
-        <PvcAdvantages />
-        <div className="bg-[#F5F5F5]">
-          <Process />
-          <InstallationForm />
-          <Projects />
-          <Certification />
-          <PvcFAQ />
-          <Recognition />
-          <Team />
-          <CatalogForm />
-          <Contact />
-        </div>
-      </main>
-      <Footer />
-      <StructuredData />
+      <HeroPvcRamen />
+      <PvcProfiles />
+      <PvcShowroom />
+      <PvcLamination />
+      <PvcGlassTypes />
+      <PvcRoto />
+      <PvcAccessories />
+      <PvcAdvantages />
+      <div className="bg-[#F5F5F5]">
+        <Process />
+        <InstallationForm />
+        <Projects />
+        <Certification />
+        <PvcFAQ />
+        <Recognition />
+        <Team />
+        <CatalogForm />
+        <Contact />
+      </div>
     </>
   );
 }

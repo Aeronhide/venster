@@ -1,4 +1,3 @@
-import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Products } from "@/components/sections/Products";
@@ -18,38 +17,31 @@ import { CatalogForm } from "@/components/sections/CatalogForm";
 import { Sketches } from "@/components/sections/Sketches";
 import { Promotion } from "@/components/sections/Promotion";
 import { Contact } from "@/components/sections/Contact";
-import { Footer } from "@/components/sections/Footer";
-import { StructuredData } from "@/components/StructuredData";
 
 export default function Home() {
   return (
     <>
-      <Header />
-      <main id="main">
-        <Hero />
-        <About />
-        <Products />
-        <Features />
-        <Financing />
-        <div className="bg-[#F5F5F5]">
-          <Partners />
-          <Certification />
-          <WhyChoose />
-          <Process />
-          <Team />
-          <InstallationForm />
-          <Projects />
-          <RAL />
-          <Transport />
-          <Recognition />
-          <CatalogForm />
-          <Sketches />
-          <Promotion />
-          <Contact />
-        </div>
-      </main>
-      <Footer />
-      <StructuredData />
+      <Hero />
+      <About />
+      <Products />
+      <Features />
+      <Financing />
+      <div className="bg-[#F5F5F5]">
+        <Partners />
+        <Certification />
+        <WhyChoose />
+        <Process />
+        <Team />
+        <InstallationForm />
+        <Projects />
+        <RAL />
+        <Transport />
+        <Recognition />
+        <CatalogForm />
+        <Sketches />
+        <Promotion />
+        <Contact />
+      </div>
     </>
   );
 }

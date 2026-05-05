@@ -6,6 +6,9 @@ import { SITE_URL, site } from "@/lib/site";
 import { ScrollToTopOnMount } from "@/components/ScrollToTopOnMount";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { SkipLink } from "@/components/SkipLink";
+import { Header } from "@/components/sections/Header";
+import { Footer } from "@/components/sections/Footer";
+import { StructuredData } from "@/components/StructuredData";
 
 const roboto = Roboto({
   subsets: ["latin", "latin-ext"],
@@ -103,7 +106,10 @@ export default function RootLayout({
         <LanguageProvider>
           <SkipLink />
           <ScrollToTopOnMount />
-          {children}
+          <Header />
+          <main id="main">{children}</main>
+          <Footer />
+          <StructuredData />
         </LanguageProvider>
       </body>
     </html>
