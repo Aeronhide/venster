@@ -16,13 +16,13 @@ const CLS = {
   bgImage:
     "absolute left-[1.67%] top-0 w-[96.25%] h-[79.24%] rounded-[15px] overflow-hidden",
   featuresWrap:
-    "absolute left-[5%] top-[8.5%] flex w-[42%] flex-col gap-[1.4cqi]",
+    "absolute left-[5%] top-[10%] flex w-[42%] flex-col gap-[1.4cqi]",
   featuresTitleCard:
-    "rounded-[14px] bg-[#473536] shadow-[5px_5px_10px_rgba(0,0,0,0.15)] px-[1.6cqi] py-[1.2cqi]",
+    "rounded-[14px] border border-white/90 bg-[#473536] shadow-[5px_5px_10px_rgba(0,0,0,0.15)] px-[1.6cqi] py-[1.2cqi]",
   featuresListCard:
-    "rounded-[14px] bg-[#473536] shadow-[5px_5px_10px_rgba(0,0,0,0.15)] px-[1.6cqi] py-[1.3cqi]",
+    "rounded-[14px] border border-white/90 bg-[#473536] shadow-[5px_5px_10px_rgba(0,0,0,0.15)] px-[1.6cqi] py-[1.3cqi]",
   formCard:
-    "absolute left-[53%] top-[8.5%] w-[42%] rounded-[14px] bg-[#082b4b]/85 backdrop-blur-[6px] shadow-[5px_5px_10px_rgba(0,0,0,0.15)] px-[3.5cqi] py-[3cqi]",
+    "absolute left-[53%] top-[10%] w-[42%] rounded-[14px] border border-white/90 bg-[#473536] shadow-[5px_5px_10px_rgba(0,0,0,0.15)] px-[3.5cqi] py-[3cqi]",
   statsCard:
     "absolute left-[5%] top-[70.3%] z-10 w-[90%] h-[18.64%] rounded-[15px] bg-white shadow-[0_8px_32px_rgba(0,0,0,0.1)] flex items-center justify-around px-[2%]",
 };
@@ -106,7 +106,7 @@ export function HeroPvcRamen() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t.pvcRamen.ratingAria}
-            className="flex h-[10.3%] w-[23.75%] items-center justify-center rounded-[16px] bg-white px-1.5"
+            className="flex h-[4cqi] w-[16cqi] items-center justify-center rounded-[12px] bg-white px-1.5"
           >
             <Image
               src={GOOGLE_BADGE}
@@ -157,7 +157,7 @@ function FormCardContent() {
         >
           {t.pvcRamen.formPhoneLabel}
         </label>
-        <div className="flex h-[5.5cqi] items-stretch overflow-hidden rounded-[12px] bg-white">
+        <div className="flex h-[4.5cqi] items-stretch overflow-hidden rounded-[12px] bg-white">
           <span className="flex items-center gap-[0.6cqi] border-r border-[#c7c7c7] px-[1.4cqi] text-[1.4cqi] text-[#050505]">
             <span
               aria-hidden
@@ -191,7 +191,7 @@ function FormCardContent() {
         </label>
         <button
           type="submit"
-          className="block h-[5cqi] w-full rounded-[12px] bg-[#C40000] text-[1.4cqi] font-bold uppercase tracking-tight text-white"
+          className="block h-[4cqi] w-full rounded-[12px] bg-[#911700] text-[1.4cqi] font-bold uppercase tracking-tight text-white"
         >
           {t.pvcRamen.formSubmit}
         </button>
@@ -204,12 +204,12 @@ function FeaturesCardMobile() {
   const t = useT();
   return (
     <div className="flex flex-col gap-3 sm:gap-4">
-      <article className="rounded-[14px] bg-[#473536] px-3 py-3 sm:px-4 sm:py-3">
+      <article className="rounded-[14px] border border-white/90 bg-[#473536] px-3 py-3 sm:px-4 sm:py-3">
         <h1 className="text-[28px] font-bold uppercase leading-[1] tracking-tight text-white sm:text-[36px]">
           {t.pvcRamen.headline}
         </h1>
       </article>
-      <article className="rounded-[14px] bg-[#473536] px-3 py-3 sm:px-4 sm:py-3">
+      <article className="rounded-[14px] border border-white/90 bg-[#473536] px-3 py-3 sm:px-4 sm:py-3">
         <ul className="space-y-3 sm:space-y-4">
           {t.pvcRamen.features.map((f) => (
             <li
@@ -246,7 +246,7 @@ function FormCardMobile() {
   const [phone, setPhone] = useState("");
   const [agreed, setAgreed] = useState(false);
   return (
-    <article className="rounded-[14px] bg-[#082b4b]/85 px-5 py-6 backdrop-blur-[6px] sm:px-7 sm:py-7">
+    <article className="rounded-[14px] border border-white/90 bg-[#473536] px-5 py-6 sm:px-7 sm:py-7">
       <h2 className="text-[18px] font-bold leading-[1.25] text-white sm:text-[22px]">
         {t.pvcRamen.formTitle}
       </h2>
@@ -261,7 +261,7 @@ function FormCardMobile() {
         >
           {t.pvcRamen.formPhoneLabel}
         </label>
-        <div className="flex h-[56px] items-stretch overflow-hidden rounded-[12px] bg-white sm:h-[64px]">
+        <div className="flex h-[48px] items-stretch overflow-hidden rounded-[12px] bg-white sm:h-[54px]">
           <span className="flex items-center gap-2 border-r border-[#c7c7c7] px-3 text-[15px] text-[#050505]">
             <span
               aria-hidden
@@ -295,7 +295,7 @@ function FormCardMobile() {
         </label>
         <button
           type="submit"
-          className="block h-[52px] w-full rounded-[12px] bg-[#C40000] text-[14px] font-bold uppercase tracking-tight text-white sm:h-[60px] sm:text-[16px]"
+          className="block h-[44px] w-full rounded-[12px] bg-[#911700] text-[14px] font-bold uppercase tracking-tight text-white sm:h-[50px] sm:text-[16px]"
         >
           {t.pvcRamen.formSubmit}
         </button>
