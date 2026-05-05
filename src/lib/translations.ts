@@ -367,7 +367,7 @@ export const translations = {
       productsTitle: "Producten",
       helpTitle: "Help",
       productLinks: [
-        { href: "#products", label: "PVC Ramen" },
+        { href: "/pvc-ramen", label: "PVC Ramen" },
         { href: "#products", label: "Voordeuren" },
         { href: "#products", label: "Schuifdeuren" },
         { href: "#products", label: "Rolluiken" },
@@ -1060,7 +1060,7 @@ export const translations = {
       productsTitle: "Products",
       helpTitle: "Help",
       productLinks: [
-        { href: "#products", label: "PVC Windows" },
+        { href: "/pvc-ramen", label: "PVC Windows" },
         { href: "#products", label: "Front Doors" },
         { href: "#products", label: "Sliding Doors" },
         { href: "#products", label: "Roller Shutters" },
