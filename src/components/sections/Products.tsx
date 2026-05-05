@@ -56,7 +56,7 @@ const CTA =
 export function Products() {
   return (
     <Section
-      id="rec1337101951"
+      id="products"
       ariaLabelledby="producten-title"
       className="bg-[#f9f9f9]"
     >

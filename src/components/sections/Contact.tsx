@@ -20,7 +20,7 @@ const EMAIL = site.email;
 export function Contact() {
   return (
     <Section
-      id='rec1763574201'
+      id='contact'
       ariaLabelledby='contact-title'
       className='bg-[#082b4b] text-white'
     >
@@ -98,7 +98,7 @@ export function Contact() {
             </dl>
           </div>
 
-          <div className='mt-[60px] grid gap-[40px] border-t border-black/10 pt-[40px] text-[20px] leading-[1.5] text-[#333333] [font-family:Roboto,Arial,sans-serif] md:grid-cols-[1fr_1.6fr_1fr]'>
+          <div className='mt-[60px] grid gap-[40px] border-t border-black/10 pt-[40px] text-[20px] leading-[1.5] text-[#333333] [font-family:Roboto,Arial,sans-serif] md:grid-cols-[1.6fr_1fr_1fr]'>
             <div>
               <p className='font-bold'>Toelichting:</p>
               <p className='mt-[8px]'>

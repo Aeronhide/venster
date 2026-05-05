@@ -19,7 +19,7 @@ const BRANDS_IMG = "/images/brands-logos.webp";
 export function Features() {
   return (
     <Section
-      id="rec1337101961"
+      id="features"
       ariaLabel="Onze merken en componenten"
       className="bg-white"
     >

@@ -13,7 +13,7 @@ const steps = [
 export function Financing() {
   return (
     <Section
-      id="financiering"
+      id="financing"
       ariaLabelledby="financing-title"
       className="!pt-0"
     >

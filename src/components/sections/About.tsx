@@ -16,7 +16,7 @@ const VIDEO_POSTER = "/images/about-video-poster.webp";
 export function About() {
   return (
     <Section
-      id="rec1763457411"
+      id="about"
       ariaLabelledby="over-ons-title"
       className="bg-[#f5f5f5]"
     >

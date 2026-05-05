@@ -77,7 +77,6 @@ const CARD = {
 export function Hero() {
   return (
     <section
-      id="top"
       aria-label="Introductie"
       className="relative mx-auto mt-8 w-[calc(100%-64px)] aspect-[1200/660] font-sans [container-type:inline-size]"
     >

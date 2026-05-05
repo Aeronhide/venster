@@ -15,7 +15,7 @@ export function InstallationForm() {
 
   return (
     <Section
-      id='inmeting'
+      id='installation'
       ariaLabelledby='installation-title'
       className='bg-white'
     >

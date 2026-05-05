@@ -79,7 +79,7 @@ const sideCards: SideCard[] = [
 export function WhyChoose() {
   return (
     <Section
-      id='voordelen'
+      id='why-choose'
       ariaLabelledby='why-choose-title'
       className='bg-[#F5F5F5]'
     >

@@ -13,7 +13,7 @@ const CERT_IMAGES = [
 export function Certification() {
   return (
     <Section
-      id="rec1337102001"
+      id="certification"
       ariaLabel="Certificering en kwaliteitsgarantie"
       className="bg-[#f9f9f9]"
     >

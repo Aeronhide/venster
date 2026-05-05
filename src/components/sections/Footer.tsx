@@ -1,11 +1,14 @@
+"use client";
+
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { site } from "@/lib/site";
 
 const productLinks = [
-  { href: "#producten", label: "PVC Ramen" },
-  { href: "#producten", label: "Voordeuren" },
-  { href: "#producten", label: "Schuifdeuren" },
-  { href: "#producten", label: "Rolluiken" },
+  { href: "#products", label: "PVC Ramen" },
+  { href: "#products", label: "Voordeuren" },
+  { href: "#products", label: "Schuifdeuren" },
+  { href: "#products", label: "Rolluiken" },
 ];
 
 const helpLinks = [
@@ -20,18 +23,21 @@ export function Footer() {
       <Container className="py-14">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[2fr_1fr_1fr] lg:gap-16">
           <div>
-            <a href="#top" className="inline-flex items-center gap-3" aria-label={site.name}>
-              <span aria-hidden className="grid h-12 w-12 place-items-center rounded-md bg-white/10">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth={1.5}>
-                  <rect x="4" y="3" width="16" height="18" rx="1" />
-                  <path d="M12 3v18M4 12h16" />
-                  <path d="M12 8a4 4 0 014 4" />
-                </svg>
-              </span>
-              <span className="text-2xl font-black tracking-tight text-white">
-                VALENT
-              </span>
-            </a>
+            <button
+              type="button"
+              onClick={() => window.scrollTo(0, 0)}
+              className="inline-flex items-center"
+              aria-label={site.name}
+            >
+              <Image
+                src="/images/logo_white.svg"
+                alt={site.name}
+                width={200}
+                height={70}
+                priority={false}
+                className="h-[70px] w-[200px]"
+              />
+            </button>
 
             <ul className="mt-6 flex items-center gap-3">
               <li>
@@ -79,8 +85,8 @@ export function Footer() {
           </div>
 
           <nav aria-label="Producten">
-            <h3 className="text-sm font-bold text-white">Producten</h3>
-            <ul className="mt-5 space-y-3 text-sm">
+            <h3 className="text-xl font-bold text-white">Producten</h3>
+            <ul className="mt-6 space-y-4 text-lg text-white/85">
               {productLinks.map((l) => (
                 <li key={l.label}>
                   <a className="hover:text-white" href={l.href}>
@@ -92,8 +98,8 @@ export function Footer() {
           </nav>
 
           <nav aria-label="Hulp">
-            <h3 className="text-sm font-bold text-white">Help</h3>
-            <ul className="mt-5 space-y-3 text-sm">
+            <h3 className="text-xl font-bold text-white">Help</h3>
+            <ul className="mt-6 space-y-4 text-lg text-white/85">
               {helpLinks.map((l) => (
                 <li key={l.label}>
                   <a className="hover:text-white" href={l.href}>

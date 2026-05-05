@@ -38,8 +38,8 @@ export const site = {
 } as const;
 
 export const nav = [
-  { href: "#producten", label: "Producten" },
-  { href: "#voordelen", label: "Voordelen" },
-  { href: "#proces", label: "Hoe werkt het" },
+  { href: "#products", label: "Producten" },
+  { href: "#why-choose", label: "Voordelen" },
+  { href: "#process", label: "Hoe werkt het" },
   { href: "#contact", label: "Contact" },
 ] as const;

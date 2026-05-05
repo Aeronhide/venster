@@ -10,9 +10,9 @@ const WHATSAPP_HREF = 'https://wa.me/3197010266613';
 const HOURS = 'Ma–Za | 9:00 – 19:00';
 
 const nav = [
-  { href: '#rec1337101951', label: 'Producten' },
-  { href: '#rec1337102001', label: 'Voordelen' },
-  { href: '#rec1763574201', label: 'Contact' },
+  { href: '#products', label: 'Producten' },
+  { href: '#why-choose', label: 'Voordelen' },
+  { href: '#contact', label: 'Contact' },
 ];
 
 // Tilda spec — header artboard 1200x70 logical, rendered at zoom 1.44 → ~100px tall
@@ -40,8 +40,9 @@ export function Header() {
     <header className="sticky top-0 z-50 h-[101px] w-full bg-white">
       <div className="mx-auto flex h-full items-center px-3 lg:px-4">
         {/* Logo + nav grouped tight on the left */}
-        <a
-          href="#top"
+        <button
+          type="button"
+          onClick={() => window.scrollTo(0, 0)}
           aria-label="Valent — Nederlandse homepage"
           className="block shrink-0"
         >
@@ -53,7 +54,7 @@ export function Header() {
             priority
             className="h-[76px] w-[223px]"
           />
-        </a>
+        </button>
 
         {/* Nav close to logo */}
         <nav

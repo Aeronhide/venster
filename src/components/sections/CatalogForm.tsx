@@ -19,7 +19,7 @@ export function CatalogForm() {
   const [agreed, setAgreed] = useState(false);
 
   return (
-    <Section id='catalogus' ariaLabelledby='catalog-title' className='bg-white'>
+    <Section id='catalog' ariaLabelledby='catalog-title' className='bg-white'>
       <Container>
         <article className='relative mx-auto grid max-w-[1670px] gap-[40px] overflow-hidden rounded-[23px] bg-[linear-gradient(58deg,rgba(0,26,50,1)_0%,rgba(0,26,48,0.74)_62%,rgba(0,73,145,0.5)_100%)] p-[60px] text-white lg:grid-cols-[1fr_1fr] lg:items-center lg:p-[80px]'>
           <div className='relative z-10 max-w-[660px]'>

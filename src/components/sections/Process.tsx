@@ -58,7 +58,7 @@ const steps: Step[] = [
 
 export function Process() {
   return (
-    <Section id='proces' ariaLabelledby='process-title' className='bg-white'>
+    <Section id='process' ariaLabelledby='process-title' className='bg-white'>
       <h2
         id='process-title'
         className='w-full text-center text-[28px] font-black uppercase leading-[1.2] tracking-tight text-[#082b4b] sm:text-[40px] lg:text-[63px]'
