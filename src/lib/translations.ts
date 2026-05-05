@@ -391,6 +391,139 @@ export const translations = {
       submit: "Versturen",
       closeAria: "Sluiten",
     },
+    pvcRamen: {
+      pill: "Kunststof ramen in Europa — prijzen, opmeting en montage",
+      headline1: "PVC Ramen –",
+      headlineHighlight: "op maat gemaakt,",
+      headline2: "in heel Nederland geleverd!",
+      subhead:
+        "Energiezuinige PVC-ramen met VEKA-profielen, ROTO-beslag en SAINT-GOBAIN glas — geproduceerd in eigen fabriek en geïnstalleerd door lokale partners.",
+      cta: "VRAAG EEN GRATIS OFFERTE AAN",
+      ctaMobile: "Vraag een gratis offerte aan",
+      cards: [
+        "Opmeten en levering",
+        "Professionele montage",
+        "Prijzen van de fabrikant",
+        "Gratis advies van een ingenieur",
+        "5 jaar garantie",
+      ],
+      profiles: {
+        title: "PROFIELEN VOOR PVC-RAMEN",
+        cta: "Prijs ontdekken",
+        items: [
+          {
+            name: "Gealan S8000",
+            spec: "74 mm",
+            body: "5-kamer profiel met uitstekende warmte- en geluidsisolatie, ideaal voor moderne residentiële projecten.",
+          },
+          {
+            name: "Gealan Linear",
+            spec: "74 mm",
+            body: "Slank, eigentijds raamprofiel met smalle middenstijl — meer glas, meer licht, meer zicht.",
+          },
+          {
+            name: "Gealan S9000",
+            spec: "82 mm",
+            body: "6-kamer premium profiel met topklasse isolatiewaarden en een levensduur van 50 jaar.",
+          },
+        ],
+      },
+      showroom: {
+        title: "SHOWROOM VALENT.MD",
+        body: "Kom langs om samen met ons de ramen en deuren te kiezen die u nodig hebt, op het adres: Chișinău, strada Constantin Vârnav, 8.",
+        cta: "Bezoek plannen",
+      },
+      lamination: {
+        title: "LAMINERINGSVARIANTEN",
+        groupStandard: "Standaardgroep",
+        groupExtra: "Extra groep",
+        body:
+          "Kies uit een breed assortiment foliekleuren en houtdecoren — van klassiek wit en antraciet tot natuurlijke houtlook.",
+      },
+      glass: {
+        title: "SOORTEN GLAS",
+        items: [
+          { name: "4 seizoenen glas (4S)", body: "Combineert warmte-isolatie in de winter met zonwering in de zomer." },
+          { name: "LOW-E-glas", body: "Verlaagt het warmteverlies en bespaart op stookkosten." },
+          { name: "Reflecterend glas in bronskleur", body: "Beperkt zonneschittering en biedt extra privacy overdag." },
+          { name: "Zandgestraald glas", body: "Decoratief mat glas voor badkamers, deuren en privacy zones." },
+        ],
+      },
+      roto: {
+        tag: "ROTO-mechanisme",
+        title: "ROTO-beslag voor PVC-ramen en deuren",
+        body:
+          "ROTO-beslag is bedoeld voor ramen en deuren van PVC, met verschillende soorten openingen en verschillende geometrieën.",
+        bulletsTitle: "Voordelen van ROTO-beslag:",
+        bullets: [
+          "Hoge corrosiebestendigheid.",
+          "Metalen scharnieren dragen tot 130 kg, vergeleken met 80–100 kg bij andere fabrikanten.",
+          "ROTO is de Europese marktleider op het gebied van beslagproductie.",
+        ],
+      },
+      accessories: {
+        title: "RAAMACCESSOIRES",
+        items: [
+          { name: "Plissé-hor", body: "Insectenwering die discreet wegplooit als u hem niet nodig heeft." },
+          { name: "Vensterbanken", body: "Op maat gemaakte binnen- en buitendorpels in passende kleuren." },
+          { name: "Getijden", body: "Aluminium afwateringsprofielen voor een waterdichte gevelafwerking." },
+        ],
+      },
+      advantages: {
+        title: "VOORDELEN VAN PVC-RAMEN",
+        items: [
+          {
+            name: "Warmte-isolatie",
+            body: "De ideale oplossing om tot 76% warmte-energie te besparen en de kosten voor het verwarmen van uw huis te verlagen.",
+          },
+          {
+            name: "Hoge geluidsisolatie",
+            body: "Externe geluiden zullen geen ongemak meer veroorzaken.",
+          },
+          {
+            name: "Hoge duurzaamheid",
+            body: "Dat is wat PVC-producten met een gemiddelde levensduur van 50 jaar kenmerkt.",
+          },
+          {
+            name: "Eenvoudig onderhoud",
+            body: "U hoeft niet te schilderen en hoeft niet te worstelen met roest, en af en toe schoonmaken met water en zeep is niet zo vermoeiend.",
+          },
+        ],
+      },
+      faq: {
+        title: "VRAGEN EN ANTWOORDEN",
+        items: [
+          {
+            q: "Waar bent u?",
+            a: "We zien je graag op het volgende adres: Chișinău, ul. Konstantin Vârnav, 8.",
+          },
+          {
+            q: "Met welke profielen werkt u?",
+            a: "Wij zijn partner van de Duitse fabrikant GEALAN. Wij produceren ramen en deuren uit de volgende series: GEALAN S8000 74 mm, GEALAN LINEAR 74 mm, GEALAN S9000 82 mm — met een levensduur van 50 jaar.",
+          },
+          {
+            q: "Welke garantie biedt u?",
+            a: "Na voltooiing van de werkzaamheden krijgt u 5 jaar garantie op uw project — op het profiel, het glas, de mechanismen en de montagewerkzaamheden.",
+          },
+          {
+            q: "Hoe lang duurt het voordat u de bestelling uitvoert?",
+            a: "De uitvoeringstermijn hangt af van het type profiel dat u kiest. Voor projecten met PVC-profielen bedraagt de uitvoeringstermijn 21–45 werkdagen.",
+          },
+          {
+            q: "LOW-E-glas of 4S-glas?",
+            a: "LOW-E reduceert warmteverlies; 4S combineert isolatie in de winter met zonwering in de zomer. Welke beter past hangt af van de oriëntatie van uw woning.",
+          },
+          {
+            q: "Hoe kom je van condens op ramen af?",
+            a: "Condens ontstaat door luchtvochtigheid en onvoldoende ventilatie. Goede ventilatie en moderne hoogwaardige beglazing voorkomen condensvorming.",
+          },
+          {
+            q: "Wanneer moeten ramen worden geplaatst: vóór of na de renovatie van de muren?",
+            a: "Wij raden aan om ramen te plaatsen vóór u begint met de afwerking. Zo werkt u de montagesneden en voegen netjes af en voorkomt u beschadiging tijdens de plaatsing.",
+          },
+        ],
+      },
+    },
     skipToContent: "Naar hoofdinhoud",
   },
 
@@ -784,6 +917,139 @@ export const translations = {
       privacyAfter: ".",
       submit: "Send",
       closeAria: "Close",
+    },
+    pvcRamen: {
+      pill: "PVC windows in Europe — prices, measurement and installation",
+      headline1: "PVC Windows –",
+      headlineHighlight: "made to measure,",
+      headline2: "delivered across the Netherlands!",
+      subhead:
+        "Energy-efficient PVC windows with VEKA profiles, ROTO hardware and SAINT-GOBAIN glass — manufactured in our own factory and installed by local partners.",
+      cta: "REQUEST A FREE QUOTE",
+      ctaMobile: "Request a free quote",
+      cards: [
+        "Measurement and delivery",
+        "Professional installation",
+        "Manufacturer prices",
+        "Free engineer consultation",
+        "5 year warranty",
+      ],
+      profiles: {
+        title: "PVC WINDOW PROFILES",
+        cta: "Discover the price",
+        items: [
+          {
+            name: "Gealan S8000",
+            spec: "74 mm",
+            body: "5-chamber profile with excellent thermal and acoustic insulation, ideal for modern residential projects.",
+          },
+          {
+            name: "Gealan Linear",
+            spec: "74 mm",
+            body: "Slim, contemporary window profile with a narrow centre mullion — more glass, more light, more view.",
+          },
+          {
+            name: "Gealan S9000",
+            spec: "82 mm",
+            body: "6-chamber premium profile with top-tier insulation values and a 50-year service life.",
+          },
+        ],
+      },
+      showroom: {
+        title: "VALENT.MD SHOWROOM",
+        body: "Stop by to choose the windows and doors you need together with us, at the address: Chișinău, Constantin Vârnav street 8.",
+        cta: "Plan a visit",
+      },
+      lamination: {
+        title: "LAMINATION VARIANTS",
+        groupStandard: "Standard group",
+        groupExtra: "Extra group",
+        body:
+          "Choose from a wide range of foil colours and wood decors — from classic white and anthracite to natural wood looks.",
+      },
+      glass: {
+        title: "GLASS TYPES",
+        items: [
+          { name: "4 seasons glass (4S)", body: "Combines thermal insulation in winter with solar shading in summer." },
+          { name: "LOW-E glass", body: "Reduces heat loss and saves on heating costs." },
+          { name: "Reflective bronze glass", body: "Limits glare and provides extra daytime privacy." },
+          { name: "Sandblasted glass", body: "Decorative frosted glass for bathrooms, doors, and privacy zones." },
+        ],
+      },
+      roto: {
+        tag: "ROTO mechanism",
+        title: "ROTO hardware for PVC windows and doors",
+        body:
+          "ROTO hardware is designed for PVC windows and doors with various opening types and geometries.",
+        bulletsTitle: "Benefits of ROTO hardware:",
+        bullets: [
+          "High corrosion resistance.",
+          "Metal hinges support up to 130 kg, compared with 80–100 kg from other manufacturers.",
+          "ROTO is the European market leader in hardware production.",
+        ],
+      },
+      accessories: {
+        title: "WINDOW ACCESSORIES",
+        items: [
+          { name: "Pleated screen", body: "Insect screen that folds away discreetly when you don't need it." },
+          { name: "Window sills", body: "Bespoke interior and exterior sills in matching colours." },
+          { name: "Drip flashings", body: "Aluminium drainage profiles for a watertight facade finish." },
+        ],
+      },
+      advantages: {
+        title: "BENEFITS OF PVC WINDOWS",
+        items: [
+          {
+            name: "Thermal insulation",
+            body: "The ideal solution to save up to 76% of heat energy and reduce the cost of heating your home.",
+          },
+          {
+            name: "High acoustic insulation",
+            body: "External noise will no longer cause discomfort.",
+          },
+          {
+            name: "High durability",
+            body: "PVC products are characterised by an average service life of 50 years.",
+          },
+          {
+            name: "Easy maintenance",
+            body: "No need to paint, no rust to fight, and the occasional cleaning with water and soap is hardly tiring.",
+          },
+        ],
+      },
+      faq: {
+        title: "QUESTIONS AND ANSWERS",
+        items: [
+          {
+            q: "Where are you located?",
+            a: "We'd love to see you at: Chișinău, Konstantin Vârnav street 8.",
+          },
+          {
+            q: "Which profiles do you work with?",
+            a: "We are a partner of the German manufacturer GEALAN. We produce windows and doors from the following series: GEALAN S8000 74 mm, GEALAN LINEAR 74 mm, GEALAN S9000 82 mm — with a service life of 50 years.",
+          },
+          {
+            q: "What warranty do you offer?",
+            a: "After completion of the work, you receive a 5-year warranty on your project — on the profile, the glass, the mechanisms, and the installation work.",
+          },
+          {
+            q: "How long does it take to fulfil the order?",
+            a: "The lead time depends on the chosen profile type. For PVC projects, the lead time is 21–45 working days.",
+          },
+          {
+            q: "LOW-E glass or 4S glass?",
+            a: "LOW-E reduces heat loss; 4S combines insulation in winter with solar shading in summer. Which one fits best depends on your home's orientation.",
+          },
+          {
+            q: "How do you get rid of condensation on windows?",
+            a: "Condensation is caused by humidity and insufficient ventilation. Good ventilation and modern high-quality glazing prevent condensation.",
+          },
+          {
+            q: "When should windows be installed: before or after wall renovation?",
+            a: "We recommend installing the windows before you start the finishing work. This way you can finish the installation cuts and joints neatly and avoid damage during installation.",
+          },
+        ],
+      },
     },
     skipToContent: "Skip to main content",
   },
