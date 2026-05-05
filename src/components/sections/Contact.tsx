@@ -37,6 +37,7 @@ export function Contact() {
                   alt='VALENT kantoor — productie en showroom'
                   fill
                   sizes='(min-width: 1024px) 634px, 100vw'
+                  loading='lazy'
                   className='object-cover'
                 />
               </div>

@@ -98,6 +98,7 @@ export function CatalogForm() {
                   alt='Valent catalogus'
                   fill
                   sizes='(min-width: 1024px) 50vw, 100vw'
+                  loading='lazy'
                   className='object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.5)]'
                 />
               </div>

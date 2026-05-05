@@ -40,6 +40,7 @@ export function Financing() {
                   alt="Familie krijgt advies over energiezuinige ramen"
                   width={1280}
                   height={854}
+                  loading="lazy"
                   className="h-auto w-full object-cover"
                   sizes="(min-width: 1024px) 55vw, 100vw"
                 />
@@ -93,6 +94,7 @@ export function Financing() {
                           alt=""
                           width={isQuestion ? 44 : 30}
                           height={isQuestion ? 44 : 30}
+                          loading="lazy"
                           className={
                             isQuestion
                               ? "h-[28px] w-[28px] lg:h-[44px] lg:w-[44px]"

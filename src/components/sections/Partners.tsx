@@ -42,6 +42,7 @@ export function Partners() {
                 alt={p.name}
                 width={140}
                 height={56}
+                loading="lazy"
                 className="h-[40px] w-auto max-w-full object-contain sm:h-[56px]"
               />
             </li>

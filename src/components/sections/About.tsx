@@ -34,6 +34,7 @@ export function About() {
                   alt=""
                   width={32}
                   height={32}
+                  loading="lazy"
                   className="h-[32px] w-[32px]"
                 />
               </span>
@@ -96,6 +97,7 @@ export function About() {
                   alt=""
                   fill
                   sizes="100vw"
+                  loading="lazy"
                   className="object-cover"
                 />
                 <span
@@ -120,6 +122,7 @@ export function About() {
                 alt=""
                 fill
                 sizes="50vw"
+                loading="lazy"
                 className="object-cover"
               />
               <span

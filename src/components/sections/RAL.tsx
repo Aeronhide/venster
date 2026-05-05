@@ -49,6 +49,7 @@ export function RAL() {
               role="presentation"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
+              loading="lazy"
               className="object-cover opacity-90"
             />
             <span className="pointer-events-none absolute inset-0 grid place-items-center">

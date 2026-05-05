@@ -27,6 +27,7 @@ export function InstallationForm() {
               alt='Valent monteur installeert een raam'
               fill
               sizes='(min-width: 1024px) 825px, 100vw'
+              loading='lazy'
               className='object-cover'
             />
           </div>

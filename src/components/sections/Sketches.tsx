@@ -22,6 +22,7 @@ export function Sketches() {
             role="presentation"
             fill
             sizes="(min-width: 1280px) 1670px, 100vw"
+            loading="lazy"
             className="object-cover"
           />
 

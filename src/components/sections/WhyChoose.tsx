@@ -128,6 +128,7 @@ export function WhyChoose() {
                   alt='Valent-installateur'
                   width={520}
                   height={680}
+                  loading='lazy'
                   className='hidden h-auto w-[520px] max-w-[45%] shrink-0 self-end object-contain object-bottom lg:block'
                   sizes='520px'
                 />
@@ -152,6 +153,7 @@ export function WhyChoose() {
                         alt=''
                         width={40}
                         height={40}
+                        loading='lazy'
                         className='h-[28px] w-[28px] lg:h-[40px] lg:w-[40px]'
                       />
                     </span>

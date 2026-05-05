@@ -33,6 +33,7 @@ function CertSlider() {
               alt={`Klasse A certificaat ${i + 1}`}
               fill
               sizes="100vw"
+              loading="lazy"
               className={`object-contain object-bottom px-4 transition-opacity duration-500 ease-in-out ${
                 i === active ? "opacity-100" : "opacity-0"
               }`}
@@ -92,6 +93,7 @@ function CertSlider() {
               alt={`Klasse A certificaat ${i + 1}`}
               fill
               sizes="(min-width: 1024px) 320px, 40vw"
+              loading="lazy"
               className="object-contain object-bottom px-4"
             />
           </li>
@@ -141,6 +143,7 @@ export function Certification() {
                   alt="VALENT certificering"
                   fill
                   sizes="(min-width: 1024px) 760px, 80vw"
+                  loading="lazy"
                   className="object-contain object-bottom"
                 />
               </div>
