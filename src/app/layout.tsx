@@ -5,6 +5,7 @@ import "./globals.css";
 import { SITE_URL, site } from "@/lib/site";
 import { ScrollToTopOnMount } from "@/components/ScrollToTopOnMount";
 import { LanguageProvider } from "@/components/LanguageProvider";
+import { ModalProvider } from "@/components/ModalContext";
 import { SkipLink } from "@/components/SkipLink";
 
 const roboto = Roboto({
@@ -101,9 +102,11 @@ export default function RootLayout({
     <html lang={site.language} className={`${roboto.variable} ${tildaSans.variable} antialiased`}>
       <body className="min-h-dvh bg-bg text-fg font-sans">
         <LanguageProvider>
-          <SkipLink />
-          <ScrollToTopOnMount />
-          {children}
+          <ModalProvider>
+            <SkipLink />
+            <ScrollToTopOnMount />
+            {children}
+          </ModalProvider>
         </LanguageProvider>
       </body>
     </html>

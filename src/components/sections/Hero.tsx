@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useT } from "@/components/LanguageProvider";
+import { useModal } from "@/components/ModalContext";
 
 const HERO_BG = "/images/banner/banner-bg.webp";
 const HERO_PRODUCT = "/images/banner/banner-img.webp";
@@ -66,6 +67,7 @@ const CARD = {
 
 export function Hero() {
   const t = useT();
+  const { openCallback } = useModal();
   return (
     <section className="font-sans">
       {/* === Mobile / tablet (stacked) === */}
@@ -116,12 +118,13 @@ export function Hero() {
             </p>
 
             {/* CTA */}
-            <a
-              href="#contact"
+            <button
+              type="button"
+              onClick={() => openCallback()}
               className="mt-5 inline-flex h-[56px] w-full items-center justify-center rounded-[16px] bg-[#226CD5] px-3 text-center text-[14px] font-bold uppercase leading-[1.1] text-white sm:h-[64px] sm:text-[16px]"
             >
               {t.hero.ctaMobile}
-            </a>
+            </button>
 
             {/* Google Maps badge */}
             <a
@@ -224,9 +227,9 @@ export function Hero() {
 
         <div className={CLS.subhead}>{t.hero.subhead}</div>
 
-        <a href="#contact" className={CLS.cta}>
+        <button type="button" onClick={() => openCallback()} className={CLS.cta}>
           {t.hero.cta}
-        </a>
+        </button>
 
         <a
           href="https://www.google.com/maps/place/VALENT.MD/"

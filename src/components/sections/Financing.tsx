@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { useT } from "@/components/LanguageProvider";
+import { useModal } from "@/components/ModalContext";
 
 const FAMILY_IMG = "/images/financing-family.webp";
 
@@ -15,6 +16,7 @@ const STEP_ICONS = [
 
 export function Financing() {
   const t = useT();
+  const { openCallback } = useModal();
   const steps = t.financing.steps.map((label, i) => ({ label, icon: STEP_ICONS[i] }));
   return (
     <Section
@@ -60,12 +62,13 @@ export function Financing() {
                   </strong>
                 </p>
 
-                <a
-                  href="#zeropopup"
+                <button
+                  type="button"
+                  onClick={() => openCallback()}
                   className="mt-8 inline-flex h-[64px] w-full max-w-[430px] items-center justify-center rounded-[16px] bg-[#226CD5] px-8 text-center text-[20px] font-bold capitalize text-white [font-family:Roboto,Arial,sans-serif] sm:h-[80px] lg:h-[86px] lg:text-[24px]"
                 >
                   {t.financing.cta}
-                </a>
+                </button>
               </div>
             </div>
 

@@ -2,13 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
 import { useLang } from '@/components/LanguageProvider';
-
-const CallbackModal = dynamic(
-  () => import('@/components/CallbackModal').then((m) => m.CallbackModal),
-  { ssr: false }
-);
+import { useModal } from '@/components/ModalContext';
 
 const PHONE_DISPLAY = '+31 853016849';
 const PHONE_HREF = 'tel:+31853016849';
@@ -29,7 +24,7 @@ export function Header() {
   const nav = t.header.nav;
   const HOURS = t.header.hours;
   const [open, setOpen] = useState(false);
-  const [callbackOpen, setCallbackOpen] = useState(false);
+  const { openCallback } = useModal();
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
@@ -170,7 +165,7 @@ export function Header() {
           {/* CTA — opens callback modal */}
           <button
             type='button'
-            onClick={() => setCallbackOpen(true)}
+            onClick={() => openCallback()}
             className={CTA}
           >
             {t.header.cta}
@@ -310,7 +305,7 @@ export function Header() {
                 type='button'
                 onClick={() => {
                   setOpen(false);
-                  setCallbackOpen(true);
+                  openCallback();
                 }}
                 className={CTA + ' w-full'}
               >
@@ -348,7 +343,6 @@ export function Header() {
           </div>
         </div>
       )}
-      <CallbackModal open={callbackOpen} onClose={() => setCallbackOpen(false)} />
     </header>
   );
 }
