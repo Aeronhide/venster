@@ -39,30 +39,30 @@ export function PvcLamination() {
         <div className="mx-auto max-w-[1672px]">
           <h2
             id="pvc-lamination-title"
-            className="text-center text-[28px] font-black uppercase leading-[1.2] tracking-tight text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[40px] lg:text-[63px]"
+            className="text-center text-[22px] font-black uppercase leading-[1.15] tracking-tight text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[36px] lg:text-[63px]"
           >
             {t.pvcRamen.lamination.title}
           </h2>
-          <p className="mx-auto mt-[20px] max-w-[900px] text-center text-[16px] leading-[1.5] text-[#3e3e3e] [font-family:Roboto,Arial,sans-serif] sm:text-[18px] lg:text-[20px]">
+          <p className="mx-auto mt-[16px] max-w-[900px] text-center text-[14px] leading-[1.5] text-[#3e3e3e] [font-family:Roboto,Arial,sans-serif] sm:text-[16px] lg:text-[20px]">
             {t.pvcRamen.lamination.body}
           </p>
 
-          <div className="mt-[40px] grid gap-[24px] lg:grid-cols-2 lg:gap-[40px]">
-            <div className="rounded-[16px] bg-[#f5f5f5] p-[24px] sm:p-[32px] lg:p-[40px]">
-              <h3 className="text-[20px] font-bold uppercase text-[#082b4b] sm:text-[24px] lg:text-[28px]">
+          <div className="mt-[28px] grid gap-[16px] sm:mt-[40px] sm:gap-[24px] lg:grid-cols-2 lg:gap-[40px]">
+            <div className="rounded-[16px] bg-[#f5f5f5] p-[20px] sm:p-[24px] lg:p-[40px]">
+              <h3 className="text-[16px] font-bold uppercase text-[#082b4b] sm:text-[20px] lg:text-[28px]">
                 {t.pvcRamen.lamination.groupStandard}
               </h3>
-              <ul className="mt-[20px] grid grid-cols-6 gap-[12px]">
+              <ul className="mt-[16px] grid grid-cols-6 gap-[8px] sm:mt-[20px] sm:gap-[12px]">
                 {STANDARD_SWATCHES.map((tone, i) => (
                   <Swatch key={i} tone={tone} />
                 ))}
               </ul>
             </div>
-            <div className="rounded-[16px] bg-[#f5f5f5] p-[24px] sm:p-[32px] lg:p-[40px]">
-              <h3 className="text-[20px] font-bold uppercase text-[#082b4b] sm:text-[24px] lg:text-[28px]">
+            <div className="rounded-[16px] bg-[#f5f5f5] p-[20px] sm:p-[24px] lg:p-[40px]">
+              <h3 className="text-[16px] font-bold uppercase text-[#082b4b] sm:text-[20px] lg:text-[28px]">
                 {t.pvcRamen.lamination.groupExtra}
               </h3>
-              <ul className="mt-[20px] grid grid-cols-6 gap-[12px]">
+              <ul className="mt-[16px] grid grid-cols-6 gap-[8px] sm:mt-[20px] sm:gap-[12px]">
                 {EXTRA_SWATCHES.map((tone, i) => (
                   <Swatch key={i} tone={tone} />
                 ))}

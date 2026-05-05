@@ -26,21 +26,21 @@ export function Team({ title, subtitle }: TeamProps = {}) {
       <Container>
         <h2
           id="team-title"
-          className="text-center text-[28px] font-black uppercase leading-[1.3] tracking-tight text-[#082b4b] sm:text-[40px] lg:text-[72px]"
+          className="text-balance text-center text-[24px] font-black uppercase leading-[1.2] tracking-tight text-[#082b4b] sm:text-[40px] sm:leading-[1.3] lg:text-[72px]"
         >
           {heading}
         </h2>
         {subtitle && (
-          <p className="mx-auto mt-[16px] max-w-[900px] text-center text-[16px] leading-[1.5] text-[#191919] [font-family:Roboto,Arial,sans-serif] sm:text-[18px] lg:mt-[20px] lg:text-[20px]">
+          <p className="mx-auto mt-[12px] max-w-[900px] text-center text-[14px] leading-[1.5] text-[#191919] [font-family:Roboto,Arial,sans-serif] sm:mt-[16px] sm:text-[18px] lg:mt-[20px] lg:text-[20px]">
             {subtitle}
           </p>
         )}
 
-        <ul className="-mx-2 mt-[40px] flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto px-2 pb-4 sm:mx-auto sm:grid sm:max-w-[1500px] sm:grid-cols-2 sm:gap-[20px] sm:overflow-visible sm:px-0 sm:pb-0 lg:mt-[60px] lg:grid-cols-4">
+        <ul className="-mx-2 mt-[28px] flex snap-x snap-mandatory items-stretch gap-3 overflow-x-auto px-2 pb-4 sm:mx-auto sm:mt-[40px] sm:grid sm:max-w-[1500px] sm:grid-cols-2 sm:gap-[20px] sm:overflow-visible sm:px-0 sm:pb-0 lg:mt-[60px] lg:grid-cols-4">
           {team.map((m) => (
             <li
               key={m.name}
-              className="flex w-[88%] shrink-0 snap-center flex-col overflow-hidden rounded-[16px] bg-white sm:w-auto sm:shrink"
+              className="flex w-[85%] shrink-0 snap-center flex-col overflow-hidden rounded-[16px] bg-white sm:w-auto sm:shrink"
             >
               <div className="relative aspect-square w-full overflow-hidden bg-[#f5f5f5]">
                 <Image
@@ -53,11 +53,11 @@ export function Team({ title, subtitle }: TeamProps = {}) {
                 />
               </div>
 
-              <div className="flex flex-1 flex-col p-[20px] text-center sm:p-[24px]">
-                <h3 className="text-[18px] font-semibold leading-[1.3] text-[#082b4b] sm:text-[20px]">
+              <div className="flex flex-1 flex-col p-[16px] text-center sm:p-[24px]">
+                <h3 className="text-[16px] font-semibold leading-[1.3] text-[#082b4b] sm:text-[20px]">
                   {m.name}
                 </h3>
-                <p className="mt-[12px] text-[15px] leading-[1.5] text-[#191919] sm:text-[16px]">
+                <p className="mt-[8px] text-[14px] leading-[1.5] text-[#191919] sm:mt-[12px] sm:text-[16px]">
                   <strong className="font-bold">{m.role}</strong>
                   <br />
                   {m.body}

@@ -19,15 +19,15 @@ export function PvcAccessories() {
         <div className="mx-auto max-w-[1100px]">
           <h2
             id="pvc-accessories-title"
-            className="text-center text-[28px] font-extrabold uppercase leading-[1.2] tracking-tight text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[36px] lg:text-[42px]"
+            className="text-center text-[22px] font-extrabold uppercase leading-[1.2] tracking-tight text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[30px] lg:text-[42px]"
           >
             {t.pvcRamen.accessories.title}
           </h2>
 
-          <ul className="mt-[40px] grid gap-x-[40px] gap-y-[28px] sm:grid-cols-3 lg:mt-[48px] lg:gap-x-[60px]">
+          <ul className="mt-[24px] grid grid-cols-1 gap-x-[16px] gap-y-[24px] sm:mt-[40px] sm:grid-cols-3 sm:gap-x-[40px] sm:gap-y-[28px] lg:mt-[48px] lg:gap-x-[60px]">
             {t.pvcRamen.accessories.items.map((a, i) => (
               <li key={a.name} className="flex flex-col items-center text-center">
-                <div className="relative aspect-square w-full overflow-hidden rounded-[6px] bg-[#f5f5f5]">
+                <div className="relative aspect-square w-full max-w-[320px] overflow-hidden rounded-[6px] bg-[#f5f5f5] sm:max-w-none">
                   <Image
                     src={ACCESSORY_IMAGES[i]}
                     alt={a.name}
@@ -37,7 +37,7 @@ export function PvcAccessories() {
                     className="object-cover"
                   />
                 </div>
-                <p className="mt-[16px] text-[15px] font-bold text-[#000000] [font-family:Roboto,Arial,sans-serif] sm:text-[16px] lg:text-[18px]">
+                <p className="mt-[12px] text-[14px] font-bold text-[#000000] [font-family:Roboto,Arial,sans-serif] sm:mt-[16px] sm:text-[15px] lg:text-[18px]">
                   {a.name}
                 </p>
               </li>

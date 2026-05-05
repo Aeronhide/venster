@@ -49,16 +49,16 @@ export function PvcShowroom() {
         <div className="mx-auto max-w-[1200px]">
           <h2
             id="pvc-showroom-title"
-            className="text-center text-[28px] font-black uppercase leading-[1.2] tracking-tight text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[36px] lg:text-[48px]"
+            className="text-center text-[22px] font-black uppercase leading-[1.2] tracking-tight text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[30px] lg:text-[42px]"
           >
             {t.pvcRamen.showroom.title}
           </h2>
-          <p className="mx-auto mt-[20px] max-w-[900px] text-center text-[16px] leading-[1.5] text-[#3e3e3e] [font-family:Roboto,Arial,sans-serif] sm:text-[18px] lg:text-[22px]">
+          <p className="mx-auto mt-[16px] max-w-[900px] text-center text-[14px] leading-[1.5] text-[#3e3e3e] [font-family:Roboto,Arial,sans-serif] sm:text-[15px] lg:text-[18px]">
             {t.pvcRamen.showroom.body}
           </p>
 
           {/* Slider row — desktop arrows flank the image; mobile arrows go below */}
-          <div className="mt-[32px] flex items-center lg:mx-auto lg:mt-[40px] lg:max-w-[960px] lg:gap-[16px]">
+          <div className="mt-[24px] flex items-center sm:mt-[32px] lg:mx-auto lg:mt-[40px] lg:max-w-[960px] lg:gap-[16px]">
             {/* Desktop prev */}
             <button
               type="button"
@@ -70,7 +70,7 @@ export function PvcShowroom() {
             </button>
 
             {/* Slider image */}
-            <div className="relative aspect-[860/550] w-full overflow-hidden rounded-[20px] bg-[#f5f5f5] lg:rounded-[16px]">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[12px] bg-[#f5f5f5] sm:aspect-[860/550] sm:rounded-[20px] lg:rounded-[16px]">
               {SHOWROOM_IMAGES.map((src, i) => (
                 <Image
                   key={src}
@@ -99,16 +99,16 @@ export function PvcShowroom() {
           </div>
 
           {/* Mobile control row — prev + dots + next BELOW the slider */}
-          <div className="mt-[20px] flex items-center justify-center gap-[12px] lg:hidden">
+          <div className="mt-[16px] flex items-center justify-center gap-[10px] lg:hidden">
             <button
               type="button"
               aria-label="Vorig beeld"
               onClick={prev}
-              className="grid h-[40px] w-[40px] shrink-0 place-items-center rounded-full bg-[#E8E8E8] text-[#222222]"
+              className="grid h-[44px] w-[44px] shrink-0 cursor-pointer place-items-center rounded-full bg-[#E8E8E8] text-[#222222] active:bg-[#dcdcdc]"
             >
               {PrevIcon}
             </button>
-            <div className="flex items-center gap-[8px]">
+            <div className="flex flex-1 items-center justify-center gap-[2px]">
               {SHOWROOM_IMAGES.map((_, i) => (
                 <button
                   key={i}
@@ -116,7 +116,7 @@ export function PvcShowroom() {
                   aria-label={`Ga naar beeld ${i + 1}`}
                   aria-current={i === active}
                   onClick={() => setActive(i)}
-                  className="grid h-[24px] w-[24px] place-items-center"
+                  className="grid h-[44px] w-[14px] cursor-pointer place-items-center sm:w-[20px]"
                 >
                   <span
                     aria-hidden
@@ -131,7 +131,7 @@ export function PvcShowroom() {
               type="button"
               aria-label="Volgend beeld"
               onClick={next}
-              className="grid h-[40px] w-[40px] shrink-0 place-items-center rounded-full bg-[#E8E8E8] text-[#222222]"
+              className="grid h-[44px] w-[44px] shrink-0 cursor-pointer place-items-center rounded-full bg-[#E8E8E8] text-[#222222] active:bg-[#dcdcdc]"
             >
               {NextIcon}
             </button>

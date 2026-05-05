@@ -24,12 +24,12 @@ export function PvcFAQ() {
         <div className="mx-auto max-w-[1200px]">
           <h2
             id="pvc-faq-title"
-            className="text-center text-[28px] font-extrabold uppercase leading-[1.2] tracking-tight text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[36px] lg:text-[42px]"
+            className="text-balance text-center text-[22px] font-extrabold uppercase leading-[1.2] tracking-tight text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[30px] lg:text-[42px]"
           >
             {t.pvcRamen.faq.title}
           </h2>
 
-          <ul className="mx-auto mt-[40px] flex max-w-[1100px] flex-col gap-[12px] lg:mt-[48px]">
+          <ul className="mx-auto mt-[28px] flex max-w-[1100px] flex-col gap-[10px] sm:mt-[40px] sm:gap-[12px] lg:mt-[48px]">
             {items.map((it, i) => {
               const isOpen = open === i;
               return (
@@ -41,14 +41,14 @@ export function PvcFAQ() {
                     type="button"
                     aria-expanded={isOpen}
                     onClick={() => setOpen(isOpen ? null : i)}
-                    className="flex w-full items-center justify-between gap-4 px-[20px] py-[18px] text-left sm:px-[28px] sm:py-[22px] lg:px-[32px] lg:py-[24px]"
+                    className="flex w-full min-h-[56px] cursor-pointer items-center justify-between gap-3 px-[16px] py-[14px] text-left sm:gap-4 sm:px-[28px] sm:py-[22px] lg:px-[32px] lg:py-[24px]"
                   >
-                    <span className="flex-1 text-[16px] font-semibold leading-[1.4] text-[#505050] [font-family:Roboto,Arial,sans-serif] sm:text-[18px] lg:text-[20px]">
+                    <span className="flex-1 break-words text-[15px] font-semibold leading-[1.4] text-[#505050] [font-family:Roboto,Arial,sans-serif] sm:text-[18px] lg:text-[20px]">
                       {it.q}
                     </span>
                     <span
                       aria-hidden
-                      className={`grid size-[40px] shrink-0 place-items-center rounded-full bg-[#F0F0F0] text-[#7d7d7d] transition-transform ${
+                      className={`grid size-[36px] shrink-0 place-items-center rounded-full bg-[#F0F0F0] text-[#7d7d7d] transition-transform sm:size-[40px] ${
                         isOpen ? "rotate-45" : "rotate-0"
                       }`}
                     >
@@ -66,7 +66,7 @@ export function PvcFAQ() {
                     </span>
                   </button>
                   {isOpen && (
-                    <div className="px-[20px] pb-[20px] sm:px-[28px] sm:pb-[24px] lg:px-[32px] lg:pb-[28px]">
+                    <div className="px-[16px] pb-[16px] sm:px-[28px] sm:pb-[24px] lg:px-[32px] lg:pb-[28px]">
                       {it.image && (
                         <div className="mb-[16px] overflow-hidden rounded-[8px]">
                           <Image
@@ -76,15 +76,15 @@ export function PvcFAQ() {
                             height={500}
                             sizes="(min-width: 1024px) 1100px, 100vw"
                             loading="lazy"
-                            className="h-auto w-full object-contain"
+                            className="h-auto w-full max-w-full object-contain"
                           />
                         </div>
                       )}
-                      <p className="whitespace-pre-line text-[15px] leading-[1.6] text-[#3e3e3e] [font-family:Roboto,Arial,sans-serif] sm:text-[16px] lg:text-[17px]">
+                      <p className="whitespace-pre-line text-[14px] leading-[1.6] text-[#3e3e3e] [font-family:Roboto,Arial,sans-serif] sm:text-[15px] lg:text-[17px]">
                         {it.a}
                       </p>
                       {it.link && (
-                        <p className="mt-[8px] break-all text-[13px] leading-[1.5] text-[#3e3e3e] [font-family:Roboto,Arial,sans-serif] sm:text-[14px]">
+                        <p className="mt-[8px] break-all text-[12px] leading-[1.5] text-[#3e3e3e] [font-family:Roboto,Arial,sans-serif] sm:text-[13px]">
                           <a
                             href={it.link}
                             target="_blank"
@@ -96,7 +96,7 @@ export function PvcFAQ() {
                         </p>
                       )}
                       {it.afterLink && (
-                        <p className="mt-[8px] text-[15px] leading-[1.6] text-[#3e3e3e] [font-family:Roboto,Arial,sans-serif] sm:text-[16px] lg:text-[17px]">
+                        <p className="mt-[8px] text-[14px] leading-[1.6] text-[#3e3e3e] [font-family:Roboto,Arial,sans-serif] sm:text-[15px] lg:text-[17px]">
                           {it.afterLink}
                         </p>
                       )}

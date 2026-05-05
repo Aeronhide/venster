@@ -50,13 +50,13 @@ export function PvcOnzeWerken() {
         <div className="mx-auto max-w-[1200px]">
           <h2
             id="pvc-onze-werken-title"
-            className="text-center text-[28px] font-extrabold uppercase leading-[1.2] tracking-tight text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[36px] lg:text-[42px]"
+            className="text-center text-[22px] font-extrabold uppercase leading-[1.2] tracking-tight text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[30px] md:text-[36px] lg:text-[42px]"
           >
             {t.pvcRamen.onzeWerken.title}
           </h2>
 
           {/* Slider row — desktop arrows flank the image; mobile shows just the image */}
-          <div className="mt-[32px] flex items-center lg:mx-auto lg:mt-[40px] lg:max-w-[960px] lg:gap-[16px]">
+          <div className="mt-[24px] flex items-center sm:mt-[32px] lg:mx-auto lg:mt-[40px] lg:max-w-[960px] lg:gap-[16px]">
             <button
               type="button"
               aria-label={t.pvcRamen.onzeWerken.prevAria}
@@ -66,7 +66,7 @@ export function PvcOnzeWerken() {
               {PrevIcon}
             </button>
 
-            <div className="relative aspect-[860/550] w-full overflow-hidden rounded-[20px] bg-[#f5f5f5] lg:rounded-[16px]">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[20px] bg-[#f5f5f5] sm:aspect-[860/550] lg:rounded-[16px]">
               {WERKEN_IMAGES.map((src, i) => (
                 <Image
                   key={src}
@@ -94,16 +94,16 @@ export function PvcOnzeWerken() {
           </div>
 
           {/* Mobile control row */}
-          <div className="mt-[20px] flex items-center justify-center gap-[12px] lg:hidden">
+          <div className="mt-[16px] flex items-center justify-center gap-[8px] sm:gap-[12px] lg:hidden">
             <button
               type="button"
               aria-label={t.pvcRamen.onzeWerken.prevAria}
               onClick={prev}
-              className="grid h-[40px] w-[40px] shrink-0 place-items-center rounded-full bg-[#E8E8E8] text-[#222222]"
+              className="grid h-[44px] w-[44px] shrink-0 place-items-center rounded-full bg-[#E8E8E8] text-[#222222]"
             >
               {PrevIcon}
             </button>
-            <div className="flex flex-wrap items-center justify-center gap-[6px]">
+            <div className="flex max-w-full flex-wrap items-center justify-center gap-[2px]">
               {WERKEN_IMAGES.map((_, i) => (
                 <button
                   key={i}
@@ -111,7 +111,7 @@ export function PvcOnzeWerken() {
                   aria-label={`${t.pvcRamen.onzeWerken.goToAria} ${i + 1}`}
                   aria-current={i === active}
                   onClick={() => setActive(i)}
-                  className="grid h-[24px] w-[24px] place-items-center"
+                  className="grid h-[44px] w-[20px] place-items-center sm:w-[24px]"
                 >
                   <span
                     aria-hidden
@@ -126,7 +126,7 @@ export function PvcOnzeWerken() {
               type="button"
               aria-label={t.pvcRamen.onzeWerken.nextAria}
               onClick={next}
-              className="grid h-[40px] w-[40px] shrink-0 place-items-center rounded-full bg-[#E8E8E8] text-[#222222]"
+              className="grid h-[44px] w-[44px] shrink-0 place-items-center rounded-full bg-[#E8E8E8] text-[#222222]"
             >
               {NextIcon}
             </button>

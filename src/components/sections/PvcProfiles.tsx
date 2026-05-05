@@ -19,12 +19,12 @@ export function PvcProfiles() {
         <div className="mx-auto max-w-[1240px]">
           <h2
             id="pvc-profiles-title"
-            className="text-center text-[28px] font-black uppercase leading-[1.2] tracking-tight text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[36px] lg:text-[48px]"
+            className="text-center text-[22px] font-black uppercase leading-[1.2] tracking-tight text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[30px] lg:text-[48px]"
           >
             {t.pvcRamen.profiles.title}
           </h2>
 
-          <ul className="mt-[40px] grid gap-[40px] sm:grid-cols-2 lg:mt-[60px] lg:grid-cols-3 lg:gap-[40px]">
+          <ul className="mt-[24px] grid grid-cols-1 gap-[16px] sm:mt-[32px] sm:grid-cols-2 sm:gap-[20px] lg:mt-[60px] lg:grid-cols-3 lg:gap-[40px]">
             {t.pvcRamen.profiles.items.map((p, i) => (
               <li
                 key={p.name}
@@ -43,13 +43,13 @@ export function PvcProfiles() {
                 </div>
 
                 {/* Title + CTA */}
-                <div className="flex flex-col items-center px-[30px] pb-[29px] pt-[27px]">
-                  <h3 className="text-[24px] font-semibold leading-[1.35] text-black [font-family:Roboto,Arial,sans-serif]">
+                <div className="flex flex-col items-center px-[20px] pb-[20px] pt-[18px] sm:px-[24px] sm:pb-[24px] sm:pt-[22px] lg:px-[30px] lg:pb-[29px] lg:pt-[27px]">
+                  <h3 className="text-center text-[18px] font-semibold leading-[1.35] text-black [font-family:Roboto,Arial,sans-serif] sm:text-[20px] lg:text-[24px]">
                     {p.name}
                   </h3>
                   <a
                     href="#contact"
-                    className="mt-[24px] inline-flex h-[35px] items-center justify-center rounded-[10px] bg-[#2D51A3] px-[15px] text-[13px] font-semibold uppercase text-white [font-family:Roboto,Arial,sans-serif]"
+                    className="mt-[16px] inline-flex h-[48px] items-center justify-center rounded-[10px] bg-[#2D51A3] px-[20px] text-[13px] font-semibold uppercase text-white [font-family:Roboto,Arial,sans-serif] sm:mt-[20px] sm:h-[44px] sm:text-[14px] lg:mt-[24px] lg:h-[40px]"
                   >
                     {t.pvcRamen.profiles.cta}
                   </a>

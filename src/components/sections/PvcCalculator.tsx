@@ -120,40 +120,40 @@ export function PvcCalculator() {
         <div className="mx-auto max-w-[1240px]">
           <h2
             id="pvc-calculator-title"
-            className="text-center text-[28px] font-extrabold uppercase leading-[1.2] tracking-tight text-white [font-family:Roboto,Arial,sans-serif] sm:text-[36px] lg:text-[44px]"
+            className="text-center text-[22px] font-extrabold uppercase leading-[1.2] tracking-tight text-white [font-family:Roboto,Arial,sans-serif] sm:text-[30px] lg:text-[44px]"
           >
             {t.pvcRamen.calculator.title}
           </h2>
 
-          <div className="mx-auto mt-[40px] max-w-[800px] lg:mt-[60px]">
-            <fieldset>
+          <div className="mx-auto mt-[28px] max-w-[800px] sm:mt-[40px] lg:mt-[60px]">
+            <fieldset className="min-w-0">
               {stepIdx > 0 && step.question && (
-                <legend className="mb-[16px] block text-[18px] font-bold leading-[1.4] text-white sm:text-[20px]">
+                <legend className="mb-[14px] block text-[16px] font-bold leading-[1.4] text-white sm:text-[18px] lg:text-[20px]">
                   {step.question}
                 </legend>
               )}
 
               {isFinalStep && step.final && (
                 <div className="mx-auto flex max-w-[640px] flex-col items-center text-center">
-                  <h3 className="text-[24px] font-bold leading-[1.25] text-white sm:text-[28px] lg:text-[32px]">
+                  <h3 className="text-[20px] font-bold leading-[1.25] text-white sm:text-[24px] lg:text-[32px]">
                     {step.final.heading}
                   </h3>
-                  <p className="mt-[16px] text-[14px] leading-[1.5] text-white/85 sm:text-[15px]">
+                  <p className="mt-[12px] text-[14px] leading-[1.5] text-white/85 sm:text-[15px] lg:text-[16px]">
                     {step.final.body}
                   </p>
 
-                  <div className="mt-[24px] w-full text-left">
+                  <div className="mt-[20px] w-full min-w-0 text-left sm:mt-[24px]">
                     <label
                       htmlFor="pvc-calc-final-phone"
-                      className="block text-[15px] font-bold uppercase tracking-[0.04em] text-white [font-family:Roboto,Arial,sans-serif]"
+                      className="block text-[13px] font-bold uppercase tracking-[0.04em] text-white [font-family:Roboto,Arial,sans-serif] sm:text-[14px] lg:text-[15px]"
                     >
                       {step.final.phoneLabel}
                     </label>
-                    <div className="mt-[10px] flex h-[56px] items-stretch overflow-hidden rounded-[10px] bg-white">
-                      <span className="flex items-center gap-[8px] border-r border-[#c7c7c7] px-[14px] text-[15px] text-[#050505]">
+                    <div className="mt-[8px] flex h-[48px] min-w-0 items-stretch overflow-hidden rounded-[10px] bg-white sm:mt-[10px] sm:h-[52px] lg:h-[56px]">
+                      <span className="flex shrink-0 items-center gap-[6px] border-r border-[#c7c7c7] px-[10px] text-[14px] text-[#050505] sm:gap-[8px] sm:px-[14px] sm:text-[15px]">
                         <span
                           aria-hidden
-                          className="inline-block h-[14px] w-[20px] rounded-[2px] bg-[linear-gradient(to_bottom,#AE1C28_33%,#fff_33%_66%,#21468B_66%)]"
+                          className="inline-block h-[12px] w-[18px] rounded-[2px] bg-[linear-gradient(to_bottom,#AE1C28_33%,#fff_33%_66%,#21468B_66%)] sm:h-[14px] sm:w-[20px]"
                         />
                         <span className="text-[12px] text-[#7d7d7d]">▾</span>
                         <span>+31</span>
@@ -168,11 +168,11 @@ export function PvcCalculator() {
                           setFinalPhone(e.target.value.replace(/\D/g, ""))
                         }
                         placeholder={step.final.phonePlaceholder}
-                        className="h-full flex-1 bg-white px-[14px] text-[16px] text-[#050505] outline-none placeholder:text-[#9a9a9a]"
+                        className="h-full min-w-0 flex-1 bg-white px-[12px] text-[16px] text-[#050505] outline-none placeholder:text-[#9a9a9a] sm:px-[14px]"
                       />
                     </div>
 
-                    <label className="mt-[14px] flex items-start gap-[10px] text-[13px] leading-[1.4] text-white/85 sm:text-[14px]">
+                    <label className="mt-[12px] flex items-start gap-[10px] text-[12px] leading-[1.4] text-white/85 sm:mt-[14px] sm:text-[13px] lg:text-[14px]">
                       <input
                         type="checkbox"
                         checked={finalAgreed}
@@ -193,14 +193,14 @@ export function PvcCalculator() {
               )}
 
               {isInputStep && step.inputs && (
-                <div className="mx-auto flex max-w-[480px] flex-col gap-[18px]">
+                <div className="mx-auto flex max-w-[480px] flex-col gap-[16px] sm:gap-[18px]">
                   {step.inputs.map((field, i) => {
                     const id = `pvc-calc-input-${stepIdx}-${i}`;
                     return (
-                      <div key={field.label} className="flex flex-col gap-[10px]">
+                      <div key={field.label} className="flex flex-col gap-[8px] sm:gap-[10px]">
                         <label
                           htmlFor={id}
-                          className="text-[16px] font-bold uppercase tracking-[0.04em] text-white [font-family:Roboto,Arial,sans-serif] sm:text-[18px]"
+                          className="text-[14px] font-bold uppercase tracking-[0.04em] text-white [font-family:Roboto,Arial,sans-serif] sm:text-[16px] lg:text-[18px]"
                         >
                           {field.label}
                         </label>
@@ -214,7 +214,7 @@ export function PvcCalculator() {
                             setInput(i, e.target.value.replace(/\D/g, ""))
                           }
                           placeholder={field.placeholder}
-                          className="h-[56px] w-full rounded-[10px] bg-white px-[18px] text-[16px] text-[#222] outline-none [font-family:Roboto,Arial,sans-serif] placeholder:text-[#9a9a9a] focus:ring-2 focus:ring-white"
+                          className="h-[48px] w-full rounded-[10px] bg-white px-[14px] text-[16px] text-[#222] outline-none [font-family:Roboto,Arial,sans-serif] placeholder:text-[#9a9a9a] focus:ring-2 focus:ring-white sm:h-[52px] sm:px-[18px] lg:h-[56px]"
                         />
                       </div>
                     );
@@ -223,21 +223,21 @@ export function PvcCalculator() {
               )}
 
               {isGroupStep && step.groups && (
-                <div className="flex flex-col gap-[28px]">
+                <div className="flex flex-col gap-[20px] sm:gap-[24px] lg:gap-[28px]">
                   {step.groups.map((group, gIdx) => {
                     const groupSelected = stepGroups[gIdx] ?? [];
                     const isMulti = !!group.multi;
                     return (
-                      <div key={group.question} className="flex flex-col gap-[12px]">
-                        <p className="text-[18px] font-bold leading-[1.4] text-white sm:text-[20px]">
+                      <div key={group.question} className="flex flex-col gap-[10px] sm:gap-[12px]">
+                        <p className="text-[16px] font-bold leading-[1.4] text-white sm:text-[18px] lg:text-[20px]">
                           {group.question}
                         </p>
-                        <ul className="flex flex-col gap-[10px]">
+                        <ul className="flex flex-col gap-[8px] sm:gap-[10px]">
                           {group.options.map((opt, i) => {
                             const isSelected = groupSelected.includes(i);
                             return (
                               <li key={opt.label}>
-                                <label className="flex cursor-pointer items-center gap-[10px]">
+                                <label className="flex min-h-[44px] cursor-pointer items-center gap-[10px] py-[6px]">
                                   <input
                                     type={isMulti ? "checkbox" : "radio"}
                                     name={`pvc-calc-step-${stepIdx}-group-${gIdx}`}
@@ -270,7 +270,7 @@ export function PvcCalculator() {
                                       <span className="block size-[10px] rounded-full bg-white" />
                                     )}
                                   </span>
-                                  <span className="text-[15px] uppercase tracking-[0.04em] text-white [font-family:Roboto,Arial,sans-serif] sm:text-[16px]">
+                                  <span className="text-[14px] uppercase tracking-[0.04em] text-white [font-family:Roboto,Arial,sans-serif] sm:text-[15px] lg:text-[16px]">
                                     {opt.label}
                                   </span>
                                 </label>
@@ -286,16 +286,16 @@ export function PvcCalculator() {
 
               {!isInputStep && !isGroupStep && step.options && (
                 isImageStep ? (
-                  <ul className="mx-auto flex max-w-[800px] flex-wrap gap-[14px] sm:gap-[16px]">
+                  <ul className="mx-auto grid max-w-[800px] grid-cols-2 gap-[12px] sm:grid-cols-[repeat(auto-fill,minmax(140px,1fr))] sm:gap-[14px] lg:gap-[16px]">
                     {step.options.map((opt, i) => {
                       const isSelected = selected === i;
                       return (
-                        <li key={opt.label} className="w-[140px] sm:w-[155px]">
+                        <li key={opt.label} className="min-w-0">
                           <button
                             type="button"
                             onClick={() => choose(i)}
                             aria-pressed={isSelected}
-                            className={`relative flex w-full flex-col rounded-[8px] border-[2px] p-[8px] text-left transition-colors ${
+                            className={`relative flex min-h-[44px] w-full flex-col rounded-[8px] border-[2px] p-[8px] text-left transition-colors ${
                               isSelected
                                 ? "border-white bg-white/10"
                                 : "border-white/30 bg-transparent hover:border-white/60"
@@ -318,13 +318,13 @@ export function PvcCalculator() {
                                   src={opt.image}
                                   alt={opt.label}
                                   fill
-                                  sizes="(min-width: 1024px) 160px, (min-width: 640px) 22vw, 40vw"
+                                  sizes="(min-width: 1024px) 160px, (min-width: 640px) 22vw, 45vw"
                                   loading="lazy"
                                   className="object-contain p-[8%]"
                                 />
                               )}
                             </div>
-                            <span className="mt-[10px] text-[11px] font-bold uppercase leading-[1.3] tracking-[0.04em] text-white [font-family:Roboto,Arial,sans-serif] sm:text-[12px]">
+                            <span className="mt-[8px] text-[11px] font-bold uppercase leading-[1.3] tracking-[0.04em] text-white [font-family:Roboto,Arial,sans-serif] sm:mt-[10px] sm:text-[12px]">
                               {opt.label}
                             </span>
                           </button>
@@ -334,12 +334,12 @@ export function PvcCalculator() {
                   </ul>
                 ) : (
                   <div className="mx-auto max-w-[660px]">
-                    <ul className="flex flex-col gap-[10px]">
+                    <ul className="grid grid-cols-2 gap-x-[12px] gap-y-[8px] sm:flex sm:flex-col sm:gap-[10px]">
                       {step.options.map((opt, i) => {
                         const isSelected = selected === i;
                         return (
                           <li key={opt.label}>
-                            <label className="flex cursor-pointer items-center gap-[10px]">
+                            <label className="flex min-h-[44px] cursor-pointer items-center gap-[10px] py-[6px]">
                               <input
                                 type="radio"
                                 name={`pvc-calc-step-${stepIdx}`}
@@ -357,7 +357,7 @@ export function PvcCalculator() {
                                   <span className="block size-[10px] rounded-full bg-white" />
                                 )}
                               </span>
-                              <span className="text-[15px] uppercase tracking-[0.04em] text-white [font-family:Roboto,Arial,sans-serif] sm:text-[16px]">
+                              <span className="text-[14px] uppercase tracking-[0.04em] text-white [font-family:Roboto,Arial,sans-serif] sm:text-[15px] lg:text-[16px]">
                                 {opt.label}
                               </span>
                             </label>
@@ -370,12 +370,12 @@ export function PvcCalculator() {
               )}
             </fieldset>
 
-            <div className="mt-[40px] flex items-center justify-between gap-[16px] lg:mt-[56px]">
+            <div className="mt-[28px] flex items-center justify-between gap-[12px] sm:mt-[40px] sm:gap-[16px] lg:mt-[56px]">
               {stepIdx > 0 ? (
                 <button
                   type="button"
                   onClick={prev}
-                  className="inline-flex h-[48px] items-center gap-2 rounded-[10px] bg-white px-[24px] text-[14px] font-bold uppercase text-[#2D51A3] shadow-[0_4px_12px_rgba(0,0,0,0.15)] [font-family:Roboto,Arial,sans-serif]"
+                  className="inline-flex h-[48px] flex-1 items-center justify-center gap-[6px] rounded-[10px] bg-white px-[16px] text-[13px] font-bold uppercase text-[#2D51A3] shadow-[0_4px_12px_rgba(0,0,0,0.15)] [font-family:Roboto,Arial,sans-serif] sm:flex-none sm:gap-2 sm:px-[24px] sm:text-[14px] lg:h-[52px]"
                 >
                   <span aria-hidden>←</span>
                   {t.pvcRamen.calculator.prev}
@@ -389,7 +389,7 @@ export function PvcCalculator() {
                   type="button"
                   onClick={submitFinal}
                   disabled={!canContinue || submitting}
-                  className="inline-flex h-[48px] items-center gap-2 rounded-[10px] bg-white px-[30px] text-[14px] font-bold uppercase text-[#2D51A3] shadow-[0_4px_12px_rgba(0,0,0,0.15)] [font-family:Roboto,Arial,sans-serif] disabled:opacity-50 disabled:shadow-none"
+                  className="inline-flex h-[48px] flex-1 items-center justify-center gap-[6px] rounded-[10px] bg-white px-[16px] text-[13px] font-bold uppercase text-[#2D51A3] shadow-[0_4px_12px_rgba(0,0,0,0.15)] [font-family:Roboto,Arial,sans-serif] disabled:opacity-50 disabled:shadow-none sm:flex-none sm:gap-2 sm:px-[30px] sm:text-[14px] lg:h-[52px]"
                 >
                   {submitting && (
                     <span
@@ -404,7 +404,7 @@ export function PvcCalculator() {
                   type="button"
                   onClick={next}
                   disabled={!canContinue}
-                  className="inline-flex h-[48px] items-center gap-2 rounded-[10px] bg-white px-[30px] text-[14px] font-bold uppercase text-[#2D51A3] shadow-[0_4px_12px_rgba(0,0,0,0.15)] [font-family:Roboto,Arial,sans-serif] disabled:opacity-50 disabled:shadow-none"
+                  className="inline-flex h-[48px] flex-1 items-center justify-center gap-[6px] rounded-[10px] bg-white px-[16px] text-[13px] font-bold uppercase text-[#2D51A3] shadow-[0_4px_12px_rgba(0,0,0,0.15)] [font-family:Roboto,Arial,sans-serif] disabled:opacity-50 disabled:shadow-none sm:flex-none sm:gap-2 sm:px-[30px] sm:text-[14px] lg:h-[52px]"
                 >
                   {t.pvcRamen.calculator.next}
                   <span aria-hidden>→</span>

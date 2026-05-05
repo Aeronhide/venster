@@ -15,12 +15,12 @@ export function PvcCertified() {
         <div className="mx-auto max-w-[1100px]">
           <h2
             id="pvc-certified-title"
-            className="text-center text-[28px] font-extrabold uppercase leading-[1.2] tracking-tight text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[36px] lg:text-[42px]"
+            className="text-balance text-center text-[22px] font-extrabold uppercase leading-[1.2] tracking-tight text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[30px] lg:text-[42px]"
           >
             {t.pvcRamen.certified.title}
           </h2>
 
-          <div className="mt-[32px] lg:mt-[48px]">
+          <div className="mt-[24px] sm:mt-[32px] lg:mt-[48px]">
             <div className="relative mx-auto aspect-[800/282] w-full max-w-[900px]">
               <Image
                 src={CERT_IMG}

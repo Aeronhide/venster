@@ -12,12 +12,12 @@ export function PvcVisit() {
         <div className="mx-auto max-w-[800px] text-center [font-family:Roboto,Arial,sans-serif]">
           <h2
             id="pvc-visit-title"
-            className="text-[18px] font-bold leading-[1.4] text-[#082b4b] sm:text-[20px] lg:text-[22px]"
+            className="text-balance text-[16px] font-bold leading-[1.4] text-[#082b4b] sm:text-[18px] lg:text-[22px]"
           >
             {t.pvcRamen.visit.title}
           </h2>
 
-          <div className="mt-[20px] space-y-[6px] text-[15px] leading-[1.6] text-[#3e3e3e] sm:text-[16px] lg:text-[17px]">
+          <div className="mt-[16px] space-y-[6px] text-[14px] leading-[1.6] text-[#3e3e3e] sm:mt-[20px] sm:text-[15px] lg:text-[17px]">
             <p>{t.pvcRamen.visit.city}</p>
             <p>{t.pvcRamen.visit.street}</p>
             <p>
@@ -26,11 +26,11 @@ export function PvcVisit() {
                 {t.pvcRamen.visit.phone}
               </strong>
             </p>
-            <p>
+            <p className="break-words">
               {t.pvcRamen.visit.emailLabel}
               <a
                 href={`mailto:${t.pvcRamen.visit.email}`}
-                className="font-bold text-[#082b4b] hover:underline"
+                className="font-bold text-[#082b4b] underline-offset-2 hover:underline"
               >
                 {t.pvcRamen.visit.email}
               </a>
