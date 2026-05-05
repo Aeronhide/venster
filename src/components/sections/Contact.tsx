@@ -20,7 +20,7 @@ const EMAIL = site.email;
 export function Contact() {
   return (
     <Section
-      id='contact'
+      id='rec1763574201'
       ariaLabelledby='contact-title'
       className='bg-[#082b4b] text-white'
     >

@@ -12,7 +12,11 @@ const CERT_IMAGES = [
 
 export function Certification() {
   return (
-    <Section ariaLabel="Certificering en kwaliteitsgarantie" className="bg-[#f9f9f9]">
+    <Section
+      id="rec1337102001"
+      ariaLabel="Certificering en kwaliteitsgarantie"
+      className="bg-[#f9f9f9]"
+    >
       <Container>
         <div className="mx-auto max-w-[1675px] space-y-[150px]">
           {/* Block 1 — rec1337102001: CE 10-jaar garantie dark card */}

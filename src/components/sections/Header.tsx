@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { CallbackModal } from '@/components/CallbackModal';
 
 const PHONE_DISPLAY = '+31 853016849';
 const PHONE_HREF = 'tel:+31853016849';
@@ -26,6 +27,7 @@ const CTA =
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [callbackOpen, setCallbackOpen] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
@@ -171,10 +173,14 @@ export function Header() {
           </a>
           </div>
 
-          {/* CTA — Tilda: top=2 axisy=center → ~14.5 left=947 W=233 H=45 fontSize=20 */}
-          <a href='#zeropopup' className={CTA}>
+          {/* CTA — opens callback modal */}
+          <button
+            type='button'
+            onClick={() => setCallbackOpen(true)}
+            className={CTA}
+          >
             Bel mij terug
-          </a>
+          </button>
         </div>
 
         {/* Mobile menu trigger */}
@@ -229,9 +235,16 @@ export function Header() {
               ))}
             </ul>
             <div className='mt-4 flex flex-col gap-3'>
-              <a href='#zeropopup' className={CTA + ' w-full'}>
+              <button
+                type='button'
+                onClick={() => {
+                  setOpen(false);
+                  setCallbackOpen(true);
+                }}
+                className={CTA + ' w-full'}
+              >
                 Bel mij terug
-              </a>
+              </button>
               <p className='text-center text-xs text-fg-subtle'>
                 {PHONE_DISPLAY} · {HOURS}
               </p>
@@ -239,6 +252,7 @@ export function Header() {
           </div>
         </div>
       )}
+      <CallbackModal open={callbackOpen} onClose={() => setCallbackOpen(false)} />
     </header>
   );
 }
