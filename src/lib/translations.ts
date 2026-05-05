@@ -392,21 +392,22 @@ export const translations = {
       closeAria: "Sluiten",
     },
     pvcRamen: {
-      pill: "Kunststof ramen in Europa — prijzen, opmeting en montage",
-      headline1: "PVC Ramen –",
-      headlineHighlight: "op maat gemaakt,",
-      headline2: "in heel Nederland geleverd!",
-      subhead:
-        "Energiezuinige PVC-ramen met VEKA-profielen, ROTO-beslag en SAINT-GOBAIN glas — geproduceerd in eigen fabriek en geïnstalleerd door lokale partners.",
-      cta: "VRAAG EEN GRATIS OFFERTE AAN",
-      ctaMobile: "Vraag een gratis offerte aan",
-      cards: [
+      headline: "PVC RAMEN",
+      features: [
         "Opmeten en levering",
         "Professionele montage",
         "Prijzen van de fabrikant",
         "Gratis advies van een ingenieur",
         "5 jaar garantie",
       ],
+      rating: "4.8",
+      ratingAria: "Google reviews — 4.8 van 5 sterren",
+      formTitle: "Ontvang een GRATIS BEREKENING in 5 MINUTEN!",
+      formPhoneLabel: "Uw telefoonnummer",
+      formPhonePlaceholder: "00 000 0000",
+      formPrivacyBefore: "Ik ga akkoord met het ",
+      formPrivacyLink: "privacybeleid",
+      formSubmit: "OFFERTE AANVRAGEN",
       profiles: {
         title: "PROFIELEN VOOR PVC-RAMEN",
         cta: "Prijs ontdekken",
@@ -919,21 +920,22 @@ export const translations = {
       closeAria: "Close",
     },
     pvcRamen: {
-      pill: "PVC windows in Europe — prices, measurement and installation",
-      headline1: "PVC Windows –",
-      headlineHighlight: "made to measure,",
-      headline2: "delivered across the Netherlands!",
-      subhead:
-        "Energy-efficient PVC windows with VEKA profiles, ROTO hardware and SAINT-GOBAIN glass — manufactured in our own factory and installed by local partners.",
-      cta: "REQUEST A FREE QUOTE",
-      ctaMobile: "Request a free quote",
-      cards: [
+      headline: "PVC WINDOWS",
+      features: [
         "Measurement and delivery",
         "Professional installation",
         "Manufacturer prices",
         "Free engineer consultation",
         "5 year warranty",
       ],
+      rating: "4.8",
+      ratingAria: "Google reviews — 4.8 out of 5 stars",
+      formTitle: "Get a FREE QUOTE in 5 MINUTES!",
+      formPhoneLabel: "Your phone number",
+      formPhonePlaceholder: "00 000 0000",
+      formPrivacyBefore: "I agree with the ",
+      formPrivacyLink: "privacy policy",
+      formSubmit: "REQUEST QUOTE",
       profiles: {
         title: "PVC WINDOW PROFILES",
         cta: "Discover the price",

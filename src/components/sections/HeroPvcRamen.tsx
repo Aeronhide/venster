@@ -1,66 +1,30 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import { useT } from "@/components/LanguageProvider";
 
-const HERO_BG = "/images/banner/banner-bg.webp";
-const HERO_PRODUCT = "/images/banner/banner-img.webp";
+const HERO_BG = "/images/rvc_banner.png";
 const GOOGLE_BADGE = "/images/google-reviews-badge.png";
-const NL_FLAG = "/images/banner/netherlands_flag.svg";
-const ICON_DELIVERY = "/images/banner/time.svg";
-const ICON_PRICE = "/images/banner/money.svg";
-const ICON_QUALITY = "/images/banner/medal.svg";
 
-// Mirrors Hero.tsx — same desktop 1200x660 canvas (lg+) and mobile stacked layout (<lg).
-// Only the copy and feature-card labels change. Stats card values are identical to home.
+// Mirror of Hero.tsx — same 1200x660 canvas (lg+) + same mobile stacked dark banner.
+// Only the banner content changes: two glass cards (features + form) instead of
+// pill / headline / subhead / CTA / product image / 3 floating chips.
+// The stats card position and treatment are identical to home Hero.
 
 const CLS = {
   bgImage:
     "absolute left-[1.67%] top-0 w-[96.25%] h-[79.24%] rounded-[15px] overflow-hidden",
-  bgGradient:
-    "absolute left-[1.67%] top-0 w-[96.25%] h-[79.24%] rounded-[15px] [background:linear-gradient(96.8deg,#001A32_0%,rgba(0,26,48,0.74)_62%,rgba(0,26,48,0)_100%)]",
-  product: "absolute left-[52.25%] top-[4.39%] w-[35.33%] h-[64.24%]",
-  nlPill:
-    "absolute left-[5.75%] top-[7.12%] flex w-[500px] items-center rounded-[40px] bg-white px-5 py-3 shadow-[5px_5px_10px_rgba(0,0,0,0.1)]",
-  nlPillText:
-    "flex-1 self-center text-center font-bold uppercase leading-[26px] text-black text-[18px] whitespace-nowrap",
-  headline:
-    "absolute left-[6%] top-[14%] w-[42%] font-bold leading-[1.1] text-white text-[56px]",
-  subhead:
-    "absolute left-[6.08%] top-[44.24%] w-[35.17%] font-normal leading-[1.3125] text-white text-[1.333cqi]",
-  cta:
-    "absolute left-[5.5%] top-[56.36%] w-[25.92%] h-[9.39%] flex items-center justify-center rounded-[16px] bg-[#226CD5] text-center font-bold uppercase text-white text-[1.5cqi]",
-  gmaps:
-    "absolute left-[37.17%] top-[57.73%] w-[17.17%] h-[7.42%] flex items-center justify-center rounded-[16px] bg-white px-1.5",
+  featuresWrap:
+    "absolute left-[5%] top-[8.5%] flex w-[42%] flex-col gap-[1.4cqi]",
+  featuresTitleCard:
+    "rounded-[14px] bg-[#473536] shadow-[5px_5px_10px_rgba(0,0,0,0.15)] px-[3.2cqi] py-[2.4cqi]",
+  featuresListCard:
+    "rounded-[14px] bg-[#473536] shadow-[5px_5px_10px_rgba(0,0,0,0.15)] px-[3.2cqi] py-[2.6cqi]",
+  formCard:
+    "absolute left-[53%] top-[8.5%] w-[42%] rounded-[14px] bg-[#082b4b]/85 backdrop-blur-[6px] shadow-[5px_5px_10px_rgba(0,0,0,0.15)] px-[3.5cqi] py-[3cqi]",
   statsCard:
     "absolute left-[5%] top-[70.3%] z-10 w-[90%] h-[18.64%] rounded-[15px] bg-white shadow-[0_8px_32px_rgba(0,0,0,0.1)] flex items-center justify-around px-[2%]",
-};
-
-const CARD = {
-  c1Bg:
-    "absolute left-[49.75%] top-[26.67%] w-[15.83%] h-[9.09%] rounded-[12px] bg-white shadow-[5px_5px_10px_rgba(0,0,0,0.1)]",
-  c1Circle:
-    "absolute left-[50.33%] top-[27.73%] w-[3.75%] h-[6.82%] rounded-full bg-[#006BD5]",
-  c1Icon:
-    "absolute left-[50.92%] top-[28.79%] w-[2.5%] h-[4.55%] flex items-center justify-center",
-  c1Text:
-    "absolute left-[55.33%] top-[28.33%] w-[11.17%] font-bold leading-[1.2] text-black text-[1.167cqi]",
-  c2Bg:
-    "absolute left-[74%] top-[15.45%] w-[18.17%] h-[9.09%] rounded-[12px] bg-white shadow-[5px_5px_10px_rgba(0,0,0,0.1)]",
-  c2Circle:
-    "absolute left-[74.67%] top-[16.52%] w-[3.75%] h-[6.82%] rounded-full bg-[#006BD5]",
-  c2Icon:
-    "absolute left-[75.08%] top-[17.27%] w-[2.75%] h-[5%] flex items-center justify-center",
-  c2Text:
-    "absolute left-[79.5%] top-[17.27%] w-[11.83%] font-bold leading-[1.2] text-black text-[1.167cqi]",
-  c3Bg:
-    "absolute left-[71.5%] top-[52.88%] w-[18.5%] h-[9.09%] rounded-[12px] bg-white shadow-[5px_5px_10px_rgba(0,0,0,0.1)]",
-  c3Circle:
-    "absolute left-[72.08%] top-[53.94%] w-[3.75%] h-[6.82%] rounded-full bg-[#006BD5]",
-  c3Icon:
-    "absolute left-[72.67%] top-[55.15%] w-[2.5%] h-[4.55%] flex items-center justify-center",
-  c3Text:
-    "absolute left-[76.67%] top-[55.91%] w-[12.92%] font-bold leading-[1.2] text-black text-[1.167cqi]",
 };
 
 export function HeroPvcRamen() {
@@ -68,9 +32,10 @@ export function HeroPvcRamen() {
 
   return (
     <section className="font-sans">
-      {/* === Mobile / tablet (stacked) === */}
+      {/* === Mobile / tablet (stacked) — same pattern as home Hero mobile === */}
       <div className="mx-auto mt-3 w-[calc(100%-16px)] sm:mt-4 sm:w-[calc(100%-32px)] lg:hidden">
         <div className="relative overflow-hidden rounded-[16px]">
+          {/* Background photo + dark gradient */}
           <div className="absolute inset-0">
             <Image
               src={HERO_BG}
@@ -83,77 +48,16 @@ export function HeroPvcRamen() {
               fetchPriority="high"
               className="object-cover"
             />
-            <div className="absolute inset-0 [background:linear-gradient(180deg,rgba(0,26,50,0.92)_0%,rgba(0,26,48,0.78)_55%,rgba(0,26,48,0.55)_100%)]" />
           </div>
 
-          <div className="relative px-5 pt-6 pb-8 text-white sm:px-7 sm:pt-8">
-            <div className="inline-flex max-w-full items-center gap-2 rounded-full bg-white px-3 py-2 shadow-[3px_3px_8px_rgba(0,0,0,0.15)]">
-              <Image
-                src={NL_FLAG}
-                alt=""
-                width={22}
-                height={18}
-                className="h-[18px] w-[22px] shrink-0 object-contain"
-              />
-              <span className="text-[11px] font-bold uppercase leading-[1.2] text-black sm:text-[13px]">
-                {t.pvcRamen.pill}
-              </span>
-            </div>
-
-            <h1 className="mt-5 text-[26px] font-bold leading-[1.15] sm:text-[34px]">
-              {t.pvcRamen.headline1}{" "}
-              <span className="text-[#66A6E6]">{t.pvcRamen.headlineHighlight}</span>{" "}
-              {t.pvcRamen.headline2}
-            </h1>
-
-            <p className="mt-4 text-[14px] leading-[1.45] text-white/90 sm:text-[16px]">
-              {t.pvcRamen.subhead}
-            </p>
-
-            <a
-              href="#contact"
-              className="mt-5 inline-flex h-[56px] w-full items-center justify-center rounded-[16px] bg-[#226CD5] px-3 text-center text-[14px] font-bold uppercase leading-[1.1] text-white sm:h-[64px] sm:text-[16px]"
-            >
-              {t.pvcRamen.ctaMobile}
-            </a>
-
-            <a
-              href="https://www.google.com/maps/place/VALENT.MD/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={t.hero.googleMapsAria}
-              className="mt-4 inline-flex h-[42px] w-full max-w-[220px] items-center justify-center rounded-[12px] bg-white px-2"
-            >
-              <Image
-                src={GOOGLE_BADGE}
-                alt="Google reviews"
-                width={188}
-                height={34}
-                className="h-auto w-[90%] object-contain"
-              />
-            </a>
-
-            <div className="mt-6 grid place-items-center">
-              <Image
-                src={HERO_PRODUCT}
-                alt=""
-                role="presentation"
-                width={420}
-                height={420}
-                loading="lazy"
-                className="h-auto w-[68%] max-w-[360px] object-contain"
-              />
-            </div>
-
-            <ul className="mt-6 grid grid-cols-1 gap-2 sm:grid-cols-3">
-              <FeatureCard icon={ICON_PRICE} lines={[t.pvcRamen.cards[2]]} />
-              <FeatureCard icon={ICON_DELIVERY} lines={[t.pvcRamen.cards[0]]} />
-              <FeatureCard icon={ICON_QUALITY} lines={[t.pvcRamen.cards[4]]} />
-            </ul>
+          {/* Two cards stacked inside the dark banner */}
+          <div className="relative grid gap-3 px-4 py-6 sm:gap-4 sm:px-6 sm:py-8">
+            <FeaturesCardMobile />
+            <FormCardMobile />
           </div>
         </div>
 
-        {/* Stats card */}
+        {/* Stats card — same divide-x grid + Stat row as home mobile */}
         <div className="mt-3 grid grid-cols-2 divide-x divide-y divide-[#e5e7eb] overflow-hidden rounded-[16px] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.06)] ring-1 ring-[#e5e7eb] sm:grid-cols-4 sm:divide-y-0">
           {t.hero.stats.map((s) => (
             <MobileStat key={s.number} number={s.number} lines={[...s.lines]} />
@@ -161,10 +65,8 @@ export function HeroPvcRamen() {
         </div>
       </div>
 
-      {/* === Desktop artboard (lg+) — same 1200x660 canvas as home Hero === */}
-      <div
-        className="relative mx-auto mt-8 hidden w-[calc(100%-64px)] aspect-[1200/660] [container-type:inline-size] lg:block"
-      >
+      {/* === Desktop artboard (lg+) — copied from home Hero, 1200x660 canvas === */}
+      <div className="relative mx-auto mt-8 hidden w-[calc(100%-64px)] aspect-[1200/660] [container-type:inline-size] lg:block">
         <div className={CLS.bgImage}>
           <Image
             src={HERO_BG}
@@ -178,109 +80,50 @@ export function HeroPvcRamen() {
             className="object-cover object-center"
           />
         </div>
-        <div className={CLS.bgGradient} aria-hidden />
 
-        <div className={CLS.product}>
-          <Image
-            src={HERO_PRODUCT}
-            alt=""
-            role="presentation"
-            fill
-            sizes="40vw"
-            quality={75}
-            loading="eager"
-            className="object-contain"
-          />
+        {/* LEFT — title card + list card + google badge */}
+        <div className={CLS.featuresWrap}>
+          <article className={CLS.featuresTitleCard}>
+            <h1 className="text-[3.667cqi] font-bold uppercase leading-[1] tracking-tight text-white">
+              {t.pvcRamen.headline}
+            </h1>
+          </article>
+          <article className={CLS.featuresListCard}>
+            <ul className="space-y-[1.2cqi]">
+              {t.pvcRamen.features.map((f) => (
+                <li
+                  key={f}
+                  className="flex items-baseline gap-[1cqi] text-[1.5cqi] font-bold leading-[1.25] text-white"
+                >
+                  <span aria-hidden className="leading-none">•</span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </article>
+          <a
+            href="https://www.google.com/maps/place/VALENT.MD/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t.pvcRamen.ratingAria}
+            className="inline-flex h-[3.6cqi] w-[14cqi] items-center justify-center rounded-[10cqi] bg-white px-[0.6cqi] shadow-[3px_3px_8px_rgba(0,0,0,0.15)]"
+          >
+            <Image
+              src={GOOGLE_BADGE}
+              alt=""
+              width={188}
+              height={34}
+              className="h-auto w-[90%] object-contain"
+            />
+          </a>
         </div>
 
-        <div className={CLS.nlPill}>
-          <Image
-            src={NL_FLAG}
-            alt=""
-            width={32}
-            height={26}
-            className="block h-[26px] w-[32px] shrink-0 self-center object-contain"
-          />
-          <span className={CLS.nlPillText}>{t.pvcRamen.pill}</span>
-        </div>
+        {/* RIGHT — form card */}
+        <article className={CLS.formCard}>
+          <FormCardContent />
+        </article>
 
-        <h1 className={CLS.headline}>
-          {t.pvcRamen.headline1}{" "}
-          <br />
-          <span className="text-[#006BD5]">{t.pvcRamen.headlineHighlight}</span>{" "}
-          {t.pvcRamen.headline2}
-        </h1>
-
-        <div className={CLS.subhead}>{t.pvcRamen.subhead}</div>
-
-        <a href="#contact" className={CLS.cta}>
-          {t.pvcRamen.cta}
-        </a>
-
-        <a
-          href="https://www.google.com/maps/place/VALENT.MD/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={t.hero.googleMapsAria}
-          className={CLS.gmaps}
-        >
-          <Image
-            src={GOOGLE_BADGE}
-            alt="Google reviews"
-            width={188}
-            height={34}
-            className="h-auto w-[92%] object-contain"
-          />
-        </a>
-
-        {/* Card 1 — Prijzen van de fabrikant */}
-        <div className={CARD.c1Bg} />
-        <div className={CARD.c1Circle} />
-        <div className={CARD.c1Icon}>
-          <Image
-            src={ICON_PRICE}
-            alt=""
-            width={30}
-            height={30}
-            className="h-full w-full brightness-0 invert object-contain"
-          />
-        </div>
-        <div className={CARD.c1Text}>
-          <div>{t.pvcRamen.cards[2]}</div>
-        </div>
-
-        {/* Card 2 — Opmeten en levering */}
-        <div className={CARD.c2Bg} />
-        <div className={CARD.c2Circle} />
-        <div className={CARD.c2Icon}>
-          <Image
-            src={ICON_DELIVERY}
-            alt=""
-            width={33}
-            height={33}
-            className="h-full w-full brightness-0 invert object-contain"
-          />
-        </div>
-        <div className={CARD.c2Text}>
-          <div>{t.pvcRamen.cards[0]}</div>
-        </div>
-
-        {/* Card 3 — 5 jaar garantie */}
-        <div className={CARD.c3Bg} />
-        <div className={CARD.c3Circle} />
-        <div className={CARD.c3Icon}>
-          <Image
-            src={ICON_QUALITY}
-            alt=""
-            width={30}
-            height={30}
-            className="h-full w-full brightness-0 invert object-contain"
-          />
-        </div>
-        <div className={CARD.c3Text}>
-          <div>{t.pvcRamen.cards[4]}</div>
-        </div>
-
+        {/* Stats card — exactly the same as home Hero */}
         <div className={CLS.statsCard}>
           {t.hero.stats.map((s) => (
             <Stat key={s.number} number={s.number} lines={[...s.lines]} />
@@ -291,26 +134,193 @@ export function HeroPvcRamen() {
   );
 }
 
-function FeatureCard({ icon, lines }: { icon: string; lines: string[] }) {
+/* ----- Card content shared between desktop and mobile (with size-scoped classes) ----- */
+
+function FormCardContent() {
+  const t = useT();
+  const [phone, setPhone] = useState("");
+  const [agreed, setAgreed] = useState(false);
+
   return (
-    <li className="flex items-center gap-3 rounded-[12px] bg-white px-3 py-2 shadow-[3px_3px_10px_rgba(0,0,0,0.15)]">
-      <span className="grid size-[36px] shrink-0 place-items-center rounded-full bg-[#006BD5]">
-        <Image
-          src={icon}
-          alt=""
-          width={20}
-          height={20}
-          className="h-[20px] w-[20px] brightness-0 invert object-contain"
-        />
-      </span>
-      <span className="text-[13px] font-bold leading-[1.2] text-black">
-        {lines.map((l, i) => (
-          <span key={i} className="block">
-            {l}
+    <>
+      <h2 className="text-[2.2cqi] font-bold leading-[1.25] text-white">
+        {t.pvcRamen.formTitle}
+      </h2>
+      <form
+        className="mt-[2cqi] space-y-[1.4cqi]"
+        onSubmit={(e) => e.preventDefault()}
+        aria-label={t.pvcRamen.formTitle}
+      >
+        <label
+          htmlFor="rvc-banner-phone-d"
+          className="block text-[1.1cqi] font-medium text-white/85"
+        >
+          {t.pvcRamen.formPhoneLabel}
+        </label>
+        <div className="flex h-[5.5cqi] items-stretch overflow-hidden rounded-[12px] bg-white">
+          <span className="flex items-center gap-[0.6cqi] border-r border-[#c7c7c7] px-[1.4cqi] text-[1.4cqi] text-[#050505]">
+            <span
+              aria-hidden
+              className="inline-block h-[1.2cqi] w-[1.7cqi] rounded-[2px] bg-[linear-gradient(to_bottom,#AE1C28_33%,#fff_33%_66%,#21468B_66%)]"
+            />
+            +31
           </span>
-        ))}
-      </span>
-    </li>
+          <input
+            id="rvc-banner-phone-d"
+            type="tel"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder={t.pvcRamen.formPhonePlaceholder}
+            className="h-full flex-1 bg-white px-[1.2cqi] text-[1.4cqi] text-[#050505] outline-none placeholder:text-[#9a9a9a]"
+          />
+        </div>
+        <label className="flex items-start gap-[0.8cqi] text-[1cqi] leading-[1.4] text-white/85">
+          <input
+            type="checkbox"
+            checked={agreed}
+            onChange={(e) => setAgreed(e.target.checked)}
+            required
+            className="mt-[0.15cqi] h-[1.4cqi] w-[1.4cqi] flex-none accent-[#226CD5]"
+          />
+          <span>
+            {t.pvcRamen.formPrivacyBefore}
+            <a href="#privacy" className="font-medium underline">
+              {t.pvcRamen.formPrivacyLink}
+            </a>
+          </span>
+        </label>
+        <button
+          type="submit"
+          className="block h-[5cqi] w-full rounded-[12px] bg-[#C40000] text-[1.4cqi] font-bold uppercase tracking-tight text-white"
+        >
+          {t.pvcRamen.formSubmit}
+        </button>
+      </form>
+    </>
+  );
+}
+
+function FeaturesCardMobile() {
+  const t = useT();
+  return (
+    <div className="flex flex-col gap-3 sm:gap-4">
+      <article className="rounded-[14px] bg-[#473536] px-5 py-5 sm:px-7 sm:py-6">
+        <h1 className="text-[28px] font-bold uppercase leading-[1] tracking-tight text-white sm:text-[36px]">
+          {t.pvcRamen.headline}
+        </h1>
+      </article>
+      <article className="rounded-[14px] bg-[#473536] px-5 py-5 sm:px-7 sm:py-6">
+        <ul className="space-y-3 sm:space-y-4">
+          {t.pvcRamen.features.map((f) => (
+            <li
+              key={f}
+              className="flex items-baseline gap-3 text-[15px] font-bold leading-[1.3] text-white sm:text-[17px]"
+            >
+              <span aria-hidden className="leading-none">•</span>
+              {f}
+            </li>
+          ))}
+        </ul>
+      </article>
+      <a
+        href="https://www.google.com/maps/place/VALENT.MD/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={t.pvcRamen.ratingAria}
+        className="inline-flex h-[42px] w-full max-w-[220px] items-center justify-center rounded-[12px] bg-white px-2 shadow-[3px_3px_8px_rgba(0,0,0,0.15)]"
+      >
+        <Image
+          src={GOOGLE_BADGE}
+          alt=""
+          width={188}
+          height={34}
+          className="h-auto w-[90%] object-contain"
+        />
+      </a>
+    </div>
+  );
+}
+
+function FormCardMobile() {
+  const t = useT();
+  const [phone, setPhone] = useState("");
+  const [agreed, setAgreed] = useState(false);
+  return (
+    <article className="rounded-[14px] bg-[#082b4b]/85 px-5 py-6 backdrop-blur-[6px] sm:px-7 sm:py-7">
+      <h2 className="text-[18px] font-bold leading-[1.25] text-white sm:text-[22px]">
+        {t.pvcRamen.formTitle}
+      </h2>
+      <form
+        className="mt-4 space-y-3 sm:mt-5 sm:space-y-4"
+        onSubmit={(e) => e.preventDefault()}
+        aria-label={t.pvcRamen.formTitle}
+      >
+        <label
+          htmlFor="rvc-banner-phone-m"
+          className="block text-[13px] font-medium text-white/85 sm:text-[14px]"
+        >
+          {t.pvcRamen.formPhoneLabel}
+        </label>
+        <div className="flex h-[56px] items-stretch overflow-hidden rounded-[12px] bg-white sm:h-[64px]">
+          <span className="flex items-center gap-2 border-r border-[#c7c7c7] px-3 text-[15px] text-[#050505]">
+            <span
+              aria-hidden
+              className="inline-block h-[14px] w-[20px] rounded-[2px] bg-[linear-gradient(to_bottom,#AE1C28_33%,#fff_33%_66%,#21468B_66%)]"
+            />
+            +31
+          </span>
+          <input
+            id="rvc-banner-phone-m"
+            type="tel"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder={t.pvcRamen.formPhonePlaceholder}
+            className="h-full flex-1 bg-white px-3 text-[16px] text-[#050505] outline-none placeholder:text-[#9a9a9a]"
+          />
+        </div>
+        <label className="flex items-start gap-2 text-[12px] leading-[1.4] text-white/85 sm:text-[13px]">
+          <input
+            type="checkbox"
+            checked={agreed}
+            onChange={(e) => setAgreed(e.target.checked)}
+            required
+            className="mt-[2px] h-[16px] w-[16px] flex-none accent-[#226CD5]"
+          />
+          <span>
+            {t.pvcRamen.formPrivacyBefore}
+            <a href="#privacy" className="font-medium underline">
+              {t.pvcRamen.formPrivacyLink}
+            </a>
+          </span>
+        </label>
+        <button
+          type="submit"
+          className="block h-[52px] w-full rounded-[12px] bg-[#C40000] text-[14px] font-bold uppercase tracking-tight text-white sm:h-[60px] sm:text-[16px]"
+        >
+          {t.pvcRamen.formSubmit}
+        </button>
+      </form>
+    </article>
+  );
+}
+
+/* ----- Atoms ----- */
+
+function Stat({ number, lines }: { number: string; lines: string[] }) {
+  return (
+    <div className="flex items-start justify-center gap-2">
+      <div className="text-center">
+        <div className="font-bold leading-[1.1] tracking-[-0.02em] text-[#052142] text-[3.667cqi]">
+          {number}
+        </div>
+        <div className="mt-1 text-[1cqi] uppercase leading-[1.2] text-[#191919]">
+          {lines.map((l, i) => (
+            <div key={i}>{l}</div>
+          ))}
+        </div>
+      </div>
+      <CheckIcon className="mt-[1cqi] h-[2cqi] w-[2cqi] shrink-0" />
+    </div>
   );
 }
 
@@ -328,24 +338,6 @@ function MobileStat({ number, lines }: { number: string; lines: string[] }) {
         </div>
       </div>
       <CheckIcon className="mt-1 h-[18px] w-[18px] shrink-0 sm:h-[20px] sm:w-[20px]" />
-    </div>
-  );
-}
-
-function Stat({ number, lines }: { number: string; lines: string[] }) {
-  return (
-    <div className="flex items-start justify-center gap-2">
-      <div className="text-center">
-        <div className="font-bold leading-[1.1] tracking-[-0.02em] text-[#052142] text-[3.667cqi]">
-          {number}
-        </div>
-        <div className="mt-1 text-[1cqi] uppercase leading-[1.2] text-[#191919]">
-          {lines.map((l, i) => (
-            <div key={i}>{l}</div>
-          ))}
-        </div>
-      </div>
-      <CheckIcon className="mt-[1cqi] h-[2cqi] w-[2cqi] shrink-0" />
     </div>
   );
 }

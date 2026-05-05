@@ -1,43 +1,59 @@
 "use client";
 
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { useT } from "@/components/LanguageProvider";
 
+const PROFILE_IMAGES = [
+  "/images/prof1.png",
+  "/images/prof2.png",
+  "/images/prof3.png",
+];
+
 export function PvcProfiles() {
   const t = useT();
   return (
-    <Section ariaLabelledby="pvc-profiles-title" className="bg-[#f9f9f9]">
+    <Section ariaLabelledby="pvc-profiles-title" className="bg-white">
       <Container>
-        <div className="mx-auto max-w-[1672px]">
+        <div className="mx-auto max-w-[1240px]">
           <h2
             id="pvc-profiles-title"
-            className="text-center text-[28px] font-black uppercase leading-[1.2] tracking-tight text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[40px] lg:text-[63px]"
+            className="text-center text-[28px] font-black uppercase leading-[1.2] tracking-tight text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[36px] lg:text-[48px]"
           >
             {t.pvcRamen.profiles.title}
           </h2>
 
-          <ul className="mt-[40px] grid gap-[24px] sm:grid-cols-2 lg:mt-[60px] lg:grid-cols-3">
-            {t.pvcRamen.profiles.items.map((p) => (
+          <ul className="mt-[40px] grid gap-[40px] sm:grid-cols-2 lg:mt-[60px] lg:grid-cols-3 lg:gap-[40px]">
+            {t.pvcRamen.profiles.items.map((p, i) => (
               <li
                 key={p.name}
-                className="flex flex-col rounded-[16px] bg-white p-[20px] shadow-[3px_0_20px_rgba(80,80,80,0.1)] sm:p-[28px] lg:p-[36px]"
+                className="flex flex-col overflow-hidden rounded-[8px] bg-[#B0C5D9] shadow-[0_4px_16px_rgba(0,0,0,0.08)]"
               >
-                <span className="inline-flex h-[24px] w-fit items-center justify-center rounded-[7px] bg-[#006bd5] px-[12px] text-[14px] font-semibold uppercase text-white sm:h-[27px] sm:text-[15px]">
-                  {p.spec}
-                </span>
-                <h3 className="mt-[16px] text-[24px] font-bold leading-[1.3] text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[28px] lg:text-[35px]">
-                  {p.name}
-                </h3>
-                <p className="mt-[12px] flex-1 text-[16px] leading-[1.55] text-[#3e3e3e] [font-family:Roboto,Arial,sans-serif] lg:text-[20px]">
-                  {p.body}
-                </p>
-                <a
-                  href="#contact"
-                  className="mt-[20px] inline-flex h-[64px] w-full items-center justify-center rounded-[16px] bg-[#226CD5] text-[16px] font-bold capitalize text-white [font-family:Roboto,Arial,sans-serif] sm:h-[72px] sm:text-[18px] lg:h-[80px] lg:text-[22px]"
-                >
-                  {t.pvcRamen.profiles.cta}
-                </a>
+                {/* Profile image — already contains specs (Uf, model, mm, gaskets) */}
+                <div className="relative aspect-[360/350] w-full">
+                  <Image
+                    src={PROFILE_IMAGES[i]}
+                    alt={p.name}
+                    fill
+                    sizes="(min-width: 1024px) 360px, (min-width: 640px) 45vw, 90vw"
+                    loading="lazy"
+                    className="object-cover"
+                  />
+                </div>
+
+                {/* Title + CTA */}
+                <div className="flex flex-col items-center px-[30px] pb-[29px] pt-[27px]">
+                  <h3 className="text-[24px] font-semibold leading-[1.35] text-black [font-family:Roboto,Arial,sans-serif]">
+                    {p.name}
+                  </h3>
+                  <a
+                    href="#contact"
+                    className="mt-[24px] inline-flex h-[35px] items-center justify-center rounded-[10px] bg-[#2D51A3] px-[15px] text-[13px] font-semibold uppercase text-white [font-family:Roboto,Arial,sans-serif]"
+                  >
+                    {t.pvcRamen.profiles.cta}
+                  </a>
+                </div>
               </li>
             ))}
           </ul>
