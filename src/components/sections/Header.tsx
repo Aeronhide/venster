@@ -2,7 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { CallbackModal } from '@/components/CallbackModal';
+import dynamic from 'next/dynamic';
+
+const CallbackModal = dynamic(
+  () => import('@/components/CallbackModal').then((m) => m.CallbackModal),
+  { ssr: false }
+);
 
 const PHONE_DISPLAY = '+31 853016849';
 const PHONE_HREF = 'tel:+31853016849';

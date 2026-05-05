@@ -53,17 +53,23 @@ export function Projects() {
             </svg>
           );
           const dots = (
-            <div className="flex flex-wrap justify-center gap-[8px]">
+            <div className="flex flex-wrap justify-center gap-[2px]">
               {projects.map((_, i) => (
                 <button
                   key={i}
                   type="button"
                   aria-label={`Ga naar project ${i + 1}`}
+                  aria-current={i === active}
                   onClick={() => setActive(i)}
-                  className={`h-[8px] w-[8px] rounded-full ${
-                    i === active ? "bg-[#082b4b]" : "bg-[#c7c7c7]"
-                  }`}
-                />
+                  className="grid h-[24px] w-[24px] place-items-center"
+                >
+                  <span
+                    aria-hidden
+                    className={`block h-[8px] w-[8px] rounded-full ${
+                      i === active ? "bg-[#082b4b]" : "bg-[#c7c7c7]"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
           );

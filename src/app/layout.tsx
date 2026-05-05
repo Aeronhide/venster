@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Roboto } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { SITE_URL, site } from "@/lib/site";
 import { ScrollToTopOnMount } from "@/components/ScrollToTopOnMount";
@@ -9,6 +10,14 @@ const roboto = Roboto({
   weight: ["400", "500", "700", "900"],
   display: "swap",
   variable: "--font-roboto",
+  preload: true,
+});
+
+const tildaSans = localFont({
+  src: "../../public/fonts/TildaSans-VF.woff2",
+  variable: "--font-tilda",
+  weight: "100 900",
+  display: "swap",
   preload: true,
 });
 
@@ -87,8 +96,14 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang={site.language} className={`${roboto.variable} antialiased`}>
+    <html lang={site.language} className={`${roboto.variable} ${tildaSans.variable} antialiased`}>
       <body className="min-h-dvh bg-bg text-fg font-sans">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-fg focus:shadow focus:ring-2 focus:ring-brand"
+        >
+          Naar hoofdinhoud
+        </a>
         <ScrollToTopOnMount />
         {children}
       </body>

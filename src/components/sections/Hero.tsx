@@ -75,7 +75,7 @@ export function Hero() {
               role="presentation"
               fill
               sizes="100vw"
-              quality={85}
+              quality={75}
               priority
               fetchPriority="high"
               className="object-cover"
@@ -145,7 +145,7 @@ export function Hero() {
                 role="presentation"
                 width={420}
                 height={420}
-                priority
+                loading="lazy"
                 className="h-auto w-[68%] max-w-[360px] object-contain"
               />
             </div>
@@ -205,8 +205,8 @@ export function Hero() {
             role="presentation"
             fill
             sizes="40vw"
-            quality={85}
-            priority
+            quality={75}
+            loading="eager"
             className="object-contain"
           />
         </div>
@@ -222,12 +222,12 @@ export function Hero() {
           <span className={CLS.nlPillText}>VOLGENS NEDERLANDSE NORMEN</span>
         </div>
 
-        <div className={CLS.headline}>
+        <h1 className={CLS.headline}>
           Ramen en Deuren –{" "}
           <br />
           <span className="text-[#006BD5]">vanaf €50 per maand,</span>{" "}
           levering door heel Nederland!
-        </div>
+        </h1>
 
         <div className={CLS.subhead}>
           PVC-ramen en -deuren, schuifdeuren en rolluiken van hoge kwaliteit –

@@ -54,17 +54,23 @@ function CertSlider() {
             </svg>
           </button>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
             {CERT_IMAGES.map((_, i) => (
               <button
                 key={i}
                 type="button"
                 aria-label={`Ga naar certificaat ${i + 1}`}
+                aria-current={i === active}
                 onClick={() => setActive(i)}
-                className={`h-[8px] w-[8px] rounded-full transition-colors ${
-                  i === active ? "bg-white" : "bg-white/30"
-                }`}
-              />
+                className="grid h-[24px] w-[24px] place-items-center"
+              >
+                <span
+                  aria-hidden
+                  className={`block h-[8px] w-[8px] rounded-full transition-colors ${
+                    i === active ? "bg-white" : "bg-white/30"
+                  }`}
+                />
+              </button>
             ))}
           </div>
 

@@ -39,7 +39,11 @@ export function CatalogForm() {
               onSubmit={(e) => e.preventDefault()}
               aria-label='Catalogus aanvragen'
             >
+              <label htmlFor='catalog-email' className='sr-only'>
+                E-mail
+              </label>
               <input
+                id='catalog-email'
                 type='email'
                 required
                 value={email}
@@ -56,7 +60,11 @@ export function CatalogForm() {
                   />
                   +31
                 </span>
+                <label htmlFor='catalog-phone' className='sr-only'>
+                  Telefoonnummer
+                </label>
                 <input
+                  id='catalog-phone'
                   type='tel'
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
