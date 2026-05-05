@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { useT } from "@/components/LanguageProvider";
 
-const PRODUCT_IMAGES = [
+const DEFAULT_PRODUCT_IMAGES = [
   "/images/product-pvc-ramen.webp",
   "/images/product-voordeuren.webp",
   "/images/product-schuifdeuren.webp",
@@ -15,11 +15,13 @@ const PRODUCT_IMAGES = [
 const CTA =
   "mt-auto inline-flex h-[64px] w-full items-center justify-center rounded-[16px] bg-[#226CD5] text-[18px] font-bold capitalize text-white text-center [font-family:Roboto,Arial,sans-serif] sm:h-[80px] sm:text-[22px] lg:h-[104px] lg:text-[29px]";
 
-export function Products() {
+type ProductsProps = { images?: readonly string[] };
+
+export function Products({ images = DEFAULT_PRODUCT_IMAGES }: ProductsProps = {}) {
   const t = useT();
   const products = t.products.items.map((item, i) => ({
     ...item,
-    image: PRODUCT_IMAGES[i],
+    image: images[i] ?? DEFAULT_PRODUCT_IMAGES[i],
   }));
   return (
     <Section

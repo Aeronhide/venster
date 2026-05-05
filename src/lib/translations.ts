@@ -582,6 +582,17 @@ export const translations = {
           },
         ],
       },
+      consult: {
+        title: "Heb je professionele advies nodig?",
+        subtitle:
+          "Laat hieronder uw contactgegevens achter en wij nemen zo spoedig mogelijk contact met u op!",
+        phoneHint: "Geef het juiste telefoonnummer op!",
+        phonePlaceholder: "00-000-0000",
+        privacyBefore: "Ik ga akkoord met het ",
+        privacyLink: "privacybeleid",
+        cta: "Een consult aanvragen",
+        alt: "Valent adviseur met catalogus",
+      },
       faq: {
         title: "VRAGEN EN ANTWOORDEN",
         items: [
@@ -1209,6 +1220,17 @@ export const translations = {
             body: "No need to paint, no rust to fight, and the occasional cleaning with water and soap is hardly tiring.",
           },
         ],
+      },
+      consult: {
+        title: "Need professional advice?",
+        subtitle:
+          "Leave your contact details below and we will get back to you as soon as possible!",
+        phoneHint: "Please enter a valid phone number",
+        phonePlaceholder: "00-000-0000",
+        privacyBefore: "I agree with the ",
+        privacyLink: "privacy policy",
+        cta: "Request a consult",
+        alt: "Valent adviser with catalog",
       },
       faq: {
         title: "QUESTIONS AND ANSWERS",

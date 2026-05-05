@@ -1,51 +1,57 @@
 "use client";
 
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
-import { CheckIcon } from "@/components/ui/Icon";
 import { useT } from "@/components/LanguageProvider";
+
+const ROTO_IMG = "/images/roto.webp";
 
 export function PvcRoto() {
   const t = useT();
   return (
-    <Section ariaLabelledby="pvc-roto-title" className="bg-white">
+    <Section ariaLabelledby="pvc-roto-title" className="bg-[#F0F0F0]">
       <Container>
-        <article className="mx-auto max-w-[1672px] overflow-hidden rounded-[16px] bg-[#36383c] px-5 py-8 text-white sm:px-8 sm:py-12 lg:px-[60px] lg:py-[60px]">
-          <div className="grid gap-[24px] lg:grid-cols-[1fr_1fr] lg:gap-[60px]">
-            <div>
-              <span className="inline-flex h-[28px] items-center justify-center rounded-[7px] bg-[#006bd5] px-[14px] text-[14px] font-semibold uppercase text-white sm:text-[16px] lg:text-[18px]">
-                {t.pvcRamen.roto.tag}
-              </span>
-              <h2
-                id="pvc-roto-title"
-                className="mt-[20px] text-[26px] font-extrabold leading-[1.3] [font-family:Roboto,Arial,sans-serif] sm:text-[34px] lg:text-[44px]"
-              >
-                {t.pvcRamen.roto.title}
-              </h2>
-              <p className="mt-[20px] text-[16px] leading-[1.5] text-white/85 [font-family:Roboto,Arial,sans-serif] sm:text-[18px] lg:text-[20px]">
+        <div className="mx-auto max-w-[1200px]">
+          <h2
+            id="pvc-roto-title"
+            className="text-center text-[28px] font-extrabold uppercase leading-[1.2] tracking-tight text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[36px] lg:text-[42px]"
+          >
+            {t.pvcRamen.roto.tag}
+          </h2>
+
+          <div className="mt-[40px] grid items-start gap-[40px] lg:mt-[60px] lg:grid-cols-[1fr_1fr] lg:gap-[60px]">
+            {/* Left — body text + bullets */}
+            <div className="flex flex-col gap-[24px] text-[#000000] [font-family:Arial,sans-serif]">
+              <p className="text-[16px] font-bold leading-[1.55] sm:text-[17px] lg:text-[18px]">
                 {t.pvcRamen.roto.body}
               </p>
+
+              <div>
+                <p className="text-[16px] font-bold leading-[1.55] sm:text-[17px] lg:text-[18px]">
+                  {t.pvcRamen.roto.bulletsTitle}
+                </p>
+                <ul className="mt-[10px] list-disc space-y-[6px] pl-[24px] text-[16px] font-bold leading-[1.55] sm:text-[17px] lg:text-[18px]">
+                  {t.pvcRamen.roto.bullets.map((b) => (
+                    <li key={b}>{b}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
-            <div className="rounded-[12px] border border-white/10 bg-white/5 p-[20px] sm:p-[28px] lg:p-[32px]">
-              <p className="text-[16px] font-bold uppercase tracking-[0.04em] text-[#7bb1ff] sm:text-[18px] lg:text-[20px]">
-                {t.pvcRamen.roto.bulletsTitle}
-              </p>
-              <ul className="mt-[16px] space-y-[14px]">
-                {t.pvcRamen.roto.bullets.map((b) => (
-                  <li key={b} className="flex gap-3">
-                    <span className="mt-[2px] grid size-[28px] shrink-0 place-items-center rounded-[6px] bg-[radial-gradient(circle_at_center,#3b7ddd_0%,#7ba6e6_100%)]">
-                      <CheckIcon className="text-white" width={18} height={18} />
-                    </span>
-                    <p className="text-[15px] leading-[1.5] text-white/95 [font-family:Roboto,Arial,sans-serif] sm:text-[16px] lg:text-[18px]">
-                      {b}
-                    </p>
-                  </li>
-                ))}
-              </ul>
+            {/* Right — ROTO photo */}
+            <div className="relative mx-auto aspect-[375/450] w-full max-w-[375px] overflow-hidden rounded-[8px]">
+              <Image
+                src={ROTO_IMG}
+                alt={t.pvcRamen.roto.title}
+                fill
+                sizes="(min-width: 1024px) 375px, 90vw"
+                loading="lazy"
+                className="object-cover"
+              />
             </div>
           </div>
-        </article>
+        </div>
       </Container>
     </Section>
   );

@@ -7,7 +7,9 @@ import { PvcGlassTypes } from "@/components/sections/PvcGlassTypes";
 import { PvcRoto } from "@/components/sections/PvcRoto";
 import { PvcAccessories } from "@/components/sections/PvcAccessories";
 import { PvcAdvantages } from "@/components/sections/PvcAdvantages";
+import { PvcConsult } from "@/components/sections/PvcConsult";
 import { PvcFAQ } from "@/components/sections/PvcFAQ";
+import { Products } from "@/components/sections/Products";
 import { Process } from "@/components/sections/Process";
 import { InstallationForm } from "@/components/sections/InstallationForm";
 import { Projects } from "@/components/sections/Projects";
@@ -16,6 +18,13 @@ import { Recognition } from "@/components/sections/Recognition";
 import { Team } from "@/components/sections/Team";
 import { CatalogForm } from "@/components/sections/CatalogForm";
 import { Contact } from "@/components/sections/Contact";
+
+const PVC_PRODUCT_IMAGES = [
+  "/images/ontdek/on1.jpg",
+  "/images/ontdek/on2.jpg",
+  "/images/ontdek/on3.jpg",
+  "/images/ontdek/on4.webp",
+];
 
 export default function PvcRamenPage() {
   return (
@@ -28,9 +37,11 @@ export default function PvcRamenPage() {
       <PvcGlassTypes />
       <PvcRoto />
       <PvcAccessories />
+      <Products images={PVC_PRODUCT_IMAGES} />
+      <Process />
+      <PvcConsult />
       <PvcAdvantages />
       <div className="bg-[#F5F5F5]">
-        <Process />
         <InstallationForm />
         <Projects />
         <Certification />
