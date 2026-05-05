@@ -5,10 +5,12 @@ import "./globals.css";
 import { SITE_URL, site } from "@/lib/site";
 import { ScrollToTopOnMount } from "@/components/ScrollToTopOnMount";
 import { LanguageProvider } from "@/components/LanguageProvider";
+import { ModalProvider } from "@/components/ModalContext";
 import { SkipLink } from "@/components/SkipLink";
 import { Header } from "@/components/sections/Header";
 import { Footer } from "@/components/sections/Footer";
 import { StructuredData } from "@/components/StructuredData";
+import { Analytics } from "@/components/Analytics";
 
 const roboto = Roboto({
   subsets: ["latin", "latin-ext"],
@@ -103,13 +105,25 @@ export default function RootLayout({
   return (
     <html lang={site.language} className={`${roboto.variable} ${tildaSans.variable} antialiased`}>
       <body className="min-h-dvh bg-bg text-fg font-sans">
+        {/* GTM noscript — only active when JS is disabled */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=GTM-PFQ3RBWK`}
+            height="0"
+            width="0"
+            className="invisible hidden"
+          />
+        </noscript>
         <LanguageProvider>
-          <SkipLink />
-          <ScrollToTopOnMount />
-          <Header />
-          <main id="main">{children}</main>
-          <Footer />
-          <StructuredData />
+          <ModalProvider>
+            <SkipLink />
+            <ScrollToTopOnMount />
+            <Analytics />
+            <Header />
+            <main id="main">{children}</main>
+            <Footer />
+            <StructuredData />
+          </ModalProvider>
         </LanguageProvider>
       </body>
     </html>

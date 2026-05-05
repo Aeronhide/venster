@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
@@ -20,14 +20,35 @@ const CERT_FRAME =
 function CertSlider() {
   const t = useT();
   const [active, setActive] = useState(0);
+  const [lightbox, setLightbox] = useState<number | null>(null);
   const total = CERT_IMAGES.length;
+
+  useEffect(() => {
+    if (lightbox === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightbox(null);
+      if (e.key === "ArrowRight") setLightbox((i) => ((i ?? 0) + 1) % total);
+      if (e.key === "ArrowLeft") setLightbox((i) => ((i ?? 0) - 1 + total) % total);
+    };
+    const original = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = original;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [lightbox, total]);
 
   return (
     <>
-      {/* Mobile slider — one cert per view, controls (prev + dots + next) below */}
+      {/* Mobile slider */}
       <div className="mt-8 pb-8 sm:hidden sm:pb-0">
-        {/* Slider — full-width image */}
-        <div className={`${CERT_FRAME} h-[320px] w-full`}>
+        <button
+          type="button"
+          aria-label={`${t.certification.certAlt} ${active + 1}`}
+          onClick={() => setLightbox(active)}
+          className={`${CERT_FRAME} relative h-[320px] w-full cursor-zoom-in`}
+        >
           {CERT_IMAGES.map((src, i) => (
             <Image
               key={src}
@@ -41,9 +62,8 @@ function CertSlider() {
               }`}
             />
           ))}
-        </div>
+        </button>
 
-        {/* Controls — prev | dots | next, BELOW the slider */}
         <div className="mt-4 flex items-center justify-center gap-3">
           <button
             type="button"
@@ -89,24 +109,110 @@ function CertSlider() {
         </div>
       </div>
 
-      {/* Desktop / tablet grid — 4 cols, untouched */}
+      {/* Desktop / tablet grid */}
       <ul className="hidden sm:mt-12 sm:grid sm:grid-cols-4 sm:justify-items-center sm:gap-6 lg:mt-16 lg:gap-[58px]">
         {CERT_IMAGES.map((src, i) => (
-          <li
-            key={src + i}
-            className={`${CERT_FRAME} h-[340px] w-full max-w-[320px] lg:h-[415px]`}
-          >
-            <Image
-              src={src}
-              alt={`${t.certification.certAlt} ${i + 1}`}
-              fill
-              sizes="(min-width: 1024px) 320px, 40vw"
-              loading="lazy"
-              className="object-contain object-bottom px-4"
-            />
+          <li key={src + i} className="w-full max-w-[320px]">
+            <button
+              type="button"
+              aria-label={`${t.certification.certAlt} ${i + 1}`}
+              onClick={() => setLightbox(i)}
+              className={`${CERT_FRAME} h-[340px] w-full cursor-zoom-in lg:h-[415px]`}
+            >
+              <Image
+                src={src}
+                alt={`${t.certification.certAlt} ${i + 1}`}
+                fill
+                sizes="(min-width: 1024px) 320px, 40vw"
+                loading="lazy"
+                className="object-contain object-bottom px-4"
+              />
+            </button>
           </li>
         ))}
       </ul>
+
+      {/* Lightbox */}
+      {lightbox !== null && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${t.certification.certAlt} ${lightbox + 1}`}
+          className="fixed inset-0 z-[200] flex items-center justify-center bg-black/90"
+          onClick={() => setLightbox(null)}
+        >
+          {/* Close */}
+          <button
+            type="button"
+            aria-label="Sluiten"
+            onClick={() => setLightbox(null)}
+            className="absolute right-4 top-4 grid h-[44px] w-[44px] place-items-center rounded-full bg-white/10 text-white hover:bg-white/20"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+
+          {/* Prev */}
+          <button
+            type="button"
+            aria-label={t.certification.prevAria}
+            onClick={(e) => { e.stopPropagation(); setLightbox((i) => ((i ?? 0) - 1 + total) % total); }}
+            className="absolute left-4 grid h-[52px] w-[52px] place-items-center rounded-full bg-white/10 text-white hover:bg-white/20"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+
+          {/* Image */}
+          <div
+            className="relative h-[80vh] w-[90vw] max-w-[900px]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={CERT_IMAGES[lightbox]}
+              alt={`${t.certification.certAlt} ${lightbox + 1}`}
+              fill
+              sizes="90vw"
+              className="object-contain"
+              priority
+            />
+          </div>
+
+          {/* Next */}
+          <button
+            type="button"
+            aria-label={t.certification.nextAria}
+            onClick={(e) => { e.stopPropagation(); setLightbox((i) => ((i ?? 0) + 1) % total); }}
+            className="absolute right-4 grid h-[52px] w-[52px] place-items-center rounded-full bg-white/10 text-white hover:bg-white/20"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
+
+          {/* Dots */}
+          <div className="absolute bottom-6 flex gap-2">
+            {CERT_IMAGES.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                aria-label={`${t.certification.goToAria} ${i + 1}`}
+                onClick={(e) => { e.stopPropagation(); setLightbox(i); }}
+                className="grid h-[24px] w-[24px] place-items-center"
+              >
+                <span
+                  aria-hidden
+                  className={`block h-[8px] w-[8px] rounded-full transition-colors ${
+                    i === lightbox ? "bg-white" : "bg-white/30"
+                  }`}
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </>
   );
 }

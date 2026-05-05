@@ -5,6 +5,7 @@ import { Container } from '@/components/ui/Container';
 import { Section } from '@/components/ui/Section';
 import { site } from '@/lib/site';
 import { useT } from '@/components/LanguageProvider';
+import { useModal } from '@/components/ModalContext';
 
 // Tilda block rec1763574201 (T396, ONZE VESTIGINGEN with f5f5f5 inner card).
 // Title fs 30 -> 43px white bold uppercase ('ONZE VESTIGINGEN').
@@ -22,6 +23,7 @@ const EMAIL = site.email;
 
 export function Contact() {
   const t = useT();
+  const { openCallback } = useModal();
   return (
     <Section id='contact' ariaLabelledby='contact-title'>
       <Container>
@@ -93,12 +95,13 @@ export function Contact() {
                   </dd>
                 </div>
 
-                <a
-                  href='#zeropopup'
+                <button
+                  type="button"
+                  onClick={() => openCallback()}
                   className='mt-[12px] inline-flex h-[64px] w-full max-w-[400px] items-center justify-center rounded-[16px] bg-[#226CD5] text-[18px] font-bold capitalize text-white sm:h-[72px] sm:text-[22px] lg:h-[86px] lg:text-[29px]'
                 >
                   {t.contact.cta}
-                </a>
+                </button>
               </dl>
             </div>
 

@@ -1,3 +1,6 @@
+import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/site";
+import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Products } from "@/components/sections/Products";
@@ -17,12 +20,17 @@ import { CatalogForm } from "@/components/sections/CatalogForm";
 import { Sketches } from "@/components/sections/Sketches";
 import { Promotion } from "@/components/sections/Promotion";
 import { Contact } from "@/components/sections/Contact";
-import type { Metadata } from "next";
-import { SITE_URL } from "@/lib/site";
+import { Footer } from "@/components/sections/Footer";
+import { StructuredData } from "@/components/StructuredData";
 
 export const metadata: Metadata = {
+  title: "Venster Valent — PVC Windows, Doors & Roller Shutters across the Netherlands",
+  description:
+    "PVC windows, doors, roller shutters and sliding doors with European certification. " +
+    "5-year warranty, delivery within 45 days, fair prices. " +
+    "Consultation, measurement and installation across the Netherlands.",
   alternates: {
-    canonical: SITE_URL,
+    canonical: `${SITE_URL}/en`,
     languages: {
       nl: SITE_URL,
       en: `${SITE_URL}/en`,
@@ -30,30 +38,35 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default function EnHome() {
   return (
     <>
-      <Hero />
-      <About />
-      <Products />
-      <Features />
-      <Financing />
-      <div className="bg-[#F5F5F5]">
-        <Partners />
-        <Certification />
-        <WhyChoose />
-        <Process />
-        <Team />
-        <InstallationForm />
-        <Projects />
-        <RAL />
-        <Transport />
-        <Recognition />
-        <CatalogForm />
-        <Sketches />
-        <Promotion />
-        <Contact />
-      </div>
+      <Header />
+      <main id="main">
+        <Hero />
+        <About />
+        <Products />
+        <Features />
+        <Financing />
+        <div className="bg-[#F5F5F5]">
+          <Partners />
+          <Certification />
+          <WhyChoose />
+          <Process />
+          <Team />
+          <InstallationForm />
+          <Projects />
+          <RAL />
+          <Transport />
+          <Recognition />
+          <CatalogForm />
+          <Sketches />
+          <Promotion />
+          <Contact />
+        </div>
+      </main>
+      <Footer />
+      <StructuredData />
     </>
   );
 }
