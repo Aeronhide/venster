@@ -9,7 +9,9 @@ import { PvcAccessories } from "@/components/sections/PvcAccessories";
 import { PvcAdvantages } from "@/components/sections/PvcAdvantages";
 import { PvcConsult } from "@/components/sections/PvcConsult";
 import { PvcOnzeWerken } from "@/components/sections/PvcOnzeWerken";
+import { PvcCertified } from "@/components/sections/PvcCertified";
 import { PvcFAQ } from "@/components/sections/PvcFAQ";
+import { PvcReviews } from "@/components/sections/PvcReviews";
 import { Products } from "@/components/sections/Products";
 import { Process } from "@/components/sections/Process";
 import { InstallationForm } from "@/components/sections/InstallationForm";
@@ -42,12 +44,14 @@ export default function PvcRamenPage() {
       <Process />
       <PvcConsult />
       <PvcOnzeWerken />
+      <PvcCertified />
+      <PvcFAQ />
+      <PvcReviews />
       <PvcAdvantages />
       <div className="bg-[#F5F5F5]">
         <InstallationForm />
         <Projects />
         <Certification />
-        <PvcFAQ />
         <Recognition />
         <Team />
         <CatalogForm />

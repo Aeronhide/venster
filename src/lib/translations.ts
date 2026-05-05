@@ -589,6 +589,17 @@ export const translations = {
         goToAria: "Ga naar slide",
         altPrefix: "Werken — slide",
       },
+      reviews: {
+        title: "Wat klanten over ons zeggen",
+        prevAria: "Vorige beoordeling",
+        nextAria: "Volgende beoordeling",
+        goToAria: "Ga naar beoordeling",
+        altPrefix: "Klantbeoordeling",
+      },
+      certified: {
+        title: "Valent-producten zijn CE-gecertificeerd",
+        alt: "VALENT CE-certificering — technische tekening",
+      },
       consult: {
         title: "Heb je professionele advies nodig?",
         subtitle:
@@ -606,30 +617,33 @@ export const translations = {
           {
             q: "Waar bent u?",
             a: "We zien je graag op het volgende adres: Chișinău, ul. Konstantin Vârnav, 8.",
+            image: "/images/col1.webp",
+            link: "https://www.google.com/maps/place/VALENT.MD/@46.9969094,28.8292334,18z/data=!3m1!4b1!4m6!3m5!1s0x40c97d283c774acd:0x4cc7516e78e0e49d!8m2!3d46.9969081!4d28.8301438!16s%2Fg%2F11h1drqhnr?entry=ttu",
+            afterLink: "Openingstijden: maandag t/m vrijdag, 9:00 - 18:00 uur.",
           },
           {
             q: "Met welke profielen werkt u?",
-            a: "Wij zijn partner van de Duitse fabrikant GEALAN. Wij produceren ramen en deuren uit de volgende series: GEALAN S8000 74 mm, GEALAN LINEAR 74 mm, GEALAN S9000 82 mm — met een levensduur van 50 jaar.",
+            a: "Wij zijn partner van de Duitse fabrikant GEALAN.\nWij produceren ramen en deuren uit de volgende series:\nGEALAN S8000 74 mm\nGEALAN LINEAR 74 mm\nGEALAN S9000 82 mm,\nmet een levensduur van 50 jaar.",
           },
           {
             q: "Welke garantie biedt u?",
-            a: "Na voltooiing van de werkzaamheden krijgt u 5 jaar garantie op uw project — op het profiel, het glas, de mechanismen en de montagewerkzaamheden.",
+            a: "Na voltooiing van de werkzaamheden krijgt u 5 jaar garantie op uw project, op het profiel, het glas, de mechanismen en de montagewerkzaamheden.",
           },
           {
             q: "Hoe lang duurt het voordat u de bestelling uitvoert?",
-            a: "De uitvoeringstermijn hangt af van het type profiel dat u kiest. Voor projecten met PVC-profielen bedraagt de uitvoeringstermijn 21–45 werkdagen.",
+            a: "De uitvoeringstermijn hangt af van het type profiel dat u kiest. Voor projecten met PVC-profielen bedraagt de uitvoeringstermijn 21-45 werkdagen.",
           },
           {
             q: "LOW-E-glas of 4S-glas?",
-            a: "LOW-E reduceert warmteverlies; 4S combineert isolatie in de winter met zonwering in de zomer. Welke beter past hangt af van de oriëntatie van uw woning.",
+            a: "Wij raden u aan het type glas te kiezen op basis van de regio waar u woont en de hoeveelheid licht die uw woning binnenkomt.\nAls u in een gebied woont dat blootgesteld is aan zonlicht, raden wij u aan om 4-seizoenen glas te kiezen, omdat dit bescherming biedt tegen fel zonlicht en uw woning in de zomer koel houdt.\nAls u in een schaduwrijke omgeving woont, raden wij u aan om LOW-E-glas te kiezen voor meer licht in uw huis.",
           },
           {
             q: "Hoe kom je van condens op ramen af?",
-            a: "Condens ontstaat door luchtvochtigheid en onvoldoende ventilatie. Goede ventilatie en moderne hoogwaardige beglazing voorkomen condensvorming.",
+            a: "Condensatie op ramen ontstaat meestal door hoge luchtvochtigheid en slechte luchtcirculatie. Het probleem kan worden opgelost door: 1) regelmatig te ventileren; 2) de luchtvochtigheid tussen 30 en 60% te houden; 3) ervoor zorgen dat warme lucht bij de ramen kan komen (blokkeer radiatoren niet met brede vensterbanken). Installeer indien mogelijk een ventilatieklep voor een constante toevoer van verse lucht.",
           },
           {
             q: "Wanneer moeten ramen worden geplaatst: vóór of na de renovatie van de muren?",
-            a: "Wij raden aan om ramen te plaatsen vóór u begint met de afwerking. Zo werkt u de montagesneden en voegen netjes af en voorkomt u beschadiging tijdens de plaatsing.",
+            a: "Wij raden aan om ramen te plaatsen voordat u begint met de afwerking. Zo kunt u de montagesneden en voegen netjes afwerken en voorkomt u dat de nieuwe afwerking tijdens de plaatsing beschadigd raakt.",
           },
         ],
       },
@@ -1235,6 +1249,17 @@ export const translations = {
         goToAria: "Go to slide",
         altPrefix: "Our works — slide",
       },
+      reviews: {
+        title: "What clients say about us",
+        prevAria: "Previous review",
+        nextAria: "Next review",
+        goToAria: "Go to review",
+        altPrefix: "Client review",
+      },
+      certified: {
+        title: "VALENT products are CE-certified",
+        alt: "VALENT CE certification — technical drawing",
+      },
       consult: {
         title: "Need professional advice?",
         subtitle:
@@ -1252,10 +1277,13 @@ export const translations = {
           {
             q: "Where are you located?",
             a: "We'd love to see you at: Chișinău, Konstantin Vârnav street 8.",
+            image: "/images/col1.webp",
+            link: "https://www.google.com/maps/place/VALENT.MD/@46.9969094,28.8292334,18z/data=!3m1!4b1!4m6!3m5!1s0x40c97d283c774acd:0x4cc7516e78e0e49d!8m2!3d46.9969081!4d28.8301438!16s%2Fg%2F11h1drqhnr?entry=ttu",
+            afterLink: "Opening hours: Monday to Friday, 9:00 - 18:00.",
           },
           {
             q: "Which profiles do you work with?",
-            a: "We are a partner of the German manufacturer GEALAN. We produce windows and doors from the following series: GEALAN S8000 74 mm, GEALAN LINEAR 74 mm, GEALAN S9000 82 mm — with a service life of 50 years.",
+            a: "We are a partner of the German manufacturer GEALAN.\nWe produce windows and doors from the following series:\nGEALAN S8000 74 mm\nGEALAN LINEAR 74 mm\nGEALAN S9000 82 mm,\nwith a service life of 50 years.",
           },
           {
             q: "What warranty do you offer?",
@@ -1263,15 +1291,15 @@ export const translations = {
           },
           {
             q: "How long does it take to fulfil the order?",
-            a: "The lead time depends on the chosen profile type. For PVC projects, the lead time is 21–45 working days.",
+            a: "The lead time depends on the chosen profile type. For PVC projects, the lead time is 21-45 working days.",
           },
           {
             q: "LOW-E glass or 4S glass?",
-            a: "LOW-E reduces heat loss; 4S combines insulation in winter with solar shading in summer. Which one fits best depends on your home's orientation.",
+            a: "We recommend choosing the glass type based on the region where you live and the amount of light entering your home.\nIf you live in an area exposed to direct sunlight, we recommend 4-seasons glass — it protects against bright sunlight and keeps your home cool in summer.\nIf you live in a shaded environment, we recommend LOW-E glass for more light inside.",
           },
           {
             q: "How do you get rid of condensation on windows?",
-            a: "Condensation is caused by humidity and insufficient ventilation. Good ventilation and modern high-quality glazing prevent condensation.",
+            a: "Condensation on windows usually appears because of high humidity and poor air circulation. You can fix it by: 1) ventilating regularly; 2) keeping humidity between 30 and 60%; 3) making sure warm air can reach the windows (don't block radiators with wide window sills). If possible, install a ventilation valve for a constant supply of fresh air.",
           },
           {
             q: "When should windows be installed: before or after wall renovation?",
