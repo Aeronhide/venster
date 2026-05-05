@@ -56,7 +56,7 @@ export function Financing() {
 
                 <a
                   href="#zeropopup"
-                  className="mt-8 inline-flex h-[86px] w-full max-w-[430px] items-center justify-center rounded-[16px] bg-[#226CD5] px-8 text-center text-[20px] font-bold capitalize text-white [font-family:Roboto,Arial,sans-serif] lg:text-[24px]"
+                  className="mt-8 inline-flex h-[64px] w-full max-w-[430px] items-center justify-center rounded-[16px] bg-[#226CD5] px-8 text-center text-[20px] font-bold capitalize text-white [font-family:Roboto,Arial,sans-serif] sm:h-[80px] lg:h-[86px] lg:text-[24px]"
                 >
                   Vraag vrijblijvend advies aan
                 </a>
@@ -77,7 +77,7 @@ export function Financing() {
                 <strong className="font-bold">Nationaal Warmtefonds.</strong>
               </p>
 
-              <p className="mt-[40px] text-[20px] uppercase leading-[1] text-[#191919] lg:text-[29px]">
+              <p className="mt-[28px] text-[20px] uppercase leading-[1] text-[#191919] lg:mt-[40px] lg:text-[29px]">
                 <strong className="font-bold text-[#006bd5]">VALENT</strong>{" "}
                 begeleidt u stap voor stap:
               </p>
@@ -86,19 +86,21 @@ export function Financing() {
                 {steps.map((s) => {
                   const isQuestion = s.icon.endsWith("question_mark.png");
                   return (
-                    <li key={s.label} className="flex items-center gap-5">
-                      <span className="grid size-[65px] shrink-0 place-items-center rounded-full bg-[#006bd5]">
+                    <li key={s.label} className="flex items-center gap-4 lg:gap-5">
+                      <span className="grid size-[44px] shrink-0 place-items-center rounded-full bg-[#006bd5] lg:size-[65px]">
                         <Image
                           src={s.icon}
                           alt=""
                           width={isQuestion ? 44 : 30}
                           height={isQuestion ? 44 : 30}
                           className={
-                            isQuestion ? "h-[44px] w-[44px]" : "h-[30px] w-[30px]"
+                            isQuestion
+                              ? "h-[28px] w-[28px] lg:h-[44px] lg:w-[44px]"
+                              : "h-[20px] w-[20px] lg:h-[30px] lg:w-[30px]"
                           }
                         />
                       </span>
-                      <span className="text-[18px] font-bold text-[#505050] lg:text-[23px]">
+                      <span className="text-[20px] font-bold text-[#505050] lg:text-[23px]">
                         {s.label}
                       </span>
                     </li>

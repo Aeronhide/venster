@@ -71,7 +71,7 @@ export function Process() {
           {steps.map((s) => (
             <li
               key={s.n}
-              className='relative flex min-h-[712.4px] w-full flex-col rounded-[16px] bg-[#F5F5F5] p-[20px] pb-[36px] lg:max-w-[356.8px]'
+              className='relative flex w-full flex-col rounded-[16px] bg-[#F5F5F5] p-[20px] pb-[36px] lg:min-h-[712.4px] lg:max-w-[356.8px]'
             >
               {/* Top photo — fixed 191px tall, sits inside the card with padding, rounded on all sides */}
               <div className='relative h-[191px] w-full overflow-hidden rounded-[16px]'>

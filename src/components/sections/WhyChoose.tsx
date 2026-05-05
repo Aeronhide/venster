@@ -98,12 +98,12 @@ export function WhyChoose() {
           {/* 2 columns: blue card (with person image inside, on the right) | white cards */}
           <div className='mt-10 grid gap-6 lg:grid-cols-[780fr_367fr] lg:gap-[20px]'>
             {/* Big blue radial-gradient card. Inside: bullets on the left, person image on the right */}
-            <div className='overflow-hidden rounded-[22px] bg-[radial-gradient(ellipse_at_right,#7ba6e6_0%,#3b7ddd_45%,#3b7ddd_100%)] px-6 pt-8 sm:px-8 sm:pt-10 lg:px-[44px] lg:pt-[48px]'>
-              <div className='flex flex-col gap-8 lg:flex-row lg:items-end lg:gap-[40px]'>
-                <ul className='flex-1 space-y-8 pb-8 sm:pb-10 lg:pb-[48px]'>
+            <div className='overflow-hidden rounded-[22px] bg-[radial-gradient(ellipse_at_right,#7ba6e6_0%,#3b7ddd_45%,#3b7ddd_100%)] px-5 pt-6 sm:px-8 sm:pt-10 lg:px-[44px] lg:pt-[48px]'>
+              <div className='flex flex-col gap-6 sm:gap-8 lg:flex-row lg:items-end lg:gap-[40px]'>
+                <ul className='flex-1 space-y-6 pb-6 sm:space-y-8 sm:pb-10 lg:pb-[48px]'>
                   {reasons.map((r) => (
-                    <li key={r.title} className='flex gap-5'>
-                      <span className='mt-1 grid size-[45px] shrink-0 place-items-center rounded-[6px] bg-white/20 ring-1 ring-white/40'>
+                    <li key={r.title} className='flex gap-3 sm:gap-5'>
+                      <span className='mt-1 grid size-[36px] shrink-0 place-items-center rounded-[6px] bg-white/20 ring-1 ring-white/40 sm:size-[45px]'>
                         <CheckIcon
                           className='text-white'
                           width={22}
@@ -111,10 +111,10 @@ export function WhyChoose() {
                         />
                       </span>
                       <div className='flex-1'>
-                        <h3 className='text-[18px] font-bold uppercase leading-[1.2] text-white lg:text-[26px]'>
+                        <h3 className='text-[17px] font-bold uppercase leading-[1.2] text-white sm:text-[18px] lg:text-[26px]'>
                           {r.title}
                         </h3>
-                        <p className='mt-2 text-[16px] leading-[1.5] text-white/95 lg:text-[26px] lg:leading-[1.4]'>
+                        <p className='mt-2 text-[15px] leading-[1.5] text-white/95 sm:text-[16px] lg:text-[26px] lg:leading-[1.4]'>
                           {r.body}
                         </p>
                       </div>

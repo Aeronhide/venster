@@ -51,7 +51,7 @@ const products: Product[] = [
 ];
 
 const CTA =
-  "mt-auto inline-flex h-[104px] w-full items-center justify-center rounded-[16px] bg-[#226CD5] text-[24px] font-bold capitalize text-white text-center [font-family:Roboto,Arial,sans-serif] lg:text-[29px]";
+  "mt-auto inline-flex h-[64px] w-full items-center justify-center rounded-[16px] bg-[#226CD5] text-[18px] font-bold capitalize text-white text-center [font-family:Roboto,Arial,sans-serif] sm:h-[80px] sm:text-[22px] lg:h-[104px] lg:text-[29px]";
 
 export function Products() {
   return (
@@ -64,7 +64,7 @@ export function Products() {
         <div className="mx-auto max-w-[1672px]">
           <h2
             id="producten-title"
-            className="text-center text-[40px] font-black uppercase leading-[1.55] text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[52px] lg:text-[63px]"
+            className="text-center text-[28px] font-black uppercase leading-[1.55] text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[40px] lg:text-[63px]"
           >
             ONTDEK ONZE PRODUCTEN
           </h2>
@@ -73,7 +73,7 @@ export function Products() {
             {products.map((p) => (
               <li
                 key={p.title}
-                className="flex flex-col rounded-[16px] bg-white p-[36px] shadow-[3px_0_20px_rgba(80,80,80,0.1)]"
+                className="flex flex-col rounded-[16px] bg-white p-[20px] shadow-[3px_0_20px_rgba(80,80,80,0.1)] sm:p-[28px] lg:p-[36px]"
               >
                 <div className="relative aspect-[245/230] overflow-hidden rounded-[12px] bg-[#f5f5f5]">
                   <Image
@@ -86,11 +86,11 @@ export function Products() {
                   />
                 </div>
 
-                <h3 className="mt-[24px] text-[28px] font-bold leading-[1.3] text-[#082b4b] [font-family:Roboto,Arial,sans-serif] lg:text-[35px]">
+                <h3 className="mt-[24px] text-[22px] font-bold leading-[1.3] text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[28px] lg:text-[35px]">
                   {p.title}
                 </h3>
 
-                <ul className="mt-[16px] mb-[48px] flex-1 list-disc space-y-[8px] pl-[24px] text-[18px] leading-[1.55] text-[#3e3e3e] marker:text-[#226CD5] [font-family:Roboto,Arial,sans-serif] lg:text-[23px]">
+                <ul className="mt-[16px] mb-[24px] flex-1 list-disc space-y-[8px] pl-[24px] text-[18px] leading-[1.55] text-[#3e3e3e] marker:text-[#226CD5] [font-family:Roboto,Arial,sans-serif] sm:mb-[36px] lg:mb-[48px] lg:text-[23px]">
                   {p.bullets.map((b) => (
                     <li key={b}>{b}</li>
                   ))}

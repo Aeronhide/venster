@@ -19,17 +19,17 @@ export function Promotion() {
             Bekijk de laatste promoties
           </h2>
 
-          <article className="relative mt-[40px] overflow-hidden rounded-[22px] bg-[#f5f5f5] p-[40px] text-[#333333] sm:p-[60px] lg:p-[80px]">
-            <div className="grid items-center gap-[40px] lg:grid-cols-[1fr_1fr]">
+          <article className="relative mt-[24px] overflow-hidden rounded-[16px] bg-[#f5f5f5] p-[20px] text-[#333333] sm:mt-[32px] sm:rounded-[20px] sm:p-[40px] lg:mt-[40px] lg:rounded-[22px] lg:p-[80px]">
+            <div className="grid items-center gap-[24px] sm:gap-[32px] lg:grid-cols-[1fr_1fr] lg:gap-[40px]">
               <div className="max-w-[770px]">
-                <h3 className="text-[26px] font-medium leading-[1.3] text-[#333333] [font-family:Roboto,Arial,sans-serif] sm:text-[34px] lg:text-[46px]">
+                <h3 className="pr-[48px] text-[22px] font-medium leading-[1.3] text-[#333333] [font-family:Roboto,Arial,sans-serif] sm:pr-[60px] sm:text-[32px] lg:pr-0 lg:text-[46px]">
                   Profiteer van{" "}
                   <strong className="font-bold">20% korting</strong> op ramen en
                   ontvang <strong className="font-bold">gratis</strong> een
                   ventilatierooster voor een van jouw ramen
                 </h3>
 
-                <p className="mt-[28px] max-w-[470px] text-[17px] font-medium leading-[1.3] text-[#333333] [font-family:Roboto,Arial,sans-serif] sm:text-[20px]">
+                <p className="mt-[16px] max-w-[470px] text-[15px] font-medium leading-[1.4] text-[#333333] [font-family:Roboto,Arial,sans-serif] sm:mt-[20px] sm:text-[17px] lg:mt-[28px] lg:text-[20px] lg:leading-[1.3]">
                   Geef de promotiecode{" "}
                   <strong className="font-bold">VENTILATIEROOSTER</strong> door
                   aan de manager en profiteer van de aanbieding
@@ -37,7 +37,7 @@ export function Promotion() {
 
                 <a
                   href="#zeropopup"
-                  className="mt-[36px] inline-flex h-[86px] w-full max-w-[400px] items-center justify-center rounded-[16px] bg-[#226CD5] text-[29px] font-bold capitalize text-white [font-family:Roboto,Arial,sans-serif]"
+                  className="mt-[20px] inline-flex h-[60px] w-full max-w-[400px] items-center justify-center rounded-[12px] bg-[#226CD5] text-[18px] font-bold capitalize text-white [font-family:Roboto,Arial,sans-serif] sm:mt-[28px] sm:h-[76px] sm:rounded-[14px] sm:text-[22px] lg:mt-[36px] lg:h-[86px] lg:rounded-[16px] lg:text-[29px]"
                 >
                   Plan een bezoek
                 </a>
@@ -57,7 +57,7 @@ export function Promotion() {
 
             <span
               aria-hidden
-              className="absolute right-[60px] top-[40px] grid h-[58px] w-[70px] place-items-center rounded-full bg-[#71a6f1] text-[43px] font-bold leading-none text-white [font-family:Roboto,Arial,sans-serif] sm:right-[80px]"
+              className="absolute right-[16px] top-[16px] grid h-[36px] w-[44px] place-items-center rounded-full bg-[#71a6f1] text-[24px] font-bold leading-none text-white [font-family:Roboto,Arial,sans-serif] sm:right-[40px] sm:top-[28px] sm:h-[48px] sm:w-[58px] sm:text-[34px] lg:right-[60px] lg:top-[40px] lg:h-[58px] lg:w-[70px] lg:text-[43px]"
             >
               %
             </span>

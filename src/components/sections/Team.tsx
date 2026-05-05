@@ -49,11 +49,11 @@ export function Team() {
           Ons project- en ondersteuningsteam
         </h2>
 
-        <ul className="mx-auto mt-[40px] grid max-w-[1500px] gap-[20px] sm:grid-cols-2 lg:mt-[60px] lg:grid-cols-4">
+        <ul className="-mx-2 mt-[40px] flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto px-2 pb-4 sm:mx-auto sm:grid sm:max-w-[1500px] sm:grid-cols-2 sm:gap-[20px] sm:overflow-visible sm:px-0 sm:pb-0 lg:mt-[60px] lg:grid-cols-4">
           {team.map((m) => (
             <li
               key={m.name}
-              className="flex flex-col overflow-hidden rounded-[16px] bg-white"
+              className="flex w-[88%] shrink-0 snap-center flex-col overflow-hidden rounded-[16px] bg-white sm:w-auto sm:shrink"
             >
               <div className="relative aspect-square w-full overflow-hidden bg-[#f5f5f5]">
                 <Image
@@ -66,11 +66,11 @@ export function Team() {
                 />
               </div>
 
-              <div className="flex flex-1 flex-col p-[24px] text-center">
-                <h3 className="text-[20px] font-semibold leading-[1.3] text-[#082b4b]">
+              <div className="flex flex-1 flex-col p-[20px] text-center sm:p-[24px]">
+                <h3 className="text-[18px] font-semibold leading-[1.3] text-[#082b4b] sm:text-[20px]">
                   {m.name}
                 </h3>
-                <p className="mt-[12px] text-[16px] leading-[1.5] text-[#191919]">
+                <p className="mt-[12px] text-[15px] leading-[1.5] text-[#191919] sm:text-[16px]">
                   <strong className="font-bold">{m.role}</strong>
                   <br />
                   {m.body}

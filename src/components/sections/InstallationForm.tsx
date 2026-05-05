@@ -97,7 +97,7 @@ export function InstallationForm() {
 
               <button
                 type='submit'
-                className='mt-[8px] inline-flex h-[86px] w-full items-center justify-center rounded-[16px] bg-[#226CD5] px-[24px] text-[20px] font-bold capitalize text-white [font-family:Roboto,Arial,sans-serif] lg:text-[24px]'
+                className='mt-[8px] inline-flex h-[64px] w-full items-center justify-center rounded-[16px] bg-[#226CD5] px-[24px] text-[18px] font-bold capitalize text-white [font-family:Roboto,Arial,sans-serif] sm:h-[72px] sm:text-[20px] lg:h-[86px] lg:text-[24px]'
               >
                 Plan een inmeting
               </button>

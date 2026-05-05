@@ -21,7 +21,7 @@ export function CatalogForm() {
   return (
     <Section id='catalog' ariaLabelledby='catalog-title' className='bg-white'>
       <Container>
-        <article className='relative mx-auto grid max-w-[1670px] gap-[40px] overflow-hidden rounded-[23px] bg-[linear-gradient(58deg,rgba(0,26,50,1)_0%,rgba(0,26,48,0.74)_62%,rgba(0,73,145,0.5)_100%)] p-[60px] text-white lg:grid-cols-[1fr_1fr] lg:items-center lg:p-[80px]'>
+        <article className='relative mx-auto grid max-w-[1670px] gap-[40px] overflow-hidden rounded-[23px] bg-[linear-gradient(58deg,rgba(0,26,50,1)_0%,rgba(0,26,48,0.74)_62%,rgba(0,73,145,0.5)_100%)] p-[24px] text-white sm:p-[40px] lg:grid-cols-[1fr_1fr] lg:items-center lg:p-[80px]'>
           <div className='relative z-10 max-w-[660px]'>
             <span className='inline-flex h-[24px] items-center justify-center rounded-[7px] bg-[#006bd5] px-[14px] text-[12px] font-semibold uppercase text-white [font-family:Roboto,Arial,sans-serif]'>
               Catalog
@@ -29,7 +29,7 @@ export function CatalogForm() {
 
             <h2
               id='catalog-title'
-              className='mt-[24px] text-[52px] font-bold leading-[1.3] tracking-[-1px] text-white [font-family:Roboto,Arial,sans-serif]'
+              className='mt-[24px] text-[28px] font-bold leading-[1.3] tracking-[-1px] text-white [font-family:Roboto,Arial,sans-serif] sm:text-[36px] lg:text-[52px]'
             >
               Vul uw e-mail in om de catalogus te ontvangen
             </h2>
@@ -45,11 +45,11 @@ export function CatalogForm() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder='exemple@mail.com'
-                className='block h-[72px] w-full rounded-[12px] bg-white px-[20px] text-[20px] text-black outline-none [font-family:Roboto,Arial,sans-serif] placeholder:text-black/40 focus:ring-2 focus:ring-[#66a6e6]'
+                className='block h-[64px] w-full rounded-[12px] bg-white px-[20px] text-[18px] text-black outline-none [font-family:Roboto,Arial,sans-serif] placeholder:text-black/40 focus:ring-2 focus:ring-[#66a6e6] sm:h-[72px] sm:text-[20px]'
               />
 
-              <div className='flex h-[72px] items-stretch overflow-hidden rounded-[12px] bg-white ring-1 ring-white/10 focus-within:ring-2 focus-within:ring-[#66a6e6]'>
-                <span className='flex items-center gap-[8px] bg-white px-[16px] text-[20px] text-black [font-family:Roboto,Arial,sans-serif]'>
+              <div className='flex h-[64px] items-stretch overflow-hidden rounded-[12px] bg-white ring-1 ring-white/10 focus-within:ring-2 focus-within:ring-[#66a6e6] sm:h-[72px]'>
+                <span className='flex items-center gap-[8px] bg-white px-[16px] text-[18px] text-black [font-family:Roboto,Arial,sans-serif] sm:text-[20px]'>
                   <span
                     aria-hidden
                     className='inline-block h-[14px] w-[20px] rounded-[2px] bg-[linear-gradient(to_bottom,#AE1C28_33%,#fff_33%_66%,#21468B_66%)]'
@@ -61,7 +61,7 @@ export function CatalogForm() {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder='00-000-0000'
-                  className='h-full flex-1 bg-white px-[12px] text-[20px] text-black outline-none [font-family:Roboto,Arial,sans-serif] placeholder:text-black/40'
+                  className='h-full flex-1 bg-white px-[12px] text-[18px] text-black outline-none [font-family:Roboto,Arial,sans-serif] placeholder:text-black/40 sm:text-[20px]'
                 />
               </div>
 
@@ -83,14 +83,14 @@ export function CatalogForm() {
 
               <button
                 type='submit'
-                className='block h-[86px] w-full rounded-[16px] bg-[#226CD5] text-[29px] font-bold capitalize text-white [font-family:Roboto,Arial,sans-serif]'
+                className='block h-[64px] w-full rounded-[16px] bg-[#226CD5] text-[18px] font-bold capitalize text-white [font-family:Roboto,Arial,sans-serif] sm:h-[72px] sm:text-[22px] lg:h-[86px] lg:text-[29px]'
               >
                 Verzenden
               </button>
             </form>
           </div>
 
-          <div className='relative h-full min-h-[440px]'>
+          <div className='relative h-full min-h-[280px] sm:min-h-[360px] lg:min-h-[440px]'>
             <div className='absolute inset-0 grid place-items-center'>
               <div className='relative aspect-[768/512] w-full max-w-[660px] -rotate-[9deg]'>
                 <Image

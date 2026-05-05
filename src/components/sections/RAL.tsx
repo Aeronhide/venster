@@ -14,18 +14,18 @@ export function RAL() {
   return (
     <Section ariaLabel="RAL keurmerk" className="bg-white">
       <Container>
-        <article className="mx-auto grid max-w-[1670px] gap-[40px] overflow-hidden rounded-[32px] bg-black p-[60px] text-white lg:grid-cols-[610px_1fr] lg:items-center lg:p-[80px]">
+        <article className="mx-auto grid max-w-[1670px] gap-[24px] overflow-hidden rounded-[20px] bg-black p-[24px] text-white sm:gap-[32px] sm:rounded-[28px] sm:p-[40px] lg:grid-cols-[610px_1fr] lg:items-center lg:gap-[40px] lg:rounded-[32px] lg:p-[80px]">
           <div className="max-w-[610px]">
-            <span className="inline-flex h-[27px] items-center justify-center rounded-[7px] bg-[#006bd5] px-[14px] text-[17px] font-semibold text-white [font-family:Roboto,Arial,sans-serif]">
+            <span className="inline-flex h-[24px] items-center justify-center rounded-[7px] bg-[#006bd5] px-[12px] text-[14px] font-semibold text-white [font-family:Roboto,Arial,sans-serif] sm:h-[27px] sm:px-[14px] sm:text-[17px]">
               Kwaliteit
             </span>
 
-            <h2 className="mt-[28px] text-[43px] font-bold leading-[1.3] text-white [font-family:Roboto,Arial,sans-serif]">
+            <h2 className="mt-[20px] text-[26px] font-bold leading-[1.3] text-white [font-family:Roboto,Arial,sans-serif] sm:mt-[24px] sm:text-[34px] lg:mt-[28px] lg:text-[43px]">
               Onze producten zijn bekroond met het RAL-keurmerk &ndash; de
               hoogste kwaliteitsstandaard in Europa
             </h2>
 
-            <p className="mt-[24px] text-[22px] font-semibold leading-[1.3] text-[#d2d2d2] [font-family:Roboto,Arial,sans-serif]">
+            <p className="mt-[16px] text-[16px] font-semibold leading-[1.4] text-[#d2d2d2] [font-family:Roboto,Arial,sans-serif] sm:mt-[20px] sm:text-[18px] lg:mt-[24px] lg:text-[22px] lg:leading-[1.3]">
               Uitgerust met de nieuwste automatische Elumatec-installaties en
               -machines, computerondersteund.
               <br />
@@ -52,10 +52,10 @@ export function RAL() {
               className="object-cover opacity-90"
             />
             <span className="pointer-events-none absolute inset-0 grid place-items-center">
-              <span className="grid h-[98px] w-[140px] place-items-center rounded-[16px] bg-black/70 transition-colors group-hover:bg-black/85">
+              <span className="grid h-[64px] w-[92px] place-items-center rounded-[12px] bg-black/70 transition-colors group-hover:bg-black/85 sm:h-[80px] sm:w-[114px] sm:rounded-[14px] lg:h-[98px] lg:w-[140px] lg:rounded-[16px]">
                 <span
                   aria-hidden
-                  className="block h-0 w-0 translate-x-[3px] border-y-[14px] border-l-[22px] border-y-transparent border-l-white"
+                  className="block h-0 w-0 translate-x-[2px] border-y-[10px] border-l-[16px] border-y-transparent border-l-white sm:translate-x-[3px] sm:border-y-[12px] sm:border-l-[18px] lg:border-y-[14px] lg:border-l-[22px]"
                 />
               </span>
             </span>

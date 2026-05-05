@@ -38,65 +38,106 @@ export function Projects() {
           ONZE AFGERONDE PROJECTEN IN NEDERLAND!
         </h2>
 
-        <div className="mx-auto mt-[40px] flex max-w-[960px] items-center gap-[16px] lg:mt-[90px]">
-          {/* Prev button — outside slider, vertically centered */}
-          <button
-            type="button"
-            aria-label="Vorig project"
-            onClick={() =>
-              setActive((i) => (i - 1 + projects.length) % projects.length)
-            }
-            className="grid h-[56px] w-[56px] shrink-0 place-items-center rounded-full bg-white text-[#082b4b] shadow ring-1 ring-black/5 hover:bg-[#f5f5f5]"
-          >
+        {(() => {
+          const prev = () =>
+            setActive((i) => (i - 1 + projects.length) % projects.length);
+          const next = () => setActive((i) => (i + 1) % projects.length);
+          const PrevIcon = (
             <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M15 18l-6-6 6-6" />
             </svg>
-          </button>
-
-          {/* Slider image — fade transition between projects */}
-          <div className="relative aspect-[860/550] w-full overflow-hidden rounded-[16px] bg-black">
-            {projects.map((src, i) => (
-              <Image
-                key={src}
-                src={src}
-                alt={`Project ${i + 1}`}
-                fill
-                sizes="(min-width: 1024px) 1238px, 92vw"
-                priority={i === 0}
-                loading={i === 0 ? "eager" : "lazy"}
-                className={`object-cover transition-opacity duration-500 ease-in-out ${
-                  i === active ? "opacity-100" : "opacity-0"
-                }`}
-              />
-            ))}
-          </div>
-
-          {/* Next button — outside slider, vertically centered */}
-          <button
-            type="button"
-            aria-label="Volgend project"
-            onClick={() => setActive((i) => (i + 1) % projects.length)}
-            className="grid h-[56px] w-[56px] shrink-0 place-items-center rounded-full bg-white text-[#082b4b] shadow ring-1 ring-black/5 hover:bg-[#f5f5f5]"
-          >
+          );
+          const NextIcon = (
             <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M9 6l6 6-6 6" />
             </svg>
-          </button>
-        </div>
+          );
+          const dots = (
+            <div className="flex flex-wrap justify-center gap-[8px]">
+              {projects.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  aria-label={`Ga naar project ${i + 1}`}
+                  onClick={() => setActive(i)}
+                  className={`h-[8px] w-[8px] rounded-full ${
+                    i === active ? "bg-[#082b4b]" : "bg-[#c7c7c7]"
+                  }`}
+                />
+              ))}
+            </div>
+          );
+          return (
+            <>
+              {/* Slider row — desktop arrows flank the image; mobile shows just the image */}
+              <div className="mt-[28px] flex items-center lg:mx-auto lg:mt-[90px] lg:max-w-[960px] lg:gap-[16px]">
+                {/* Desktop prev — hidden on mobile */}
+                <button
+                  type="button"
+                  aria-label="Vorig project"
+                  onClick={prev}
+                  className="hidden h-[56px] w-[56px] shrink-0 place-items-center rounded-full bg-white text-[#082b4b] shadow ring-1 ring-black/5 hover:bg-[#f5f5f5] lg:grid"
+                >
+                  {PrevIcon}
+                </button>
 
-        <div className="mx-auto mt-[20px] flex max-w-[960px] flex-wrap justify-center gap-[8px]">
-          {projects.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              aria-label={`Ga naar project ${i + 1}`}
-              onClick={() => setActive(i)}
-              className={`h-[8px] w-[8px] rounded-full ${
-                i === active ? "bg-[#082b4b]" : "bg-[#c7c7c7]"
-              }`}
-            />
-          ))}
-        </div>
+                {/* Slider image — full-width on mobile inside the section's padding */}
+                <div className="relative aspect-[860/550] w-full overflow-hidden rounded-[20px] bg-black lg:rounded-[16px]">
+                  {projects.map((src, i) => (
+                    <Image
+                      key={src}
+                      src={src}
+                      alt={`Project ${i + 1}`}
+                      fill
+                      sizes="(min-width: 1024px) 1238px, 100vw"
+                      priority={i === 0}
+                      loading={i === 0 ? "eager" : "lazy"}
+                      className={`object-cover transition-opacity duration-500 ease-in-out ${
+                        i === active ? "opacity-100" : "opacity-0"
+                      }`}
+                    />
+                  ))}
+                </div>
+
+                {/* Desktop next — hidden on mobile */}
+                <button
+                  type="button"
+                  aria-label="Volgend project"
+                  onClick={next}
+                  className="hidden h-[56px] w-[56px] shrink-0 place-items-center rounded-full bg-white text-[#082b4b] shadow ring-1 ring-black/5 hover:bg-[#f5f5f5] lg:grid"
+                >
+                  {NextIcon}
+                </button>
+              </div>
+
+              {/* Mobile control row — prev + dots + next BELOW the slider */}
+              <div className="mt-[20px] flex items-center justify-center gap-[12px] lg:hidden">
+                <button
+                  type="button"
+                  aria-label="Vorig project"
+                  onClick={prev}
+                  className="grid h-[44px] w-[44px] shrink-0 place-items-center rounded-full bg-white text-[#082b4b] shadow ring-1 ring-black/5 hover:bg-[#f5f5f5]"
+                >
+                  {PrevIcon}
+                </button>
+                {dots}
+                <button
+                  type="button"
+                  aria-label="Volgend project"
+                  onClick={next}
+                  className="grid h-[44px] w-[44px] shrink-0 place-items-center rounded-full bg-white text-[#082b4b] shadow ring-1 ring-black/5 hover:bg-[#f5f5f5]"
+                >
+                  {NextIcon}
+                </button>
+              </div>
+
+              {/* Desktop dots row */}
+              <div className="mx-auto mt-[20px] hidden max-w-[960px] lg:block">
+                {dots}
+              </div>
+            </>
+          );
+        })()}
       </Container>
     </Section>
   );

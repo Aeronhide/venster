@@ -21,13 +21,13 @@ export function About() {
       className="bg-[#f5f5f5]"
     >
       <Container>
-        <div className="mx-auto max-w-[1672px] rounded-[16px] bg-white p-4 sm:p-6 lg:p-[40px]">
+        <div className="mx-auto max-w-[1672px] rounded-[16px] bg-white p-3 sm:p-6 lg:p-[40px]">
           <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
             {/* Left blue card */}
-            <article className="relative rounded-[12px] bg-[#c6e0f7] p-8 sm:p-10 lg:p-[52px]">
+            <article className="relative rounded-[12px] bg-[#c6e0f7] p-6 sm:p-8 lg:p-[52px]">
               <span
                 aria-hidden
-                className="absolute right-[52px] top-[42px] grid h-[66px] w-[66px] place-items-center rounded-[12px] bg-[radial-gradient(circle_at_center,#3b7ddd_0%,#3b7ddd_40%,#7ba6e6_100%)]"
+                className="absolute right-[24px] top-[24px] grid h-[66px] w-[66px] place-items-center rounded-[12px] bg-[radial-gradient(circle_at_center,#3b7ddd_0%,#3b7ddd_40%,#7ba6e6_100%)] lg:right-[52px] lg:top-[42px]"
               >
                 <Image
                   src="/images/idea.svg"
@@ -40,7 +40,7 @@ export function About() {
 
               <h2
                 id="over-ons-title"
-                className="max-w-[550px] text-[40px] font-bold uppercase leading-[1.3] text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[52px] lg:text-[63px]"
+                className="max-w-[550px] text-[28px] font-bold uppercase leading-[1.3] text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[40px] lg:text-[63px]"
               >
                 Over VALENT
               </h2>
@@ -84,19 +84,42 @@ export function About() {
                   </strong>
                 </p>
               </div>
+
+              {/* Video poster — mobile/tablet, inside the blue card at the bottom */}
+              <button
+                type="button"
+                aria-label="Speel introductievideo Valent af"
+                className="group relative mt-8 block h-[260px] w-full overflow-hidden rounded-[12px] bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#226CD5] sm:mt-10 sm:h-[360px] lg:hidden"
+              >
+                <Image
+                  src={VIDEO_POSTER}
+                  alt=""
+                  fill
+                  sizes="100vw"
+                  className="object-cover"
+                />
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 grid place-items-center"
+                >
+                  <span className="grid h-[64px] w-[96px] place-items-center rounded-[16px] bg-[rgba(23,35,34,0.9)] shadow-[0_4px_10px_rgba(0,0,0,0.35)] sm:h-[80px] sm:w-[120px]">
+                    <span className="block h-0 w-0 translate-x-[3px] border-y-[14px] border-l-[22px] border-y-transparent border-l-white" />
+                  </span>
+                </span>
+              </button>
             </article>
 
-            {/* Right video poster — fixed ~500px tall, doesn't stretch with left card */}
+            {/* Right video poster — desktop only, sits as the second grid column */}
             <button
               type="button"
               aria-label="Speel introductievideo Valent af"
-              className="group relative block h-[500px] w-full overflow-hidden rounded-[12px] bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#226CD5]"
+              className="group relative hidden h-[500px] w-full overflow-hidden rounded-[12px] bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#226CD5] lg:block"
             >
               <Image
                 src={VIDEO_POSTER}
                 alt=""
                 fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
+                sizes="50vw"
                 className="object-cover"
               />
               <span

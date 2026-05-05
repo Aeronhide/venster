@@ -15,7 +15,7 @@ export function Sketches() {
   return (
     <Section ariaLabel="Schetsen en advies" className="bg-white">
       <Container>
-        <article className="relative mx-auto aspect-[1153/602] max-w-[1670px] overflow-hidden rounded-[22px] bg-black">
+        <article className="relative mx-auto min-h-[420px] max-w-[1670px] overflow-hidden rounded-[16px] bg-black sm:min-h-[480px] sm:rounded-[20px] lg:aspect-[1153/602] lg:min-h-0 lg:rounded-[22px]">
           <Image
             src={SKETCH_BG}
             alt=""
@@ -25,13 +25,13 @@ export function Sketches() {
             className="object-cover"
           />
 
-          <div className="absolute inset-0 flex items-center p-[40px] sm:p-[60px] lg:p-[100px]">
-            <div className="w-full max-w-[576px] rounded-[22px] bg-white p-[40px] text-center shadow-[0_20px_40px_rgba(0,0,0,0.25)] sm:p-[56px]">
-              <h2 className="text-[26px] font-bold leading-[1.3] text-[#333333] [font-family:Roboto,Arial,sans-serif] sm:text-[36px] lg:text-[43px]">
+          <div className="absolute inset-0 flex items-center p-[16px] sm:p-[40px] lg:p-[100px]">
+            <div className="w-full max-w-[576px] rounded-[16px] bg-white p-[20px] text-center shadow-[0_20px_40px_rgba(0,0,0,0.25)] sm:rounded-[20px] sm:p-[40px] lg:rounded-[22px] lg:p-[56px]">
+              <h2 className="text-[22px] font-bold leading-[1.3] text-[#333333] [font-family:Roboto,Arial,sans-serif] sm:text-[32px] lg:text-[43px]">
                 Wij stellen het project met schetsen ter beschikking
               </h2>
 
-              <p className="mt-[28px] text-[17px] font-semibold leading-[1.4] text-[#7b7b7b] [font-family:Roboto,Arial,sans-serif]">
+              <p className="mt-[16px] text-[14px] font-semibold leading-[1.4] text-[#7b7b7b] [font-family:Roboto,Arial,sans-serif] sm:mt-[24px] sm:text-[16px] lg:mt-[28px] lg:text-[17px]">
                 Alle nodige materialen om uw partner te laten zien welke ramen
                 in uw huis geplaatst zullen worden.
                 <br />
@@ -44,10 +44,10 @@ export function Sketches() {
                 href={site.whatsapp.nl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-[36px] inline-flex h-[86px] w-full max-w-[432px] items-center justify-center gap-[14px] rounded-[16px] bg-[#226CD5] text-[27px] font-bold capitalize text-white [font-family:Roboto,Arial,sans-serif]"
+                className="mt-[20px] inline-flex h-[60px] w-full max-w-[432px] items-center justify-center gap-[10px] rounded-[12px] bg-[#226CD5] text-[18px] font-bold capitalize text-white [font-family:Roboto,Arial,sans-serif] sm:mt-[28px] sm:h-[76px] sm:gap-[12px] sm:rounded-[14px] sm:text-[22px] lg:mt-[36px] lg:h-[86px] lg:gap-[14px] lg:rounded-[16px] lg:text-[27px]"
               >
                 Schrijf ons op WhatsApp
-                <WhatsAppIcon className="h-[28px] w-[28px] text-white" />
+                <WhatsAppIcon className="h-[20px] w-[20px] text-white sm:h-[24px] sm:w-[24px] lg:h-[28px] lg:w-[28px]" />
               </a>
             </div>
           </div>

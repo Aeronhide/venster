@@ -41,7 +41,7 @@ export function Features() {
             </div>
 
             {/* Right — image + body text wrapped in a single rounded card */}
-            <div className="flex max-h-[640px] flex-col gap-[32px] overflow-hidden rounded-[22px] bg-[#DDDDDD] p-[32px] lg:p-[40px]">
+            <div className="flex flex-col gap-[32px] rounded-[22px] bg-[#DDDDDD] p-[16px] sm:p-[24px] lg:max-h-[640px] lg:overflow-hidden lg:p-[40px]">
               <div className="overflow-hidden rounded-[16px] bg-white">
                 <div className="relative aspect-[530/447]">
                   <Image

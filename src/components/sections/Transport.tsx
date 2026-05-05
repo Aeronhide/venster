@@ -17,11 +17,11 @@ export function Transport() {
   return (
     <Section ariaLabel="Veilig transport" className="bg-white">
       <Container>
-        <article className="mx-auto grid max-w-[1670px] gap-[40px] overflow-hidden rounded-[32px] bg-[#004991] p-[60px] text-white lg:grid-cols-[1fr_1.6fr] lg:items-center lg:p-[80px]">
+        <article className="mx-auto grid max-w-[1670px] gap-[24px] overflow-hidden rounded-[20px] bg-[#004991] p-[24px] text-white sm:gap-[32px] sm:rounded-[28px] sm:p-[40px] lg:grid-cols-[1fr_1.6fr] lg:items-center lg:gap-[40px] lg:rounded-[32px] lg:p-[80px]">
           <div className="max-w-[500px]">
             <span
               aria-hidden
-              className="grid h-[66px] w-[66px] place-items-center rounded-[12px] bg-white/10"
+              className="grid h-[52px] w-[52px] place-items-center rounded-[10px] bg-white/10 sm:h-[60px] sm:w-[60px] lg:h-[66px] lg:w-[66px] lg:rounded-[12px]"
             >
               <svg
                 width="36"
@@ -43,15 +43,15 @@ export function Transport() {
               </svg>
             </span>
 
-            <span className="mt-[20px] inline-flex h-[28px] items-center justify-center rounded-[7px] bg-[#006bd5] px-[14px] text-[19px] font-semibold text-white [font-family:Roboto,Arial,sans-serif]">
+            <span className="mt-[16px] inline-flex h-[24px] items-center justify-center rounded-[7px] bg-[#006bd5] px-[12px] text-[14px] font-semibold text-white [font-family:Roboto,Arial,sans-serif] sm:mt-[18px] sm:h-[26px] sm:px-[14px] sm:text-[16px] lg:mt-[20px] lg:h-[28px] lg:text-[19px]">
               Veilig transport
             </span>
 
-            <h2 className="mt-[20px] text-[43px] font-bold leading-[1.3] text-white [font-family:Roboto,Arial,sans-serif]">
+            <h2 className="mt-[16px] text-[26px] font-bold leading-[1.3] text-white [font-family:Roboto,Arial,sans-serif] sm:mt-[18px] sm:text-[34px] lg:mt-[20px] lg:text-[43px]">
               Wij garanderen een veilige levering van de ramen
             </h2>
 
-            <p className="mt-[24px] text-[17px] font-semibold leading-[1.3] text-[#f5f5f5] [font-family:Roboto,Arial,sans-serif]">
+            <p className="mt-[16px] text-[15px] font-semibold leading-[1.4] text-[#f5f5f5] [font-family:Roboto,Arial,sans-serif] sm:mt-[20px] sm:text-[16px] lg:mt-[24px] lg:text-[17px] lg:leading-[1.3]">
               Onze ramen worden zorgvuldig verpakt met meerdere lagen
               stretchfolie en dikke polystyreen beschermhoeken, waardoor
               optimale bescherming tijdens het transport wordt gegarandeerd.
@@ -60,11 +60,11 @@ export function Transport() {
             </p>
           </div>
 
-          <ul className="grid grid-cols-1 gap-[20px] sm:grid-cols-3">
+          <ul className="grid grid-cols-1 gap-[12px] sm:grid-cols-3 sm:gap-[16px] lg:gap-[20px]">
             {truckImages.map((src, i) => (
               <li
                 key={src}
-                className="relative aspect-[220/323] overflow-hidden rounded-[17px] bg-black/20"
+                className="relative aspect-[3/2] overflow-hidden rounded-[17px] bg-black/20 sm:aspect-[220/323]"
               >
                 <Image
                   src={src}

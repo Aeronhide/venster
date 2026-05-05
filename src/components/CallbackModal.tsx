@@ -34,11 +34,11 @@ export function CallbackModal({ open, onClose }: CallbackModalProps) {
       role="dialog"
       aria-modal="true"
       aria-labelledby="callback-modal-title"
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4"
+      className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/50 p-4"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-[640px] rounded-[16px] bg-white p-[40px] shadow-2xl sm:p-[48px]"
+        className="relative w-full max-h-[90vh] max-w-[640px] overflow-y-auto rounded-[16px] bg-white p-[24px] shadow-2xl sm:p-[32px] lg:p-[48px]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}

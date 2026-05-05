@@ -31,18 +31,18 @@ export function Partners() {
           </p>
         </div>
 
-        <ul className="mt-10 grid grid-cols-3 items-center gap-6 sm:grid-cols-6 sm:gap-8">
+        <ul className="-mx-2 mt-8 flex snap-x snap-mandatory items-center gap-3 overflow-x-auto px-2 pb-2 sm:mx-0 sm:mt-10 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-6 lg:gap-8">
           {partners.map((p) => (
             <li
               key={p.name}
-              className="flex h-[100px] items-center justify-center rounded-[16px] bg-white px-6"
+              className="flex h-[80px] w-[160px] shrink-0 snap-start items-center justify-center rounded-[16px] bg-white px-4 sm:h-[100px] sm:w-auto sm:shrink sm:px-6"
             >
               <Image
                 src={p.src}
                 alt={p.name}
                 width={140}
                 height={56}
-                className="h-[56px] w-auto max-w-full object-contain"
+                className="h-[40px] w-auto max-w-full object-contain sm:h-[56px]"
               />
             </li>
           ))}

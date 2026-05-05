@@ -63,7 +63,7 @@ export function Contact() {
                   <dd className='mt-[2px]'>
                     <a
                       href={`mailto:${EMAIL}`}
-                      className='text-[26px] font-medium text-[#006bd5]'
+                      className='break-all text-[20px] font-medium text-[#006bd5] sm:text-[22px] lg:text-[26px]'
                     >
                       {EMAIL}
                     </a>
@@ -74,7 +74,7 @@ export function Contact() {
                   <dt className='text-[17px] font-bold text-[#333333]'>
                     Adres:
                   </dt>
-                  <dd className='mt-[2px] text-[26px] font-medium text-[#006bd5]'>
+                  <dd className='mt-[2px] text-[20px] font-medium text-[#006bd5] sm:text-[22px] lg:text-[26px]'>
                     Koornmarktpoort 25C, 8253 TE Dronten, Netherlands
                   </dd>
                 </div>
@@ -83,21 +83,21 @@ export function Contact() {
                   <dt className='text-[17px] font-bold text-[#333333]'>
                     Werktijd:
                   </dt>
-                  <dd className='mt-[2px] text-[26px] font-medium text-[#006bd5]'>
+                  <dd className='mt-[2px] text-[20px] font-medium text-[#006bd5] sm:text-[22px] lg:text-[26px]'>
                     Mon&ndash;Sat | 9:00 &ndash; 19:00
                   </dd>
                 </div>
 
                 <a
                   href='#zeropopup'
-                  className='mt-[12px] inline-flex h-[86px] w-full max-w-[400px] items-center justify-center rounded-[16px] bg-[#226CD5] text-[29px] font-bold capitalize text-white'
+                  className='mt-[12px] inline-flex h-[64px] w-full max-w-[400px] items-center justify-center rounded-[16px] bg-[#226CD5] text-[18px] font-bold capitalize text-white sm:h-[72px] sm:text-[22px] lg:h-[86px] lg:text-[29px]'
                 >
                   Bezoek plannen
                 </a>
               </dl>
             </div>
 
-            <div className='mt-[60px] grid gap-[40px] border-t border-black/10 pt-[40px] text-[20px] leading-[1.5] text-[#333333] [font-family:Roboto,Arial,sans-serif] md:grid-cols-[1.6fr_1fr_1fr]'>
+            <div className='mt-[32px] grid gap-[40px] border-t border-black/10 pt-[24px] text-[16px] leading-[1.5] text-[#333333] [font-family:Roboto,Arial,sans-serif] sm:mt-[60px] sm:pt-[40px] sm:text-[18px] md:grid-cols-[1.6fr_1fr_1fr] md:text-[20px]'>
               <div>
                 <p className='font-bold'>Toelichting:</p>
                 <p className='mt-[8px]'>
@@ -131,7 +131,7 @@ export function Contact() {
             </div>
           </div>
 
-          <p className='mt-[40px] text-center text-[17px] text-white/70 [font-family:Roboto,Arial,sans-serif]'>
+          <p className='mt-[24px] text-center text-[17px] text-white/70 [font-family:Roboto,Arial,sans-serif] sm:mt-[40px]'>
             2024©. YODANEXTPRIM SRL. Alle rechten voorbehouden
           </p>
         </div>
