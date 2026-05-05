@@ -12,9 +12,15 @@ const TEAM_IMAGES = [
   "/images/team-4.webp",
 ];
 
-export function Team() {
+type TeamProps = {
+  title?: string;
+  subtitle?: string;
+};
+
+export function Team({ title, subtitle }: TeamProps = {}) {
   const t = useT();
   const team = t.team.members.map((m, i) => ({ ...m, image: TEAM_IMAGES[i] }));
+  const heading = title ?? t.team.title;
   return (
     <Section ariaLabelledby="team-title" className="bg-[#f5f5f5]">
       <Container>
@@ -22,8 +28,13 @@ export function Team() {
           id="team-title"
           className="text-center text-[28px] font-black uppercase leading-[1.3] tracking-tight text-[#082b4b] sm:text-[40px] lg:text-[72px]"
         >
-          {t.team.title}
+          {heading}
         </h2>
+        {subtitle && (
+          <p className="mx-auto mt-[16px] max-w-[900px] text-center text-[16px] leading-[1.5] text-[#191919] [font-family:Roboto,Arial,sans-serif] sm:text-[18px] lg:mt-[20px] lg:text-[20px]">
+            {subtitle}
+          </p>
+        )}
 
         <ul className="-mx-2 mt-[40px] flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto px-2 pb-4 sm:mx-auto sm:grid sm:max-w-[1500px] sm:grid-cols-2 sm:gap-[20px] sm:overflow-visible sm:px-0 sm:pb-0 lg:mt-[60px] lg:grid-cols-4">
           {team.map((m) => (

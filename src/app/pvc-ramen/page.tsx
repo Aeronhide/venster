@@ -12,15 +12,11 @@ import { PvcOnzeWerken } from "@/components/sections/PvcOnzeWerken";
 import { PvcCertified } from "@/components/sections/PvcCertified";
 import { PvcFAQ } from "@/components/sections/PvcFAQ";
 import { PvcReviews } from "@/components/sections/PvcReviews";
+import { PvcTeam } from "@/components/sections/PvcTeam";
+import { PvcOffer } from "@/components/sections/PvcOffer";
+import { PvcVisit } from "@/components/sections/PvcVisit";
 import { Products } from "@/components/sections/Products";
 import { Process } from "@/components/sections/Process";
-import { InstallationForm } from "@/components/sections/InstallationForm";
-import { Projects } from "@/components/sections/Projects";
-import { Certification } from "@/components/sections/Certification";
-import { Recognition } from "@/components/sections/Recognition";
-import { Team } from "@/components/sections/Team";
-import { CatalogForm } from "@/components/sections/CatalogForm";
-import { Contact } from "@/components/sections/Contact";
 
 const PVC_PRODUCT_IMAGES = [
   "/images/ontdek/on1.jpg",
@@ -47,16 +43,10 @@ export default function PvcRamenPage() {
       <PvcCertified />
       <PvcFAQ />
       <PvcReviews />
+      <PvcTeam />
       <PvcAdvantages />
-      <div className="bg-[#F5F5F5]">
-        <InstallationForm />
-        <Projects />
-        <Certification />
-        <Recognition />
-        <Team />
-        <CatalogForm />
-        <Contact />
-      </div>
+      <PvcOffer />
+      <PvcVisit />
     </>
   );
 }

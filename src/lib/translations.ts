@@ -563,6 +563,10 @@ export const translations = {
       },
       advantages: {
         title: "VOORDELEN VAN PVC-RAMEN",
+        intro: [
+          "Of u nu aan het bouwen of renoveren bent, de keuze voor PVC-ramen is altijd de juiste, want het is een investering voor het leven. Wij produceren hoogwaardige PVC-deuren en -ramen, die ongetwijfeld de meest betrouwbare en praktische keuze voor uw huis zullen zijn. Elk jaar groeit het aantal tevreden klanten. Zonder PVC-ramen kunnen wij ons leven niet meer weg te denken. Bovendien bieden wij u de mogelijkheid om PVC-ramen rechtstreeks bij de fabrikant te kopen tegen betaalbare prijzen.",
+          "Na het bestuderen van de lijst met voordelen die ze hun eigenaar bieden, ligt de keuze voor kunststof producten voor de hand. Naast hun elegantie en moderne design hebben PVC-ramen nog een hele reeks andere voordelen, waardoor ze erg in trek zijn:",
+        ],
         items: [
           {
             name: "Warmte-isolatie",
@@ -595,6 +599,29 @@ export const translations = {
         nextAria: "Volgende beoordeling",
         goToAria: "Ga naar beoordeling",
         altPrefix: "Klantbeoordeling",
+      },
+      team: {
+        title: "Het team van Valent.MD",
+        subtitle: "Met een team van enthousiastelingen kun je bijna alles bereiken!",
+      },
+      offer: {
+        title: "HEEFT U EEN OFFERTE VAN EEN ANDER BEDRIJF ONTVANGEN?",
+        subtitle:
+          "Vul het formulier in en onze manager neemt binnen 5 minuten contact met u op met een persoonlijk aanbod.",
+        phoneHint: "Geef het juiste telefoonnummer op!",
+        phonePlaceholder: "00-000-0000",
+        cta: "Verzenden",
+        privacyBefore: "Door op de knop te klikken gaat u akkoord met de ",
+        privacyLink: "verwerking van persoonsgegevens",
+      },
+      visit: {
+        title: "We kijken uit naar uw komst!",
+        city: "Chisinau,",
+        street: "Konstantin Vyrnav-straat 8",
+        phoneLabel: "Telefoon: ",
+        phone: "+373 760 38 022",
+        emailLabel: "E-mail: ",
+        email: "info@venstervalent.nl",
       },
       certified: {
         title: "Valent-producten zijn CE-gecertificeerd",
@@ -1223,6 +1250,10 @@ export const translations = {
       },
       advantages: {
         title: "BENEFITS OF PVC WINDOWS",
+        intro: [
+          "Whether you are building or renovating, choosing PVC windows is always the right decision — it is an investment for life. We produce high-quality PVC doors and windows that will undoubtedly be the most reliable and practical choice for your home. Each year, the number of satisfied customers grows. Today it is hard to imagine life without PVC windows. We also give you the opportunity to buy PVC windows directly from the manufacturer at affordable prices.",
+          "After studying the list of benefits they offer their owner, the choice of plastic products is obvious. In addition to their elegance and modern design, PVC windows have a whole range of other advantages, which is why they are so popular:",
+        ],
         items: [
           {
             name: "Thermal insulation",
@@ -1255,6 +1286,29 @@ export const translations = {
         nextAria: "Next review",
         goToAria: "Go to review",
         altPrefix: "Client review",
+      },
+      team: {
+        title: "The Valent.MD team",
+        subtitle: "With a team of enthusiasts you can achieve almost anything!",
+      },
+      offer: {
+        title: "HAVE YOU RECEIVED A QUOTE FROM ANOTHER COMPANY?",
+        subtitle:
+          "Fill out the form, and our manager will contact you within 5 minutes with a personalized offer.",
+        phoneHint: "Please enter the correct phone number!",
+        phonePlaceholder: "00-000-0000",
+        cta: "Submit",
+        privacyBefore: "By clicking the button you agree to the ",
+        privacyLink: "processing of personal data",
+      },
+      visit: {
+        title: "We look forward to your visit!",
+        city: "Chisinau,",
+        street: "Konstantin Vyrnav street 8",
+        phoneLabel: "Phone: ",
+        phone: "+373 760 38 022",
+        emailLabel: "E-mail: ",
+        email: "info@venstervalent.nl",
       },
       certified: {
         title: "VALENT products are CE-certified",
