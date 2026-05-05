@@ -4,6 +4,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { SITE_URL, site } from "@/lib/site";
 import { ScrollToTopOnMount } from "@/components/ScrollToTopOnMount";
+import { LanguageProvider } from "@/components/LanguageProvider";
+import { SkipLink } from "@/components/SkipLink";
 
 const roboto = Roboto({
   subsets: ["latin", "latin-ext"],
@@ -98,14 +100,11 @@ export default function RootLayout({
   return (
     <html lang={site.language} className={`${roboto.variable} ${tildaSans.variable} antialiased`}>
       <body className="min-h-dvh bg-bg text-fg font-sans">
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-fg focus:shadow focus:ring-2 focus:ring-brand"
-        >
-          Naar hoofdinhoud
-        </a>
-        <ScrollToTopOnMount />
-        {children}
+        <LanguageProvider>
+          <SkipLink />
+          <ScrollToTopOnMount />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import { useLang } from '@/components/LanguageProvider';
 
 const CallbackModal = dynamic(
   () => import('@/components/CallbackModal').then((m) => m.CallbackModal),
@@ -12,13 +13,6 @@ const CallbackModal = dynamic(
 const PHONE_DISPLAY = '+31 853016849';
 const PHONE_HREF = 'tel:+31853016849';
 const WHATSAPP_HREF = 'https://wa.me/3197010266613';
-const HOURS = 'Ma–Za | 9:00 – 19:00';
-
-const nav = [
-  { href: '#products', label: 'Producten' },
-  { href: '#why-choose', label: 'Voordelen' },
-  { href: '#contact', label: 'Contact' },
-];
 
 // Tilda spec — header artboard 1200x70 logical, rendered at zoom 1.44 → ~100px tall
 // Nav text 14px, phone 14px, hours 10px, CTA 20px
@@ -31,6 +25,9 @@ const CTA =
   "inline-flex h-[65px] w-[290px] items-center justify-center rounded-[16px] bg-[#226CD5] text-[22px] font-bold leading-[28px] text-white text-center uppercase [font-family:Roboto,Arial,sans-serif]";
 
 export function Header() {
+  const { lang, t, toggleLang } = useLang();
+  const nav = t.header.nav;
+  const HOURS = t.header.hours;
   const [open, setOpen] = useState(false);
   const [callbackOpen, setCallbackOpen] = useState(false);
 
@@ -63,7 +60,7 @@ export function Header() {
 
         {/* Nav close to logo */}
         <nav
-          aria-label="Hoofdmenu"
+          aria-label={lang === 'nl' ? 'Hoofdmenu' : 'Main menu'}
           className="hidden lg:flex items-center gap-[58px] ml-[40px]"
         >
           {nav.map((item) => (
@@ -76,26 +73,17 @@ export function Header() {
         {/* Spacer — pushes flag to center */}
         <div className="hidden flex-1 lg:block" />
 
-        {/* UK flag — centered between left and right groups */}
-        <a
-          href="/eng.html"
-          aria-label="English language version"
-          className="hidden h-[52px] w-[86px] shrink-0 overflow-hidden lg:block"
+        {/* Lang switcher (desktop) — UK flag when current is NL, Dutch flag when current is EN */}
+        <button
+          type="button"
+          onClick={toggleLang}
+          aria-label={
+            lang === 'nl' ? t.header.langSwitchLabel : t.header.langSwitchLabelToNL
+          }
+          className="hidden h-[52px] w-[86px] shrink-0 overflow-hidden rounded-[4px] lg:block"
         >
-          <svg
-            viewBox="0 0 60 36"
-            width="86"
-            height="52"
-            aria-hidden
-            className="h-full w-full"
-          >
-            <rect width="60" height="36" fill="#012169" />
-            <path d="M0 0L60 36M60 0L0 36" stroke="#FFFFFF" strokeWidth="6" />
-            <path d="M0 0L60 36M60 0L0 36" stroke="#C8102E" strokeWidth="3" />
-            <path d="M30 0V36M0 18H60" stroke="#FFFFFF" strokeWidth="10" />
-            <path d="M30 0V36M0 18H60" stroke="#C8102E" strokeWidth="6" />
-          </svg>
-        </a>
+          {lang === 'nl' ? <UKFlag /> : <DutchFlag />}
+        </button>
 
         {/* Spacer — pushes the right cluster to the far right */}
         <div className="hidden flex-1 lg:block" />
@@ -120,7 +108,7 @@ export function Header() {
           {/* Phone icon button — enlarged */}
           <a
             href={PHONE_HREF}
-            aria-label="Bel VensterValent"
+            aria-label={t.header.phoneAria}
             className="grid h-[65px] w-[65px] place-items-center rounded-[16px] bg-[#F5F5F5]"
           >
             <svg
@@ -143,7 +131,7 @@ export function Header() {
             href={WHATSAPP_HREF}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="WhatsApp-chat openen (NL)"
+            aria-label={t.header.whatsappAria}
             className="grid h-[65px] w-[65px] place-items-center rounded-[16px] bg-[#F5F5F5]"
           >
             <svg
@@ -185,31 +173,30 @@ export function Header() {
             onClick={() => setCallbackOpen(true)}
             className={CTA}
           >
-            Bel mij terug
+            {t.header.cta}
           </button>
         </div>
 
         {/* Mobile right cluster — lang flag, phone, WhatsApp, hamburger */}
         <div className='ml-auto flex items-center gap-1.5 lg:hidden'>
-          {/* Language switcher (UK flag) */}
-          <a
-            href='/eng.html'
-            aria-label='English language version'
+          {/* Language switcher — UK flag when NL active, Dutch flag when EN active */}
+          <button
+            type='button'
+            onClick={toggleLang}
+            aria-label={
+              lang === 'nl'
+                ? t.header.langSwitchLabel
+                : t.header.langSwitchLabelToNL
+            }
             className='h-[22px] w-[34px] overflow-hidden rounded-[3px] sm:h-[26px] sm:w-[40px]'
           >
-            <svg viewBox='0 0 60 36' aria-hidden className='h-full w-full'>
-              <rect width='60' height='36' fill='#012169' />
-              <path d='M0 0L60 36M60 0L0 36' stroke='#FFFFFF' strokeWidth='6' />
-              <path d='M0 0L60 36M60 0L0 36' stroke='#C8102E' strokeWidth='3' />
-              <path d='M30 0V36M0 18H60' stroke='#FFFFFF' strokeWidth='10' />
-              <path d='M30 0V36M0 18H60' stroke='#C8102E' strokeWidth='6' />
-            </svg>
-          </a>
+            {lang === 'nl' ? <UKFlag /> : <DutchFlag />}
+          </button>
 
           {/* Phone icon — desktop SVG cropped tighter so the glyph fills the button */}
           <a
             href={PHONE_HREF}
-            aria-label='Bel VensterValent'
+            aria-label={t.header.phoneAria}
             className='grid h-[40px] w-[40px] place-items-center rounded-[10px] bg-[#F5F5F5]'
           >
             <svg
@@ -231,7 +218,7 @@ export function Header() {
             href={WHATSAPP_HREF}
             target='_blank'
             rel='noopener noreferrer'
-            aria-label='WhatsApp-chat openen (NL)'
+            aria-label={t.header.whatsappAria}
             className='grid h-[40px] w-[40px] place-items-center rounded-[10px] bg-[#F5F5F5]'
           >
             <svg
@@ -268,7 +255,7 @@ export function Header() {
           {/* Hamburger — smaller (40x40 vs previous 44x44) */}
           <button
             type='button'
-            aria-label={open ? 'Menu sluiten' : 'Menu openen'}
+            aria-label={open ? t.header.menuClose : t.header.menuOpen}
             aria-expanded={open}
             aria-controls='mobile-nav'
             onClick={() => setOpen((v) => !v)}
@@ -327,7 +314,7 @@ export function Header() {
                 }}
                 className={CTA + ' w-full'}
               >
-                Bel mij terug
+                {t.header.cta}
               </button>
 
               <a
@@ -363,5 +350,27 @@ export function Header() {
       )}
       <CallbackModal open={callbackOpen} onClose={() => setCallbackOpen(false)} />
     </header>
+  );
+}
+
+function UKFlag() {
+  return (
+    <svg viewBox='0 0 60 36' aria-hidden className='h-full w-full'>
+      <rect width='60' height='36' fill='#012169' />
+      <path d='M0 0L60 36M60 0L0 36' stroke='#FFFFFF' strokeWidth='6' />
+      <path d='M0 0L60 36M60 0L0 36' stroke='#C8102E' strokeWidth='3' />
+      <path d='M30 0V36M0 18H60' stroke='#FFFFFF' strokeWidth='10' />
+      <path d='M30 0V36M0 18H60' stroke='#C8102E' strokeWidth='6' />
+    </svg>
+  );
+}
+
+function DutchFlag() {
+  return (
+    <svg viewBox='0 0 60 36' aria-hidden className='h-full w-full' preserveAspectRatio='none'>
+      <rect width='60' height='12' fill='#AE1F28' />
+      <rect y='12' width='60' height='12' fill='#FFFFFF' />
+      <rect y='24' width='60' height='12' fill='#20478B' />
+    </svg>
   );
 }

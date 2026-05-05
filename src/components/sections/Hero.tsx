@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useT } from "@/components/LanguageProvider";
 
 const HERO_BG = "/images/banner/banner-bg.webp";
 const HERO_PRODUCT = "/images/banner/banner-img.webp";
@@ -62,8 +65,9 @@ const CARD = {
 };
 
 export function Hero() {
+  const t = useT();
   return (
-    <section aria-label="Introductie" className="font-sans">
+    <section className="font-sans">
       {/* === Mobile / tablet (stacked) === */}
       <div className="mx-auto mt-3 w-[calc(100%-16px)] sm:mt-4 sm:w-[calc(100%-32px)] lg:hidden">
         <div className="relative overflow-hidden rounded-[16px]">
@@ -95,21 +99,20 @@ export function Hero() {
                 className="h-[18px] w-[22px] shrink-0 object-contain"
               />
               <span className="text-[11px] font-bold uppercase leading-[1.2] text-black sm:text-[13px]">
-                Volgens Nederlandse normen
+                {t.hero.pillMobile}
               </span>
             </div>
 
             {/* Headline */}
             <h1 className="mt-5 text-[26px] font-bold leading-[1.15] sm:text-[34px]">
-              Ramen en Deuren –{" "}
-              <span className="text-[#66A6E6]">vanaf €50 per maand,</span>{" "}
-              levering door heel Nederland!
+              {t.hero.headline1}{" "}
+              <span className="text-[#66A6E6]">{t.hero.headlineHighlight}</span>{" "}
+              {t.hero.headline2}
             </h1>
 
             {/* Subhead */}
             <p className="mt-4 text-[14px] leading-[1.45] text-white/90 sm:text-[16px]">
-              PVC-ramen en -deuren, schuifdeuren en rolluiken van hoge kwaliteit –
-              snel geproduceerd en rechtstreeks bij u thuis geleverd!
+              {t.hero.subhead}
             </p>
 
             {/* CTA */}
@@ -117,7 +120,7 @@ export function Hero() {
               href="#contact"
               className="mt-5 inline-flex h-[56px] w-full items-center justify-center rounded-[16px] bg-[#226CD5] px-3 text-center text-[14px] font-bold uppercase leading-[1.1] text-white sm:h-[64px] sm:text-[16px]"
             >
-              Vraag een gratis offerte aan
+              {t.hero.ctaMobile}
             </a>
 
             {/* Google Maps badge */}
@@ -125,7 +128,7 @@ export function Hero() {
               href="https://www.google.com/maps/place/VALENT.MD/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Google Maps: locatie Valent"
+              aria-label={t.hero.googleMapsAria}
               className="mt-4 inline-flex h-[42px] w-full max-w-[220px] items-center justify-center rounded-[12px] bg-white px-2"
             >
               <Image
@@ -152,28 +155,18 @@ export function Hero() {
 
             {/* Floating feature cards — flattened to a 3-up grid on mobile */}
             <ul className="mt-6 grid grid-cols-1 gap-2 sm:grid-cols-3">
-              <FeatureCard
-                icon={ICON_PRICE}
-                lines={["Eerlijke prijs voor", "hoge kwaliteit"]}
-              />
-              <FeatureCard
-                icon={ICON_DELIVERY}
-                lines={["Snelle levering in NL", "– 45 dagen"]}
-              />
-              <FeatureCard
-                icon={ICON_QUALITY}
-                lines={["5 jaar - productgarantie"]}
-              />
+              <FeatureCard icon={ICON_PRICE} lines={[...t.hero.cards.price]} />
+              <FeatureCard icon={ICON_DELIVERY} lines={[...t.hero.cards.delivery]} />
+              <FeatureCard icon={ICON_QUALITY} lines={[...t.hero.cards.warranty]} />
             </ul>
           </div>
         </div>
 
         {/* Stats card — improved: full-width, clean white card with subtle border + shadow */}
         <div className="mt-3 grid grid-cols-2 divide-x divide-y divide-[#e5e7eb] overflow-hidden rounded-[16px] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.06)] ring-1 ring-[#e5e7eb] sm:grid-cols-4 sm:divide-y-0">
-          <MobileStat number="1720+" lines={["tevreden huishoudens", "geholpen"]} />
-          <MobileStat number="96%" lines={["van onze klanten", "beveelt ons aan"]} />
-          <MobileStat number="14+" lines={["jaar zorg voor uw", "huis"]} />
-          <MobileStat number="8000+" lines={["geplaatste ramen", "& deuren per jaar"]} />
+          {t.hero.stats.map((s) => (
+            <MobileStat key={s.number} number={s.number} lines={[...s.lines]} />
+          ))}
         </div>
       </div>
 
@@ -219,30 +212,27 @@ export function Hero() {
             height={26}
             className="block h-[26px] w-[32px] shrink-0 self-center object-contain"
           />
-          <span className={CLS.nlPillText}>VOLGENS NEDERLANDSE NORMEN</span>
+          <span className={CLS.nlPillText}>{t.hero.pill}</span>
         </div>
 
         <h1 className={CLS.headline}>
-          Ramen en Deuren –{" "}
+          {t.hero.headline1}{" "}
           <br />
-          <span className="text-[#006BD5]">vanaf €50 per maand,</span>{" "}
-          levering door heel Nederland!
+          <span className="text-[#006BD5]">{t.hero.headlineHighlight}</span>{" "}
+          {t.hero.headline2}
         </h1>
 
-        <div className={CLS.subhead}>
-          PVC-ramen en -deuren, schuifdeuren en rolluiken van hoge kwaliteit –
-          snel geproduceerd en rechtstreeks bij u thuis geleverd!
-        </div>
+        <div className={CLS.subhead}>{t.hero.subhead}</div>
 
         <a href="#contact" className={CLS.cta}>
-          VRAAG EEN GRATIS OFFERTE AAN
+          {t.hero.cta}
         </a>
 
         <a
           href="https://www.google.com/maps/place/VALENT.MD/"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Google Maps: locatie Valent"
+          aria-label={t.hero.googleMapsAria}
           className={CLS.gmaps}
         >
           <Image
@@ -266,8 +256,9 @@ export function Hero() {
           />
         </div>
         <div className={CARD.c1Text}>
-          <div>Eerlijke prijs voor</div>
-          <div>hoge kwaliteit</div>
+          {t.hero.cards.price.map((line, i) => (
+            <div key={i}>{line}</div>
+          ))}
         </div>
 
         <div className={CARD.c2Bg} />
@@ -282,7 +273,9 @@ export function Hero() {
           />
         </div>
         <div className={CARD.c2Text}>
-          <div>Snelle levering in NL – 45 dagen</div>
+          {t.hero.cards.deliveryShort.map((line, i) => (
+            <div key={i}>{line}</div>
+          ))}
         </div>
 
         <div className={CARD.c3Bg} />
@@ -297,14 +290,15 @@ export function Hero() {
           />
         </div>
         <div className={CARD.c3Text}>
-          <div>5 jaar - productgarantie</div>
+          {t.hero.cards.warrantyShort.map((line, i) => (
+            <div key={i}>{line}</div>
+          ))}
         </div>
 
         <div className={CLS.statsCard}>
-          <Stat number="1720+" lines={["tevreden huishoudens", "geholpen"]} />
-          <Stat number="96%" lines={["van onze klanten", "beveelt ons aan"]} />
-          <Stat number="14 +" lines={["jaar zorg voor uw", "huis"]} />
-          <Stat number="8000+" lines={["geplaatste ramen &", "deuren per jaar"]} />
+          {t.hero.stats.map((s) => (
+            <Stat key={s.number} number={s.number} lines={[...s.lines]} />
+          ))}
         </div>
       </div>
     </section>

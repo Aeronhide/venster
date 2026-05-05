@@ -1,82 +1,15 @@
+'use client';
+
 import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { Section } from '@/components/ui/Section';
 import { CheckIcon } from '@/components/ui/Icon';
+import { useT } from '@/components/LanguageProvider';
 
-type Reason = { title: string; body: React.ReactNode };
-
-const reasons: Reason[] = [
-  {
-    title: 'Gecertificeerde Duitse systemen',
-    body: (
-      <>
-        Wij werken met gevestigde Europese leveranciers zoals{' '}
-        <strong className='font-bold'>VEKA-profielen</strong> en{' '}
-        <strong className='font-bold'>ROTO-beslag,</strong> veelvuldig toegepast
-        in residentiële projecten binnen de EU.
-      </>
-    ),
-  },
-  {
-    title: 'Transparante garantie',
-    body: (
-      <>
-        Wij bieden een{' '}
-        <strong className='font-bold'>10-jarige fabrieksgarantie</strong> op
-        profielen, beglazing en beslag, duidelijk vastgelegd in onze
-        contractdocumentatie.
-      </>
-    ),
-  },
-  {
-    title: 'Gecontroleerde productie en levering',
-    body: 'Alle ramen en deuren worden in-house geproduceerd, kwaliteitsgecontroleerd en veilig verpakt vóór levering naar Nederland.',
-  },
-  {
-    title: 'Betrouwbare levertijden',
-    body: (
-      <>
-        De standaard productietijd en levering bedraagt ongeveer{' '}
-        <strong className='font-bold'>45 kalenderdagen,</strong> afhankelijk van
-        configuratie en projectspecificaties.
-      </>
-    ),
-  },
-];
-
-type SideCard = { title: React.ReactNode; body: string; icon: string };
-
-const sideCards: SideCard[] = [
-  {
-    title: (
-      <>
-        In-house
-        <br />
-        productie
-      </>
-    ),
-    body: 'Productie, assemblage en verpakking worden volledig binnen ons eigen productieproces uitgevoerd.',
-    icon: '/images/box.svg',
-  },
-  {
-    title: (
-      <>
-        Technisch
-        <br />
-        advies
-      </>
-    ),
-    body: 'Ondersteuning door ervaren projectmanagers, gespecialiseerd in residentiële raam- en deurprojecten.',
-    icon: '/images/tech_call.svg',
-  },
-  {
-    title: 'Kwaliteitscontrole',
-    body: 'Kwaliteitscontroles worden uitgevoerd in cruciale productiefasen en vóór verzending.',
-    icon: '/images/doc_check.svg',
-  },
-];
+const SIDE_CARD_ICONS = ['/images/box.svg', '/images/tech_call.svg', '/images/doc_check.svg'];
 
 export function WhyChoose() {
+  const t = useT();
   return (
     <Section
       id='why-choose'
@@ -90,9 +23,9 @@ export function WhyChoose() {
             id='why-choose-title'
             className='text-[28px] font-black uppercase leading-[1.3] tracking-tight text-[#082b4b] sm:text-[40px] lg:text-[63px] lg:leading-[1.55]'
           >
-            Waarom huiseigenaren in
+            {t.whyChoose.title1}
             <br />
-            Nederland voor VALENT kiezen
+            {t.whyChoose.title2}
           </h2>
 
           {/* 2 columns: blue card (with person image inside, on the right) | white cards */}
@@ -101,7 +34,7 @@ export function WhyChoose() {
             <div className='overflow-hidden rounded-[22px] bg-[radial-gradient(ellipse_at_right,#7ba6e6_0%,#3b7ddd_45%,#3b7ddd_100%)] px-5 pt-6 sm:px-8 sm:pt-10 lg:px-[44px] lg:pt-[48px]'>
               <div className='flex flex-col gap-6 sm:gap-8 lg:flex-row lg:items-end lg:gap-[40px]'>
                 <ul className='flex-1 space-y-6 pb-6 sm:space-y-8 sm:pb-10 lg:pb-[48px]'>
-                  {reasons.map((r) => (
+                  {t.whyChoose.reasons.map((r) => (
                     <li key={r.title} className='flex gap-3 sm:gap-5'>
                       <span className='mt-1 grid size-[36px] shrink-0 place-items-center rounded-[6px] bg-white/20 ring-1 ring-white/40 sm:size-[45px]'>
                         <CheckIcon
@@ -115,7 +48,17 @@ export function WhyChoose() {
                           {r.title}
                         </h3>
                         <p className='mt-2 text-[15px] leading-[1.5] text-white/95 sm:text-[16px] lg:text-[26px] lg:leading-[1.4]'>
-                          {r.body}
+                          {'plain' in r ? (
+                            r.plain
+                          ) : (
+                            <>
+                              {r.before}
+                              {r.bold1 && <strong className='font-bold'>{r.bold1}</strong>}
+                              {r.middle}
+                              {r.bold2 && <strong className='font-bold'>{r.bold2}</strong>}
+                              {r.after}
+                            </>
+                          )}
                         </p>
                       </div>
                     </li>
@@ -125,7 +68,7 @@ export function WhyChoose() {
                 {/* Installer photo — pinned bottom of card, 2× larger */}
                 <Image
                   src='/images/why-choose-installer.png'
-                  alt='Valent-installateur'
+                  alt={t.whyChoose.installerAlt}
                   width={520}
                   height={680}
                   loading='lazy'
@@ -137,7 +80,7 @@ export function WhyChoose() {
 
             {/* Side cards — equal-height grid so each card content can center vertically */}
             <ul className='grid gap-4 lg:h-full lg:grid-rows-3 lg:gap-6'>
-              {sideCards.map((c) => (
+              {t.whyChoose.sideCards.map((c, idx) => (
                 <li
                   key={c.body}
                   className='flex flex-col justify-center rounded-[16px] bg-white p-5 ring-1 ring-[#e5e7eb] lg:p-6'
@@ -145,11 +88,16 @@ export function WhyChoose() {
                   {/* Title + icon row — fixed min-height so 1-line and 2-line titles produce the same row size */}
                   <div className='flex min-h-[56px] items-center justify-between gap-4 lg:min-h-[79px]'>
                     <h3 className='text-[20px] font-bold text-[#050505] [text-shadow:var(--t396-shadow-text-x,0px)_var(--t396-shadow-text-y,0px)_var(--t396-shadow-text-blur,0px)_rgba(var(--t396-shadow-text-color),var(--t396-shadow-text-opacity,100%))] lg:text-[37px] lg:leading-[1.2]'>
-                      {c.title}
+                      {c.titleLines.map((line, i) => (
+                        <span key={i}>
+                          {line}
+                          {i < c.titleLines.length - 1 && <br />}
+                        </span>
+                      ))}
                     </h3>
                     <span className='grid size-[56px] shrink-0 place-items-center rounded-[16px] bg-[radial-gradient(circle_at_center,#3b7ddd_0%,#7ba6e6_100%)] lg:size-[79px]'>
                       <Image
-                        src={c.icon}
+                        src={SIDE_CARD_ICONS[idx]}
                         alt=''
                         width={40}
                         height={40}

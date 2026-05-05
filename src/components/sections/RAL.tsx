@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
+import { useT } from "@/components/LanguageProvider";
 
 // Tilda block rec1337102051 (T396, dark card with factory video).
 // Card 1160x499 black with 22px radius. Title fs 30 -> 43px. Body fs 15 -> 22px (#d2d2d2).
@@ -11,28 +14,22 @@ const VIDEO_POSTER = "/images/ral-poster.webp";
 const YOUTUBE_URL = "https://www.youtube.com/watch?v=K16eBIkdkzU";
 
 export function RAL() {
+  const t = useT();
   return (
-    <Section ariaLabel="RAL keurmerk" className="bg-white">
+    <Section ariaLabel="RAL" className="bg-white">
       <Container>
         <article className="mx-auto grid max-w-[1670px] gap-[24px] overflow-hidden rounded-[20px] bg-black p-[24px] text-white sm:gap-[32px] sm:rounded-[28px] sm:p-[40px] lg:grid-cols-[610px_1fr] lg:items-center lg:gap-[40px] lg:rounded-[32px] lg:p-[80px]">
           <div className="max-w-[610px]">
             <span className="inline-flex h-[24px] items-center justify-center rounded-[7px] bg-[#006bd5] px-[12px] text-[14px] font-semibold text-white [font-family:Roboto,Arial,sans-serif] sm:h-[27px] sm:px-[14px] sm:text-[17px]">
-              Kwaliteit
+              {t.ral.tag}
             </span>
 
             <h2 className="mt-[20px] text-[26px] font-bold leading-[1.3] text-white [font-family:Roboto,Arial,sans-serif] sm:mt-[24px] sm:text-[34px] lg:mt-[28px] lg:text-[43px]">
-              Onze producten zijn bekroond met het RAL-keurmerk &ndash; de
-              hoogste kwaliteitsstandaard in Europa
+              {t.ral.title}
             </h2>
 
             <p className="mt-[16px] text-[16px] font-semibold leading-[1.4] text-[#d2d2d2] [font-family:Roboto,Arial,sans-serif] sm:mt-[20px] sm:text-[18px] lg:mt-[24px] lg:text-[22px] lg:leading-[1.3]">
-              Uitgerust met de nieuwste automatische Elumatec-installaties en
-              -machines, computerondersteund.
-              <br />
-              Dit voorkomt mogelijke menselijke fouten die kunnen optreden in
-              het productieproces
-              <br />
-              van isolerende kozijnen (isolerende ramen en deuren)
+              {t.ral.body}
             </p>
           </div>
 
@@ -40,7 +37,7 @@ export function RAL() {
             href={YOUTUBE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Speel video over RAL-keurmerk af"
+            aria-label={t.ral.videoAria}
             className="group relative block aspect-[604/345] w-full overflow-hidden rounded-[22px] bg-black"
           >
             <Image

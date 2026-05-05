@@ -1,7 +1,10 @@
+'use client';
+
 import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { Section } from '@/components/ui/Section';
 import { site } from '@/lib/site';
+import { useT } from '@/components/LanguageProvider';
 
 // Tilda block rec1763574201 (T396, ONZE VESTIGINGEN with f5f5f5 inner card).
 // Title fs 30 -> 43px white bold uppercase ('ONZE VESTIGINGEN').
@@ -18,6 +21,7 @@ const PHONE_TEL = site.phone.nl.replace(/\s/g, ''); // "+3197010266613"
 const EMAIL = site.email;
 
 export function Contact() {
+  const t = useT();
   return (
     <Section id='contact' ariaLabelledby='contact-title'>
       <Container>
@@ -26,7 +30,7 @@ export function Contact() {
             id='contact-title'
             className='text-center text-[28px] font-bold uppercase leading-[1.3] text-white [font-family:Roboto,Arial,sans-serif] sm:text-[36px] lg:text-[43px]'
           >
-            Onze vestigingen
+            {t.contact.title}
           </h2>
 
           <div className='mx-auto mt-[40px] max-w-[1500px] rounded-[22px] bg-[#f5f5f5] p-[28px] text-[#333333] sm:p-[40px] lg:p-[60px]'>
@@ -34,7 +38,7 @@ export function Contact() {
               <div className='relative aspect-[440/293] w-full overflow-hidden rounded-[16px] bg-black/5'>
                 <Image
                   src={OFFICE_IMG}
-                  alt='VALENT kantoor — productie en showroom'
+                  alt={t.contact.officeAlt}
                   fill
                   sizes='(min-width: 1024px) 634px, 100vw'
                   loading='lazy'
@@ -45,7 +49,7 @@ export function Contact() {
               <dl className='flex flex-col gap-[18px] [font-family:Roboto,Arial,sans-serif]'>
                 <div>
                   <dt className='text-[17px] font-bold text-[#333333]'>
-                    Telefoon:
+                    {t.contact.phoneLabel}
                   </dt>
                   <dd className='mt-[2px]'>
                     <a
@@ -59,7 +63,7 @@ export function Contact() {
 
                 <div>
                   <dt className='text-[17px] font-bold text-[#333333]'>
-                    E-mail:
+                    {t.contact.emailLabel}
                   </dt>
                   <dd className='mt-[2px]'>
                     <a
@@ -73,19 +77,19 @@ export function Contact() {
 
                 <div>
                   <dt className='text-[17px] font-bold text-[#333333]'>
-                    Adres:
+                    {t.contact.addressLabel}
                   </dt>
                   <dd className='mt-[2px] text-[20px] font-medium text-[#006bd5] sm:text-[22px] lg:text-[26px]'>
-                    Koornmarktpoort 25C, 8253 TE Dronten, Netherlands
+                    {t.contact.address}
                   </dd>
                 </div>
 
                 <div>
                   <dt className='text-[17px] font-bold text-[#333333]'>
-                    Werktijd:
+                    {t.contact.hoursLabel}
                   </dt>
                   <dd className='mt-[2px] text-[20px] font-medium text-[#006bd5] sm:text-[22px] lg:text-[26px]'>
-                    Mon&ndash;Sat | 9:00 &ndash; 19:00
+                    {t.contact.hoursValue}
                   </dd>
                 </div>
 
@@ -93,47 +97,38 @@ export function Contact() {
                   href='#zeropopup'
                   className='mt-[12px] inline-flex h-[64px] w-full max-w-[400px] items-center justify-center rounded-[16px] bg-[#226CD5] text-[18px] font-bold capitalize text-white sm:h-[72px] sm:text-[22px] lg:h-[86px] lg:text-[29px]'
                 >
-                  Bezoek plannen
+                  {t.contact.cta}
                 </a>
               </dl>
             </div>
 
             <div className='mt-[32px] grid gap-[40px] border-t border-black/10 pt-[24px] text-[16px] leading-[1.5] text-[#333333] [font-family:Roboto,Arial,sans-serif] sm:mt-[60px] sm:pt-[40px] sm:text-[18px] md:grid-cols-[1.6fr_1fr_1fr] md:text-[20px]'>
               <div>
-                <p className='font-bold'>Toelichting:</p>
-                <p className='mt-[8px]'>
-                  Ons operationele backoffice in Chișinău verzorgt offertes,
-                  contracten en administratieve ondersteuning. Deze structuur
-                  stelt ons in staat om concurrerende prijzen, snelle
-                  reactietijden en een hoge servicekwaliteit te bieden aan onze
-                  klanten in Nederland.
-                </p>
+                <p className='font-bold'>{t.contact.explanationLabel}</p>
+                <p className='mt-[8px]'>{t.contact.explanationBody}</p>
               </div>
 
               <div>
-                <p className='font-bold'>
-                  Nederland &ndash; Juridisch &amp; Correspondentieadres
-                </p>
-                <p className='mt-[8px]'>
-                  Koornmarktpoort 25C, Dronten, Nederland
-                </p>
+                <p className='font-bold'>{t.contact.legalLabel}</p>
+                <p className='mt-[8px]'>{t.contact.legalBody}</p>
               </div>
 
               <div>
-                <p className='font-bold'>Operationeel Backoffice</p>
+                <p className='font-bold'>{t.contact.backofficeLabel}</p>
                 <p className='mt-[8px]'>
-                  Constantin Vîrnavstraat 8,
-                  <br />
-                  Chișinău, MD-2025
-                  <br />
-                  Republiek Moldavië
+                  {t.contact.backofficeBody.map((line, i) => (
+                    <span key={i}>
+                      {line}
+                      {i < t.contact.backofficeBody.length - 1 && <br />}
+                    </span>
+                  ))}
                 </p>
               </div>
             </div>
           </div>
 
           <p className='mt-[24px] text-center text-[17px] text-white/70 [font-family:Roboto,Arial,sans-serif] sm:mt-[40px]'>
-            2024©. YODANEXTPRIM SRL. Alle rechten voorbehouden
+            {t.contact.copyright}
           </p>
         </div>
       </Container>

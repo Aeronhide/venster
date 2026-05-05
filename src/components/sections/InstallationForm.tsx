@@ -4,12 +4,14 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { Container } from '@/components/ui/Container';
 import { Section } from '@/components/ui/Section';
+import { useT } from '@/components/LanguageProvider';
 
 // Tilda block rec1337102011. Card 1160x471 (#f5f5f5, radius 22). Image 573x382, title fs 28 → 40,
 // body fs 14 → 20, "Montage" tag fs 12 → 17, button "Plan een inmeting" 330x60 → 475x86, fs 20 → 29.
 const INSTALLER_IMG = '/images/valent_img.webp';
 
 export function InstallationForm() {
+  const t = useT();
   const [phone, setPhone] = useState('');
   const [agreed, setAgreed] = useState(false);
 
@@ -24,7 +26,7 @@ export function InstallationForm() {
           <div className='relative h-[280px] w-full overflow-hidden rounded-[22px] bg-white sm:h-[420px] lg:h-[550px]'>
             <Image
               src={INSTALLER_IMG}
-              alt='Valent monteur installeert een raam'
+              alt={t.installation.installerAlt}
               fill
               sizes='(min-width: 1024px) 825px, 100vw'
               loading='lazy'
@@ -34,30 +36,27 @@ export function InstallationForm() {
 
           <div className='flex flex-col justify-start'>
             <span className='inline-flex h-[27px] w-fit items-center justify-center rounded-[7px] bg-[#006bd5] px-[14px] text-[17px] font-semibold uppercase text-white'>
-              Montage
+              {t.installation.tag}
             </span>
 
             <h2
               id='installation-title'
               className='mt-[24px] text-[24px] font-bold leading-[1.3] text-[#333333] sm:text-[32px] lg:text-[40px]'
             >
-              Wij bieden het volledige installatiepakket met garantie in heel
-              Nederland aan
+              {t.installation.title}
             </h2>
 
             <p className='mt-[24px] text-[16px] leading-[1.5] text-[#7b7b7b] lg:text-[20px]'>
-              Onze installatiepartners kunnen bij u thuis langskomen om
-              nauwkeurige metingen te verrichten, de oude ramen te verwijderen
-              en de nieuwe te installeren.
+              {t.installation.body}
             </p>
 
             <form
               className='mt-[32px] flex flex-col gap-[20px]'
               onSubmit={(e) => e.preventDefault()}
-              aria-label='Plan een inmeting'
+              aria-label={t.installation.ariaLabel}
             >
               <label className='flex flex-col gap-[6px]'>
-                <span className='text-[14px] text-[#7b7b7b]'>Telefoon</span>
+                <span className='text-[14px] text-[#7b7b7b]'>{t.installation.phoneLabel}</span>
                 <div className='flex h-[72px] items-stretch overflow-hidden rounded-[12px] bg-white ring-1 ring-[#c7c7c7]'>
                   <span className='flex items-center gap-[8px] border-r border-[#c7c7c7] bg-white px-[16px] text-[16px] text-[#333333]'>
                     <span
@@ -70,7 +69,7 @@ export function InstallationForm() {
                     type='tel'
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    placeholder='00 000 0000'
+                    placeholder={t.installation.phonePlaceholder}
                     className='flex-1 bg-white px-[16px] text-[16px] text-[#333333] outline-none'
                     required
                   />
@@ -86,12 +85,12 @@ export function InstallationForm() {
                   className='mt-[4px] h-[16px] w-[16px] accent-[#226CD5]'
                 />
                 <span>
-                  Ik ga akkoord met{' '}
+                  {t.installation.privacyBefore}
                   <a
                     href='#privacy'
                     className='font-medium text-[#226CD5] underline'
                   >
-                    het groepsbeleid
+                    {t.installation.privacyLink}
                   </a>
                 </span>
               </label>
@@ -100,7 +99,7 @@ export function InstallationForm() {
                 type='submit'
                 className='mt-[8px] inline-flex h-[64px] w-full items-center justify-center rounded-[16px] bg-[#226CD5] px-[24px] text-[18px] font-bold capitalize text-white [font-family:Roboto,Arial,sans-serif] sm:h-[72px] sm:text-[20px] lg:h-[86px] lg:text-[24px]'
               >
-                Plan een inmeting
+                {t.installation.submit}
               </button>
             </form>
           </div>

@@ -1,70 +1,33 @@
+'use client';
+
 import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { Section } from '@/components/ui/Section';
+import { useT } from '@/components/LanguageProvider';
 
-type Step = {
-  n: string;
-  title: string;
-  body: string;
-  bullets: string[];
-  image: string;
-};
-
-// Tilda block rec1763499311. Spec is the 1200-breakpoint values × 1.44.
-// Card 224x464 → ~322x668. Image 196x133 → ~282x192. Title fs 22 → 32. Body/bullets fs 14 → 20.
-const steps: Step[] = [
-  {
-    n: '01',
-    title: 'Technisch advies',
-    body: 'U ontvangt een duidelijke technische offerte op basis van uw wensen, inclusief configuratie-opties, materialen en een indicatie van de planning — toegelicht door een gekwalificeerde adviseur.',
-    bullets: ['Geen vage aanbiedingen', 'Geen verborgen details'],
-    image: '/images/process-step-1.webp',
-  },
-  {
-    n: '02',
-    title: 'In-house productie',
-    body: 'Uw ramen en deuren worden geproduceerd volgens EU-normen, op basis van bevestigde specificaties.',
-    bullets: [
-      'Standaard productietijd: ~45 kalenderdagen',
-      'Doorlooptijd afhankelijk van configuratie en projectomvang',
-    ],
-    image: '/images/process-step-2.png',
-  },
-  {
-    n: '03',
-    title: 'Veilige verpakking',
-    body: 'Alle producten worden professioneel in-house verpakt om transportschade te minimaliseren.',
-    bullets: [
-      'Bescherming tegen beschadiging',
-      'Geschikt voor langeafstandsleveringen binnen de EU',
-    ],
-    image: '/images/process-step-3.webp',
-  },
-  {
-    n: '04',
-    title: 'Geplande levering',
-    body: 'Wij coördineren de levering rechtstreeks naar uw adres in Nederland.',
-    bullets: ['Geplande logistiek', 'Duidelijke leveringsafstemming vooraf'],
-    image: '/images/process-step-4.png',
-  },
-  {
-    n: '05',
-    title: 'Turnkey installatie (optioneel)',
-    body: 'De installatie wordt uitgevoerd door ervaren lokale teams, inclusief demontage van oude ramen en definitieve afstelling.',
-    bullets: ['Eén aanspreekpunt', 'Geen coördinatiezorgen voor u'],
-    image: '/images/process-step-5.webp',
-  },
+const STEP_IMAGES = [
+  '/images/process-step-1.webp',
+  '/images/process-step-2.png',
+  '/images/process-step-3.webp',
+  '/images/process-step-4.png',
+  '/images/process-step-5.webp',
 ];
 
 export function Process() {
+  const t = useT();
+  const steps = t.process.steps.map((step, i) => ({
+    ...step,
+    n: `0${i + 1}`,
+    image: STEP_IMAGES[i],
+  }));
   return (
     <Section id='process' ariaLabelledby='process-title' className='bg-white'>
       <h2
         id='process-title'
         className='w-full text-center text-[28px] font-black uppercase leading-[1.2] tracking-tight text-[#082b4b] sm:text-[40px] lg:text-[63px]'
       >
-        Een helder en gecontroleerd proces
-        <br />— van eerste contact tot installatie
+        {t.process.title1}
+        <br />{t.process.title2}
       </h2>
       <Container>
         <ol className='mx-auto mt-12 grid max-w-[1728px] gap-[14px] sm:grid-cols-2 lg:mt-[80px] lg:grid-cols-5'>

@@ -1,59 +1,26 @@
+"use client";
+
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
+import { useT } from "@/components/LanguageProvider";
 
-// Tilda block rec1337101951 — "ONTDEK ONZE PRODUCTEN"
-// Background #f9f9f9
-// Heading: 44px (×1.44 = 63px), font-weight 900, color #082b4b, uppercase, centered
-// Cards (4): 281×549 (×1.44 → 405×791), bg white, rounded 16, shadow 3px 0 20px rgba(80,80,80,0.1)
-//   Inner image: 245×230 (×1.44 → 353×331) rounded 12
-//   Card title: 24px (×1.44 = 35px) font-bold, color #082b4b
-//   Bullet text: 16px (×1.44 = 23px), color #3e3e3e
-//   CTA "Meer informatie": 245×72 (×1.44 → 353×104), font 20×1.44=29px,
-//     bg #226CD5 text-white font-bold uppercase rounded-[16px] (project rule)
-
-type Product = {
-  title: string;
-  image: string;
-  alt: string;
-  bullets: string[];
-};
-
-const products: Product[] = [
-  {
-    title: "PVC Ramen",
-    image: "/images/product-pvc-ramen.webp",
-    alt: "PVC raam met luiken op een Nederlandse gevel",
-    bullets: ["In appartementen", "In particuliere woningen", "Op balkons"],
-  },
-  {
-    title: "Voordeuren",
-    image: "/images/product-voordeuren.webp",
-    alt: "Donkere PVC voordeur met smalle ramen",
-    bullets: ["Voor toegang tot het huis", "Voor commerciële ruimtes"],
-  },
-  {
-    title: "Schuifdeuren",
-    image: "/images/product-schuifdeuren.webp",
-    alt: "Schuifdeur met uitzicht op zee",
-    bullets: ["Voor terrassen", "Voor balkons", "Voor prieeltjes"],
-  },
-  {
-    title: "Rolluiken",
-    image: "/images/product-rolluiken.webp",
-    alt: "Modern huis met rolluiken",
-    bullets: [
-      "Rolluiken voor huizen",
-      "Rolluiken voor appartementen",
-      "Rolluiken voor winkels",
-    ],
-  },
+const PRODUCT_IMAGES = [
+  "/images/product-pvc-ramen.webp",
+  "/images/product-voordeuren.webp",
+  "/images/product-schuifdeuren.webp",
+  "/images/product-rolluiken.webp",
 ];
 
 const CTA =
   "mt-auto inline-flex h-[64px] w-full items-center justify-center rounded-[16px] bg-[#226CD5] text-[18px] font-bold capitalize text-white text-center [font-family:Roboto,Arial,sans-serif] sm:h-[80px] sm:text-[22px] lg:h-[104px] lg:text-[29px]";
 
 export function Products() {
+  const t = useT();
+  const products = t.products.items.map((item, i) => ({
+    ...item,
+    image: PRODUCT_IMAGES[i],
+  }));
   return (
     <Section
       id="products"
@@ -66,13 +33,13 @@ export function Products() {
             id="producten-title"
             className="text-center text-[28px] font-black uppercase leading-[1.55] text-[#082b4b] [font-family:Roboto,Arial,sans-serif] sm:text-[40px] lg:text-[63px]"
           >
-            ONTDEK ONZE PRODUCTEN
+            {t.products.title}
           </h2>
 
           <ul className="mt-[48px] grid gap-[24px] sm:grid-cols-2 lg:grid-cols-4 lg:gap-[24px]">
-            {products.map((p) => (
+            {products.map((p, idx) => (
               <li
-                key={p.title}
+                key={`${p.title}-${idx}`}
                 className="flex flex-col rounded-[16px] bg-white p-[20px] shadow-[3px_0_20px_rgba(80,80,80,0.1)] sm:p-[28px] lg:p-[36px]"
               >
                 <div className="relative aspect-[245/230] overflow-hidden rounded-[12px] bg-[#f5f5f5]">
@@ -97,7 +64,7 @@ export function Products() {
                 </ul>
 
                 <a href="#zeropopup" className={CTA}>
-                  Meer informatie
+                  {t.products.cta}
                 </a>
               </li>
             ))}

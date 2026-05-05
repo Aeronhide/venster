@@ -1,16 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
+import { useT } from "@/components/LanguageProvider";
 
 const FAMILY_IMG = "/images/financing-family.webp";
 
-const steps = [
-  { label: "controle van de geschiktheid", icon: "/images/financing/check.svg" },
-  { label: "technische specificaties", icon: "/images/financing/specs.svg" },
-  { label: "ondersteuning bij de aanvraag", icon: "/images/question_mark.png" },
+const STEP_ICONS = [
+  "/images/financing/check.svg",
+  "/images/financing/specs.svg",
+  "/images/question_mark.png",
 ];
 
 export function Financing() {
+  const t = useT();
+  const steps = t.financing.steps.map((label, i) => ({ label, icon: STEP_ICONS[i] }));
   return (
     <Section
       id="financing"
@@ -24,9 +29,9 @@ export function Financing() {
             id="financing-title"
             className="text-center text-[28px] font-black uppercase leading-[1.4] tracking-tight text-[#082b4b] sm:text-[40px] lg:text-[63px] lg:leading-[1.55]"
           >
-            Nieuwe ramen vanaf ca.{" "}
-            <span className="text-[#006bd5]">€50 per maand</span> – via het
-            Nationaal Warmtefonds
+            {t.financing.title1}{" "}
+            <span className="text-[#006bd5]">{t.financing.titleHighlight}</span>{" "}
+            {t.financing.title2}
           </h2>
 
           {/* Two-column: left ~55% (image + footer text + CTA), right ~45% (text + bullets) */}
@@ -37,7 +42,7 @@ export function Financing() {
               <div className="overflow-hidden rounded-[22px]">
                 <Image
                   src={FAMILY_IMG}
-                  alt="Familie krijgt advies over energiezuinige ramen"
+                  alt={t.financing.familyAlt}
                   width={1280}
                   height={854}
                   loading="lazy"
@@ -49,9 +54,9 @@ export function Financing() {
               {/* Footer text + CTA, sits below the image with 60px gap */}
               <div>
                 <p className="text-[18px] uppercase leading-[1.3] text-[#191919] lg:text-[22px]">
-                  Zo profiteert u van energiezuinige ramen{" "}
+                  {t.financing.footerLead}{" "}
                   <strong className="font-bold text-[#006bd5]">
-                    zonder financiële druk vooraf.
+                    {t.financing.footerHighlight}
                   </strong>
                 </p>
 
@@ -59,7 +64,7 @@ export function Financing() {
                   href="#zeropopup"
                   className="mt-8 inline-flex h-[64px] w-full max-w-[430px] items-center justify-center rounded-[16px] bg-[#226CD5] px-8 text-center text-[20px] font-bold capitalize text-white [font-family:Roboto,Arial,sans-serif] sm:h-[80px] lg:h-[86px] lg:text-[24px]"
                 >
-                  Vraag vrijblijvend advies aan
+                  {t.financing.cta}
                 </a>
               </div>
             </div>
@@ -67,20 +72,17 @@ export function Financing() {
             {/* RIGHT column — body + sub-heading + 3 bullets */}
             <div className="flex flex-col">
               <p className="text-[18px] leading-[1.5] text-[#505050] lg:text-[23px]">
-                Wilt u uw woning energiezuiniger maken, maar liever geen grote
-                investering in één keer doen?
+                {t.financing.bodyP1Q}
                 <br />
-                Wij helpen u bij het verkrijgen van nieuwe ramen{" "}
-                <strong className="font-bold">
-                  vanaf ongeveer €50 per maand
-                </strong>{" "}
-                via het{" "}
-                <strong className="font-bold">Nationaal Warmtefonds.</strong>
+                {t.financing.bodyP1A1}
+                <strong className="font-bold">{t.financing.bodyP1Bold1}</strong>
+                {t.financing.bodyP1A2}
+                <strong className="font-bold">{t.financing.bodyP1Bold2}</strong>
               </p>
 
               <p className="mt-[28px] text-[20px] uppercase leading-[1] text-[#191919] lg:mt-[40px] lg:text-[29px]">
                 <strong className="font-bold text-[#006bd5]">VALENT</strong>{" "}
-                begeleidt u stap voor stap:
+                {t.financing.stepsLead}
               </p>
 
               <ul className="mt-8 space-y-6">

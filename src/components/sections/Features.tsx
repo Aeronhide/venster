@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
+import { useT } from "@/components/LanguageProvider";
 
 // Tilda block rec1337101961 — Brands / components
 // Outer wrapper bg #ffffff
@@ -17,10 +20,11 @@ const PRODUCT_IMG = "/images/brands-product-section.webp";
 const BRANDS_IMG = "/images/brands-logos.webp";
 
 export function Features() {
+  const t = useT();
   return (
     <Section
       id="features"
-      ariaLabel="Onze merken en componenten"
+      ariaLabel={t.features.ariaLabel}
       className="bg-white"
     >
       <Container>
@@ -31,7 +35,7 @@ export function Features() {
               <div className="relative aspect-[530/561]">
                 <Image
                   src={PRODUCT_IMG}
-                  alt="Doorsnede van een PVC raam met meervoudig glas en kamerprofiel"
+                  alt={t.features.crossSectionAlt}
                   fill
                   sizes="(min-width: 1024px) 45vw, 90vw"
                   loading="lazy"
@@ -46,7 +50,7 @@ export function Features() {
                 <div className="relative aspect-[530/447]">
                   <Image
                     src={BRANDS_IMG}
-                    alt="Logo's van VEKA, ROTO en SAINT-GOBAIN componenten"
+                    alt={t.features.brandsAlt}
                     fill
                     sizes="(min-width: 1024px) 45vw, 90vw"
                     loading="lazy"
@@ -56,16 +60,13 @@ export function Features() {
               </div>
 
               <p className="max-w-[674px] text-[20px] font-normal leading-[1.55] text-[#000000] [font-family:Roboto,Arial,sans-serif] lg:text-[26px]">
-                Onze producten worden gemaakt met PVC-profielen van het
-                gerenommeerde Duitse merk{" "}
-                <strong className="font-bold text-[#2d2c90]">VEKA</strong>,
-                duurzaam hang- en sluitwerk van{" "}
-                <strong className="font-bold text-[#e90808]">ROTO</strong> en
-                energie-efficiënt glas geleverd door de Franse fabrikant{" "}
-                <strong className="font-bold text-[#404d42]">
-                  SAINT-GOBAIN
-                </strong>
-                .
+                {t.features.bodyBefore}
+                <strong className="font-bold text-[#2d2c90]">{t.features.vekaName}</strong>
+                {t.features.bodyMiddle}
+                <strong className="font-bold text-[#e90808]">{t.features.rotoName}</strong>
+                {t.features.bodyAfter}
+                <strong className="font-bold text-[#404d42]">{t.features.sgName}</strong>
+                {t.features.bodyEnd}
               </p>
             </div>
           </div>

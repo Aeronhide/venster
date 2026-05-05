@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { Section } from "@/components/ui/Section";
+import { useT } from "@/components/LanguageProvider";
 
 const partners = [
   { name: "VEKA", src: "/images/partners/veka.svg" },
@@ -11,6 +14,7 @@ const partners = [
 ];
 
 export function Partners() {
+  const t = useT();
   return (
     <Section
       ariaLabelledby="partners-title"
@@ -22,12 +26,16 @@ export function Partners() {
             id="partners-title"
             className="text-2xl font-bold tracking-tight text-fg sm:text-3xl"
           >
-            Onze partners
+            {t.partners.title}
           </h2>
           <p className="text-sm text-fg-muted sm:text-right sm:text-base">
-            Onze Duitse partners vertrouwen VALENT
-            <br className="hidden sm:block" />
-            en waarborgen de kwaliteit van elk raam
+            {t.partners.subtitle.split("\n").map((line, i, arr) => (
+              <span key={i}>
+                {line}
+                {i < arr.length - 1 && <br className="hidden sm:block" />}
+                {i < arr.length - 1 && <span className="sm:hidden"> </span>}
+              </span>
+            ))}
           </p>
         </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useT } from "@/components/LanguageProvider";
 
 type CallbackModalProps = {
   open: boolean;
@@ -8,6 +9,7 @@ type CallbackModalProps = {
 };
 
 export function CallbackModal({ open, onClose }: CallbackModalProps) {
+  const t = useT();
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [agreed, setAgreed] = useState(false);
@@ -44,7 +46,7 @@ export function CallbackModal({ open, onClose }: CallbackModalProps) {
         {/* Close button */}
         <button
           type="button"
-          aria-label="Sluiten"
+          aria-label={t.callbackModal.closeAria}
           onClick={onClose}
           className="absolute right-[16px] top-[16px] grid h-[44px] w-[44px] place-items-center rounded-[8px] bg-[#F5F5F5] text-[#222] hover:bg-[#e5e5e5]"
         >
@@ -57,11 +59,10 @@ export function CallbackModal({ open, onClose }: CallbackModalProps) {
           id="callback-modal-title"
           className="text-[28px] font-bold text-[#050505] sm:text-[32px]"
         >
-          Laat je gegevens achter
+          {t.callbackModal.title}
         </h2>
         <p className="mt-[16px] text-[16px] leading-[1.5] text-[#505050] sm:text-[18px]">
-          Vul je e-mail en telefoonnummer in — we nemen zo snel mogelijk contact
-          met je op.
+          {t.callbackModal.subtitle}
         </p>
 
         <form
@@ -73,7 +74,7 @@ export function CallbackModal({ open, onClose }: CallbackModalProps) {
         >
           <div>
             <label htmlFor="cb-email" className="block text-[16px] font-bold text-[#050505]">
-              E-mail
+              {t.callbackModal.emailLabel}
             </label>
             <input
               id="cb-email"
@@ -87,7 +88,7 @@ export function CallbackModal({ open, onClose }: CallbackModalProps) {
 
           <div>
             <label htmlFor="cb-phone" className="block text-[16px] font-bold text-[#050505]">
-              Telefoonnummer
+              {t.callbackModal.phoneLabel}
             </label>
             <div className="mt-[8px] flex h-[64px] items-stretch overflow-hidden rounded-[16px] border border-[#c7c7c7] bg-white">
               <span className="flex items-center gap-[8px] border-r border-[#c7c7c7] px-[16px] text-[18px] text-[#050505] [font-family:Roboto,Arial,sans-serif]">
@@ -100,7 +101,7 @@ export function CallbackModal({ open, onClose }: CallbackModalProps) {
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                placeholder="6 12345678"
+                placeholder={t.callbackModal.phonePlaceholder}
                 className="h-full flex-1 bg-white px-[16px] text-[18px] text-[#050505] outline-none placeholder:text-[#9a9a9a]"
               />
             </div>
@@ -115,11 +116,11 @@ export function CallbackModal({ open, onClose }: CallbackModalProps) {
               className="h-[20px] w-[20px] flex-none accent-[#226CD5]"
             />
             <span>
-              Ik ga akkoord met het{" "}
+              {t.callbackModal.privacyBefore}
               <a href="#privacy" className="font-bold text-[#226CD5] underline">
-                privacybeleid
+                {t.callbackModal.privacyLink}
               </a>
-              .
+              {t.callbackModal.privacyAfter}
             </span>
           </label>
 
@@ -127,7 +128,7 @@ export function CallbackModal({ open, onClose }: CallbackModalProps) {
             type="submit"
             className="block h-[72px] w-full rounded-[16px] bg-[#226CD5] text-[22px] font-bold uppercase text-white [font-family:Roboto,Arial,sans-serif]"
           >
-            Versturen
+            {t.callbackModal.submit}
           </button>
         </form>
       </div>

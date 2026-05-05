@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { CheckIcon } from "@/components/ui/Icon";
+import { useT } from "@/components/LanguageProvider";
 
 const CERT_IMAGES = [
   "/images/tild6332-6463-4533-b430-656430623637__clasa_a_weng_1510201.webp",
@@ -17,6 +18,7 @@ const CERT_FRAME =
   "relative overflow-hidden rounded-t-[12px] [border-top:1px_solid_#5a91e1] [border-left:1px_solid_#5a91e1] [border-right:1px_solid_#5a91e1] [border-bottom:none] bg-[radial-gradient(circle_at_center,rgba(59,125,221,1)_67%,rgba(123,166,230,1)_100%)]";
 
 function CertSlider() {
+  const t = useT();
   const [active, setActive] = useState(0);
   const total = CERT_IMAGES.length;
 
@@ -30,7 +32,7 @@ function CertSlider() {
             <Image
               key={src}
               src={src}
-              alt={`Klasse A certificaat ${i + 1}`}
+              alt={`${t.certification.certAlt} ${i + 1}`}
               fill
               sizes="100vw"
               loading="lazy"
@@ -45,7 +47,7 @@ function CertSlider() {
         <div className="mt-4 flex items-center justify-center gap-3">
           <button
             type="button"
-            aria-label="Vorig certificaat"
+            aria-label={t.certification.prevAria}
             onClick={() => setActive((i) => (i - 1 + total) % total)}
             className="grid h-[44px] w-[44px] shrink-0 place-items-center rounded-full bg-white text-[#082b4b] shadow"
           >
@@ -59,7 +61,7 @@ function CertSlider() {
               <button
                 key={i}
                 type="button"
-                aria-label={`Ga naar certificaat ${i + 1}`}
+                aria-label={`${t.certification.goToAria} ${i + 1}`}
                 aria-current={i === active}
                 onClick={() => setActive(i)}
                 className="grid h-[24px] w-[24px] place-items-center"
@@ -76,7 +78,7 @@ function CertSlider() {
 
           <button
             type="button"
-            aria-label="Volgend certificaat"
+            aria-label={t.certification.nextAria}
             onClick={() => setActive((i) => (i + 1) % total)}
             className="grid h-[44px] w-[44px] shrink-0 place-items-center rounded-full bg-white text-[#082b4b] shadow"
           >
@@ -96,7 +98,7 @@ function CertSlider() {
           >
             <Image
               src={src}
-              alt={`Klasse A certificaat ${i + 1}`}
+              alt={`${t.certification.certAlt} ${i + 1}`}
               fill
               sizes="(min-width: 1024px) 320px, 40vw"
               loading="lazy"
@@ -110,10 +112,11 @@ function CertSlider() {
 }
 
 export function Certification() {
+  const t = useT();
   return (
     <Section
       id="certification"
-      ariaLabel="Certificering en kwaliteitsgarantie"
+      ariaLabel={t.certification.ariaLabel}
       className="bg-[#f9f9f9]"
     >
       <Container>
@@ -124,10 +127,9 @@ export function Certification() {
               {/* Left — heading + inner small "garantie dekt" card */}
               <div className="pb-8 sm:pb-12 lg:pb-[60px]">
                 <h2 className="text-[24px] font-extrabold leading-[1.3] sm:text-[36px] sm:leading-[1.4] lg:text-[52px]">
-                  VALENT-producten zijn{" "}
-                  <span className="text-[#116cd4]">CE-gecertificeerd</span> en
-                  omvatten een verlengde garantie van 10 jaar, zoals vermeld in
-                  het contract
+                  {t.certification.block1Before}
+                  <span className="text-[#116cd4]">{t.certification.block1Highlight}</span>
+                  {t.certification.block1After}
                 </h2>
 
                 <div className="mt-6 inline-flex items-center gap-3 rounded-[12px] border border-[#505355] bg-[#404246] px-4 py-4 sm:mt-10 sm:gap-5 sm:px-6 sm:py-5 lg:h-[144px] lg:w-full lg:max-w-[672px]">
@@ -135,9 +137,9 @@ export function Certification() {
                     <CheckIcon className="text-white" width={28} height={28} />
                   </span>
                   <p className="text-[15px] leading-[1.4] text-[#d9d9d9] sm:text-[18px] lg:text-[29px]">
-                    De garantie dekt PVC-profielen,
+                    {t.certification.coverageText[0]}
                     <br />
-                    isolatieglas en beslag
+                    {t.certification.coverageText[1]}
                   </p>
                 </div>
               </div>
@@ -146,7 +148,7 @@ export function Certification() {
               <div className="relative mx-auto h-[280px] w-full max-w-[760px] sm:h-[400px] lg:h-[500px]">
                 <Image
                   src="/images/valent.png"
-                  alt="VALENT certificering"
+                  alt={t.certification.valentAlt}
                   fill
                   sizes="(min-width: 1024px) 760px, 80vw"
                   loading="lazy"
@@ -159,11 +161,8 @@ export function Certification() {
           {/* Block 2 — rec1763536941: Klasse A keurmerk + 4 certificate scans */}
           <article className="flex flex-col overflow-hidden rounded-[16px] bg-[#36383c] px-5 pt-8 text-white sm:px-8 sm:pt-12 lg:px-[60px] lg:pt-[60px]">
             <h2 className="text-[24px] font-extrabold leading-[1.3] sm:text-[36px] sm:leading-[1.4] lg:text-[52px]">
-              <strong className="text-[#7bb1ff]">VALENT </strong>
-              produceert ramen met Europese PVC-profielen van klasse A, getest
-              op langdurige duurzaamheid, structurele stabiliteit en
-              milieuveiligheid, vervaardigd met loodvrije (Pb-vrije) materialen
-              en conform de geldende EU-normen en regelgeving.
+              <strong className="text-[#7bb1ff]">{t.certification.block2Brand} </strong>
+              {t.certification.block2Body}
             </h2>
 
             {/* 4 certificate scans — slider on mobile, 4-col grid on sm+ */}

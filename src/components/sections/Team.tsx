@@ -1,44 +1,20 @@
+"use client";
+
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
+import { useT } from "@/components/LanguageProvider";
 
-type Member = {
-  name: string;
-  role: string;
-  body: string;
-  image: string;
-};
-
-// Tilda blocks rec1763549301 (title) + rec1763549311 (T923 carousel of 4 cards).
-// Title fontsize 50 → 72. Card 260 wide. Card title fs 20 → 29. Body fs ≈14 → 20.
-const team: Member[] = [
-  {
-    name: "Ion Banari – Project & Accountability",
-    role: "Projectcoördinatie & verantwoordelijkheid",
-    body: "Uw project wordt beheerd door een ervaren coördinatieteam, verantwoordelijk voor communicatie, planning en oplevering.",
-    image: "/images/team-1.webp",
-  },
-  {
-    name: "Daniel Banari – Technical & Sales Consultation",
-    role: "Technisch advies & offerte",
-    body: "Onze sales- en technische managers helpen bij het bepalen van specificaties, prijzen en planning — helder en transparant.",
-    image: "/images/team-2.webp",
-  },
-  {
-    name: "Cristian Verejan – Design & Technical Accuracy",
-    role: "Ontwerp & technische nauwkeurigheid",
-    body: "Elk project wordt ontworpen door ervaren specialisten om een correcte configuratie, nauwkeurige metingen en optimale prestaties te garanderen.",
-    image: "/images/team-3.webp",
-  },
-  {
-    name: "Valentin Caț – Design & Technical Accuracy",
-    role: "Ontwerp & technische nauwkeurigheid",
-    body: "Elk project wordt ontworpen door ervaren specialisten om een correcte configuratie, nauwkeurige metingen en optimale prestaties te garanderen.",
-    image: "/images/team-4.webp",
-  },
+const TEAM_IMAGES = [
+  "/images/team-1.webp",
+  "/images/team-2.webp",
+  "/images/team-3.webp",
+  "/images/team-4.webp",
 ];
 
 export function Team() {
+  const t = useT();
+  const team = t.team.members.map((m, i) => ({ ...m, image: TEAM_IMAGES[i] }));
   return (
     <Section ariaLabelledby="team-title" className="bg-[#f5f5f5]">
       <Container>
@@ -46,7 +22,7 @@ export function Team() {
           id="team-title"
           className="text-center text-[28px] font-black uppercase leading-[1.3] tracking-tight text-[#082b4b] sm:text-[40px] lg:text-[72px]"
         >
-          Ons project- en ondersteuningsteam
+          {t.team.title}
         </h2>
 
         <ul className="-mx-2 mt-[40px] flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto px-2 pb-4 sm:mx-auto sm:grid sm:max-w-[1500px] sm:grid-cols-2 sm:gap-[20px] sm:overflow-visible sm:px-0 sm:pb-0 lg:mt-[60px] lg:grid-cols-4">

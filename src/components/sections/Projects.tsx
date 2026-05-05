@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
+import { useT } from "@/components/LanguageProvider";
 
 // Tilda blocks rec1338569481 (title) + rec1337102161 (T670 image gallery, 16 slides at 860x550 → ~1238x792).
 const projects = [
@@ -26,6 +27,7 @@ const projects = [
 ];
 
 export function Projects() {
+  const t = useT();
   const [active, setActive] = useState(0);
 
   return (
@@ -35,7 +37,7 @@ export function Projects() {
           id="projects-title"
           className="text-center text-[28px] font-black uppercase tracking-tight text-[#082b4b] sm:text-[36px] lg:text-[48px]"
         >
-          ONZE AFGERONDE PROJECTEN IN NEDERLAND!
+          {t.projects.title}
         </h2>
 
         {(() => {
@@ -58,7 +60,7 @@ export function Projects() {
                 <button
                   key={i}
                   type="button"
-                  aria-label={`Ga naar project ${i + 1}`}
+                  aria-label={`${t.projects.goToAria} ${i + 1}`}
                   aria-current={i === active}
                   onClick={() => setActive(i)}
                   className="grid h-[24px] w-[24px] place-items-center"
@@ -80,7 +82,7 @@ export function Projects() {
                 {/* Desktop prev — hidden on mobile */}
                 <button
                   type="button"
-                  aria-label="Vorig project"
+                  aria-label={t.projects.prevAria}
                   onClick={prev}
                   className="hidden h-[56px] w-[56px] shrink-0 place-items-center rounded-full bg-white text-[#082b4b] shadow ring-1 ring-black/5 hover:bg-[#f5f5f5] lg:grid"
                 >
@@ -93,7 +95,7 @@ export function Projects() {
                     <Image
                       key={src}
                       src={src}
-                      alt={`Project ${i + 1}`}
+                      alt={`${t.projects.altPrefix} ${i + 1}`}
                       fill
                       sizes="(min-width: 1024px) 1238px, 100vw"
                       priority={i === 0}
@@ -108,7 +110,7 @@ export function Projects() {
                 {/* Desktop next — hidden on mobile */}
                 <button
                   type="button"
-                  aria-label="Volgend project"
+                  aria-label={t.projects.nextAria}
                   onClick={next}
                   className="hidden h-[56px] w-[56px] shrink-0 place-items-center rounded-full bg-white text-[#082b4b] shadow ring-1 ring-black/5 hover:bg-[#f5f5f5] lg:grid"
                 >
@@ -120,7 +122,7 @@ export function Projects() {
               <div className="mt-[20px] flex items-center justify-center gap-[12px] lg:hidden">
                 <button
                   type="button"
-                  aria-label="Vorig project"
+                  aria-label={t.projects.prevAria}
                   onClick={prev}
                   className="grid h-[44px] w-[44px] shrink-0 place-items-center rounded-full bg-white text-[#082b4b] shadow ring-1 ring-black/5 hover:bg-[#f5f5f5]"
                 >
@@ -129,7 +131,7 @@ export function Projects() {
                 {dots}
                 <button
                   type="button"
-                  aria-label="Volgend project"
+                  aria-label={t.projects.nextAria}
                   onClick={next}
                   className="grid h-[44px] w-[44px] shrink-0 place-items-center rounded-full bg-white text-[#082b4b] shadow ring-1 ring-black/5 hover:bg-[#f5f5f5]"
                 >

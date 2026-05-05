@@ -3,19 +3,7 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { site } from "@/lib/site";
-
-const productLinks = [
-  { href: "#products", label: "PVC Ramen" },
-  { href: "#products", label: "Voordeuren" },
-  { href: "#products", label: "Schuifdeuren" },
-  { href: "#products", label: "Rolluiken" },
-];
-
-const helpLinks = [
-  { href: "#contact", label: "Q&A" },
-  { href: "#blog", label: "Blog" },
-  { href: "#privacy", label: "Privacybeleid" },
-];
+import { useT } from "@/components/LanguageProvider";
 
 function SocialLinks({ className = "" }: { className?: string }) {
   return (
@@ -66,6 +54,9 @@ function SocialLinks({ className = "" }: { className?: string }) {
 }
 
 export function Footer() {
+  const t = useT();
+  const productLinks = t.footer.productLinks;
+  const helpLinks = t.footer.helpLinks;
   return (
     <footer className="bg-[#2d2d33] text-fg-subtle">
       <Container className="py-10 lg:py-14">
@@ -93,8 +84,8 @@ export function Footer() {
           </div>
 
           {/* Producten — centered on mobile, left-aligned on lg */}
-          <nav aria-label="Producten" className="text-center lg:text-left">
-            <h3 className="text-xl font-bold text-white">Producten</h3>
+          <nav aria-label={t.footer.productsTitle} className="text-center lg:text-left">
+            <h3 className="text-xl font-bold text-white">{t.footer.productsTitle}</h3>
             <ul className="mt-6 space-y-4 text-lg text-white/85">
               {productLinks.map((l) => (
                 <li key={l.label}>
@@ -107,8 +98,8 @@ export function Footer() {
           </nav>
 
           {/* Help — centered on mobile, left-aligned on lg */}
-          <nav aria-label="Hulp" className="text-center lg:text-left">
-            <h3 className="text-xl font-bold text-white">Help</h3>
+          <nav aria-label={t.footer.helpTitle} className="text-center lg:text-left">
+            <h3 className="text-xl font-bold text-white">{t.footer.helpTitle}</h3>
             <ul className="mt-6 space-y-4 text-lg text-white/85">
               {helpLinks.map((l) => (
                 <li key={l.label}>
