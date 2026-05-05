@@ -434,6 +434,97 @@ export const translations = {
         body: "Kom langs om samen met ons de ramen en deuren te kiezen die u nodig hebt, op het adres: Chișinău, strada Constantin Vârnav, 8.",
         cta: "Bezoek plannen",
       },
+      calculator: {
+        title: "CALCULATOR VOOR PVC-RAMEN",
+        next: "Verder",
+        prev: "Terug",
+        steps: [
+          {
+            question: "Kies waar u ramen nodig heeft.",
+            options: [
+              { label: "Appartement" },
+              { label: "Privéhuis" },
+              { label: "Kantoor" },
+              { label: "Anders" },
+            ],
+          },
+          {
+            question: "Kies het aantal vleugels.",
+            options: [
+              { label: "Enkelvoudig raam", image: "/images/calculator/f1.svg" },
+              { label: "Dubbelraam", image: "/images/calculator/f2.svg" },
+              { label: "Drievluik", image: "/images/calculator/f3.svg" },
+              { label: "Balkondeur", image: "/images/calculator/f4.svg" },
+              { label: "Enkelvoudig raam met balkondeur", image: "/images/calculator/f5.svg" },
+              { label: "Dubbelraam met balkondeur", image: "/images/calculator/f6.svg" },
+            ],
+          },
+          {
+            inputs: [
+              { label: "Hoogte, mm", placeholder: "Hoogte, mm" },
+              { label: "Breedte, mm", placeholder: "Breedte, mm" },
+            ],
+          },
+          {
+            groups: [
+              {
+                question: "Kies de kleur van het venster",
+                options: [
+                  { label: "Witte ramen" },
+                  { label: "Gelamineerde ramen" },
+                ],
+              },
+              {
+                question: "Aantal rijen glas in een dubbele beglazing",
+                options: [
+                  { label: "2 rijen glas" },
+                  { label: "3 rijen glas" },
+                ],
+              },
+            ],
+          },
+          {
+            groups: [
+              {
+                question: "Kies accessoires",
+                multi: true,
+                options: [
+                  { label: "Raamkozijn" },
+                  { label: "Afslootingen" },
+                  { label: "Afvoeren" },
+                  { label: "Horren" },
+                ],
+              },
+              {
+                question: "Levering",
+                options: [
+                  { label: "In de stad Chișinău" },
+                  { label: "Buiten Chișinău" },
+                  { label: "In Europa" },
+                ],
+              },
+              {
+                question: "Heeft u montage nodig?",
+                options: [
+                  { label: "Ja" },
+                  { label: "Nee" },
+                ],
+              },
+            ],
+          },
+          {
+            final: {
+              heading: "Gefeliciteerd! Alles is klaar voor de berekening!",
+              body: "Op uw verzoek zijn er verschillende berekeningsopties mogelijk. Geef uw telefoonnummer door, dan sturen wij u een berekening toe, zodat u ons aanbod met andere aanbiedingen kunt vergelijken!",
+              phoneLabel: "Tel/Viber/Whatsapp",
+              phonePlaceholder: "00-000-0000",
+              privacyBefore: "Ik ga akkoord met het ",
+              privacyLink: "privacybeleid",
+              submit: "De kosten berekenen",
+            },
+          },
+        ],
+      },
       lamination: {
         title: "LAMINERINGSVARIANTEN",
         groupStandard: "Standaardgroep",
@@ -524,6 +615,15 @@ export const translations = {
           },
         ],
       },
+    },
+    bedankt: {
+      title: "BEDANKT!",
+      bodyBefore:
+        "Het VensterValent-team neemt zo snel mogelijk contact met je op. In de tussentijd nodigen we je uit om een kijkje te nemen in ons portfolio – misschien doe je nog wat inspiratie op! Bovendien ontvang je van ons ",
+      bodyHighlight: "gratis onze productcatalogus",
+      bodyAfter: " als cadeau",
+      cta: "Catalogus",
+      catalogAlt: "Valent productcatalogus",
     },
     skipToContent: "Naar hoofdinhoud",
   },
@@ -962,6 +1062,97 @@ export const translations = {
         body: "Stop by to choose the windows and doors you need together with us, at the address: Chișinău, Constantin Vârnav street 8.",
         cta: "Plan a visit",
       },
+      calculator: {
+        title: "PVC WINDOW CALCULATOR",
+        next: "Continue",
+        prev: "Back",
+        steps: [
+          {
+            question: "Choose where you need windows.",
+            options: [
+              { label: "Apartment" },
+              { label: "Private house" },
+              { label: "Office" },
+              { label: "Other" },
+            ],
+          },
+          {
+            question: "Choose the number of sashes.",
+            options: [
+              { label: "Single window", image: "/images/calculator/f1.svg" },
+              { label: "Double window", image: "/images/calculator/f2.svg" },
+              { label: "Triple window", image: "/images/calculator/f3.svg" },
+              { label: "Balcony door", image: "/images/calculator/f4.svg" },
+              { label: "Single window with balcony door", image: "/images/calculator/f5.svg" },
+              { label: "Double window with balcony door", image: "/images/calculator/f6.svg" },
+            ],
+          },
+          {
+            inputs: [
+              { label: "Height, mm", placeholder: "Height, mm" },
+              { label: "Width, mm", placeholder: "Width, mm" },
+            ],
+          },
+          {
+            groups: [
+              {
+                question: "Choose the window color",
+                options: [
+                  { label: "White windows" },
+                  { label: "Laminated windows" },
+                ],
+              },
+              {
+                question: "Number of glass panes in double glazing",
+                options: [
+                  { label: "2 panes" },
+                  { label: "3 panes" },
+                ],
+              },
+            ],
+          },
+          {
+            groups: [
+              {
+                question: "Choose accessories",
+                multi: true,
+                options: [
+                  { label: "Window frame" },
+                  { label: "Locks" },
+                  { label: "Drainage" },
+                  { label: "Insect screens" },
+                ],
+              },
+              {
+                question: "Delivery",
+                options: [
+                  { label: "In Chișinău city" },
+                  { label: "Outside Chișinău" },
+                  { label: "In Europe" },
+                ],
+              },
+              {
+                question: "Do you need installation?",
+                options: [
+                  { label: "Yes" },
+                  { label: "No" },
+                ],
+              },
+            ],
+          },
+          {
+            final: {
+              heading: "Congratulations! Everything is ready for the calculation!",
+              body: "Various calculation options are possible at your request. Please provide your phone number and we will send you a calculation so you can compare our offer with others!",
+              phoneLabel: "Tel / Viber / Whatsapp",
+              phonePlaceholder: "00-000-0000",
+              privacyBefore: "I agree with the ",
+              privacyLink: "privacy policy",
+              submit: "Calculate the cost",
+            },
+          },
+        ],
+      },
       lamination: {
         title: "LAMINATION VARIANTS",
         groupStandard: "Standard group",
@@ -1052,6 +1243,15 @@ export const translations = {
           },
         ],
       },
+    },
+    bedankt: {
+      title: "THANK YOU!",
+      bodyBefore:
+        "The VensterValent team will contact you as soon as possible. In the meantime we invite you to take a look at our portfolio — you might find some inspiration! On top of that, you'll receive ",
+      bodyHighlight: "our free product catalogue",
+      bodyAfter: " as a gift",
+      cta: "Catalogue",
+      catalogAlt: "Valent product catalogue",
     },
     skipToContent: "Skip to main content",
   },

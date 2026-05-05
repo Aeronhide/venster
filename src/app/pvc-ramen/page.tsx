@@ -1,5 +1,6 @@
 import { HeroPvcRamen } from "@/components/sections/HeroPvcRamen";
 import { PvcProfiles } from "@/components/sections/PvcProfiles";
+import { PvcCalculator } from "@/components/sections/PvcCalculator";
 import { PvcShowroom } from "@/components/sections/PvcShowroom";
 import { PvcLamination } from "@/components/sections/PvcLamination";
 import { PvcGlassTypes } from "@/components/sections/PvcGlassTypes";
@@ -21,6 +22,7 @@ export default function PvcRamenPage() {
     <>
       <HeroPvcRamen />
       <PvcProfiles />
+      <PvcCalculator />
       <PvcShowroom />
       <PvcLamination />
       <PvcGlassTypes />
