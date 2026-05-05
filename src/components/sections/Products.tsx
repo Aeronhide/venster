@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { useT } from "@/components/LanguageProvider";
+import { useModal } from "@/components/ModalContext";
 
 const DEFAULT_PRODUCT_IMAGES = [
   "/images/product-pvc-ramen.webp",
@@ -19,6 +20,7 @@ type ProductsProps = { images?: readonly string[] };
 
 export function Products({ images = DEFAULT_PRODUCT_IMAGES }: ProductsProps = {}) {
   const t = useT();
+  const { openCallback } = useModal();
   const products = t.products.items.map((item, i) => ({
     ...item,
     image: images[i] ?? DEFAULT_PRODUCT_IMAGES[i],
@@ -65,9 +67,9 @@ export function Products({ images = DEFAULT_PRODUCT_IMAGES }: ProductsProps = {}
                   ))}
                 </ul>
 
-                <a href="#zeropopup" className={CTA}>
+                <button type="button" onClick={() => openCallback()} className={CTA}>
                   {t.products.cta}
-                </a>
+                </button>
               </li>
             ))}
           </ul>

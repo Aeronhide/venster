@@ -282,7 +282,7 @@ export const translations = {
       phoneLabel: "Telefoon",
       phonePlaceholder: "00 000 0000",
       privacyBefore: "Ik ga akkoord met ",
-      privacyLink: "het groepsbeleid",
+      privacyLink: "het privacybeleid",
       submit: "Plan een inmeting",
       ariaLabel: "Plan een inmeting",
       installerAlt: "Valent monteur installeert een raam",
@@ -375,7 +375,7 @@ export const translations = {
       helpLinks: [
         { href: "#contact", label: "Q&A" },
         { href: "#blog", label: "Blog" },
-        { href: "#privacy", label: "Privacybeleid" },
+        { href: "/privacy", label: "Privacybeleid" },
       ],
     },
     callbackModal: {
@@ -684,6 +684,12 @@ export const translations = {
       cta: "Catalogus",
       catalogAlt: "Valent productcatalogus",
     },
+    contactForm: {
+      success: "Bedankt! Uw bericht is ontvangen. We nemen spoedig contact met u op.",
+      error: "Er is een fout opgetreden. Neem contact op via info@venstervalent.nl",
+      rateLimited: "Te veel verzoeken. Probeer het over een uur opnieuw.",
+      sending: "Verzenden...",
+    },
     skipToContent: "Naar hoofdinhoud",
   },
 
@@ -967,8 +973,8 @@ export const translations = {
         "Our professional installers take precise measurements, remove old windows, and fit the new ones.",
       phoneLabel: "Phone",
       phonePlaceholder: "00 000 0000",
-      privacyBefore: "I agree with ",
-      privacyLink: "the group policy",
+      privacyBefore: "I agree with the ",
+      privacyLink: "privacy policy",
       submit: "Request a measurement",
       ariaLabel: "Request a measurement",
       installerAlt: "Valent installer fitting a window",
@@ -1062,7 +1068,7 @@ export const translations = {
       helpLinks: [
         { href: "#contact", label: "Q&A" },
         { href: "#blog", label: "Blog" },
-        { href: "#privacy", label: "Privacy Policy" },
+        { href: "/privacy", label: "Privacy Policy" },
       ],
     },
     callbackModal: {
@@ -1370,6 +1376,12 @@ export const translations = {
       bodyAfter: " as a gift",
       cta: "Catalogue",
       catalogAlt: "Valent product catalogue",
+    },
+    contactForm: {
+      success: "Thank you! Your message has been received. We will contact you soon.",
+      error: "Sorry, there was an error. Please contact us at info@venstervalent.nl",
+      rateLimited: "Too many requests. Please try again in an hour.",
+      sending: "Sending...",
     },
     skipToContent: "Skip to main content",
   },

@@ -54,27 +54,6 @@ export function Projects() {
               <path d="M9 6l6 6-6 6" />
             </svg>
           );
-          const dots = (
-            <div className="flex flex-wrap justify-center gap-[2px]">
-              {projects.map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  aria-label={`${t.projects.goToAria} ${i + 1}`}
-                  aria-current={i === active}
-                  onClick={() => setActive(i)}
-                  className="grid h-[24px] w-[24px] place-items-center"
-                >
-                  <span
-                    aria-hidden
-                    className={`block h-[8px] w-[8px] rounded-full ${
-                      i === active ? "bg-[#082b4b]" : "bg-[#c7c7c7]"
-                    }`}
-                  />
-                </button>
-              ))}
-            </div>
-          );
           return (
             <>
               {/* Slider row — desktop arrows flank the image; mobile shows just the image */}
@@ -128,7 +107,6 @@ export function Projects() {
                 >
                   {PrevIcon}
                 </button>
-                {dots}
                 <button
                   type="button"
                   aria-label={t.projects.nextAria}
@@ -139,10 +117,7 @@ export function Projects() {
                 </button>
               </div>
 
-              {/* Desktop dots row */}
-              <div className="mx-auto mt-[20px] hidden max-w-[960px] lg:block">
-                {dots}
-              </div>
+
             </>
           );
         })()}

@@ -6,9 +6,9 @@ import {
   useContext,
   useEffect,
   useMemo,
-  useState,
   type ReactNode,
 } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import {
   DEFAULT_LANG,
   translations,
@@ -25,40 +25,35 @@ type LanguageContextValue = {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
-const STORAGE_KEY = "vv-lang";
-
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(DEFAULT_LANG);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  // Lang is derived from the URL — /en/* is English, everything else is Dutch
+  const lang: Lang = pathname?.startsWith("/en") ? "en" : "nl";
 
   useEffect(() => {
-    try {
-      const stored = window.localStorage.getItem(STORAGE_KEY);
-      if (stored === "nl" || stored === "en") {
-        setLangState(stored);
-      }
-    } catch {
-      // localStorage unavailable — keep default
-    }
-  }, []);
-
-  useEffect(() => {
-    if (typeof document !== "undefined") {
-      document.documentElement.lang = lang;
-    }
-    try {
-      window.localStorage.setItem(STORAGE_KEY, lang);
-    } catch {
-      // ignore
-    }
+    document.documentElement.lang = lang;
   }, [lang]);
 
-  const setLang = useCallback((next: Lang) => {
-    setLangState(next);
-  }, []);
+  const setLang = useCallback(
+    (next: Lang) => {
+      if (next === lang) return;
+      if (next === "en") {
+        // Add /en prefix — /  → /en,  /privacy → /en/privacy
+        router.push(`/en${pathname === "/" ? "" : pathname}`);
+      } else {
+        // Remove /en prefix — /en → /,  /en/privacy → /privacy
+        const newPath = pathname.replace(/^\/en/, "") || "/";
+        router.push(newPath);
+      }
+    },
+    [lang, pathname, router]
+  );
 
   const toggleLang = useCallback(() => {
-    setLangState((curr) => (curr === "nl" ? "en" : "nl"));
-  }, []);
+    setLang(lang === "nl" ? "en" : "nl");
+  }, [lang, setLang]);
 
   const value = useMemo<LanguageContextValue>(
     () => ({ lang, t: translations[lang], setLang, toggleLang }),
@@ -83,3 +78,6 @@ export function useLang() {
 export function useT() {
   return useLang().t;
 }
+
+// Unused — kept so nothing breaks if imported elsewhere
+export const DEFAULT_LANG_EXPORT = DEFAULT_LANG;

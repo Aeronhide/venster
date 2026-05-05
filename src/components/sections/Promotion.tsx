@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { useT } from "@/components/LanguageProvider";
+import { useModal } from "@/components/ModalContext";
 
 // Tilda block rec1342840611 (T396, light gray card with promo offer + ventilator photo).
 // Card #f5f5f5 with 22px radius. Top tag fs 47 -> 68px uppercase #333.
@@ -15,6 +16,7 @@ const VENT_IMG = "/images/promo-ventilator.webp";
 
 export function Promotion() {
   const t = useT();
+  const { openCallback } = useModal();
   return (
     <Section ariaLabel="Promotion" className="bg-white">
       <Container>
@@ -40,12 +42,13 @@ export function Promotion() {
                   {t.promotion.bodyAfter}
                 </p>
 
-                <a
-                  href="#zeropopup"
+                <button
+                  type="button"
+                  onClick={() => openCallback()}
                   className="mt-[20px] inline-flex h-[60px] w-full max-w-[400px] items-center justify-center rounded-[12px] bg-[#226CD5] text-[18px] font-bold capitalize text-white [font-family:Roboto,Arial,sans-serif] sm:mt-[28px] sm:h-[76px] sm:rounded-[14px] sm:text-[22px] lg:mt-[36px] lg:h-[86px] lg:rounded-[16px] lg:text-[29px]"
                 >
                   {t.promotion.cta}
-                </a>
+                </button>
               </div>
 
               <div className="relative aspect-[1000/600] w-full">

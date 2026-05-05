@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  serverExternalPackages: ['nodemailer'],
+  turbopack: {
+    root: __dirname,
+  },
   poweredByHeader: false,
   compress: true,
   images: {
