@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { useLang } from '@/components/LanguageProvider';
 import { useModal } from '@/components/ModalContext';
 
@@ -25,6 +26,10 @@ export function Header() {
   const HOURS = t.header.hours;
   const [open, setOpen] = useState(false);
   const { openCallback } = useModal();
+  const pathname = usePathname();
+  const homeBase = lang === 'en' ? '/en' : '/';
+  const isHome = pathname === '/' || pathname === '/en';
+  const navHref = (anchor: string) => isHome ? anchor : `${homeBase}${anchor}`;
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
@@ -37,10 +42,9 @@ export function Header() {
     <header className="sticky top-0 z-50 h-[64px] w-full bg-white sm:h-[80px] lg:h-[101px]">
       <div className="mx-auto flex h-full items-center px-3 lg:px-4">
         {/* Logo + nav grouped tight on the left */}
-        <button
-          type="button"
-          onClick={() => window.scrollTo(0, 0)}
-          aria-label="Valent — Nederlandse homepage"
+        <a
+          href={homeBase}
+          aria-label={lang === 'nl' ? 'Valent — Nederlandse homepage' : 'Valent — English homepage'}
           className="block shrink-0"
         >
           <Image
@@ -51,7 +55,7 @@ export function Header() {
             priority
             className="h-[40px] w-auto sm:h-[52px] lg:h-[76px] lg:w-[223px]"
           />
-        </button>
+        </a>
 
         {/* Nav close to logo */}
         <nav
@@ -59,7 +63,7 @@ export function Header() {
           className="hidden lg:flex items-center gap-[58px] ml-[40px]"
         >
           {nav.map((item) => (
-            <a key={item.href} href={item.href} className={NAV_LINK}>
+            <a key={item.href} href={navHref(item.href)} className={NAV_LINK}>
               {item.label}
             </a>
           ))}
@@ -292,7 +296,7 @@ export function Header() {
                   <a
                     onClick={() => setOpen(false)}
                     className='block py-4 text-lg font-semibold text-[#050505] hover:text-brand'
-                    href={item.href}
+                    href={navHref(item.href)}
                   >
                     {item.label}
                   </a>

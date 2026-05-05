@@ -42,3 +42,9 @@ next-env.d.ts
 
 # Local-only mirror of upstream site for visual reference. Do not commit or distribute.
 /reference/
+
+# IDE
+.idea/
+
+# Legacy site files
+old-site/

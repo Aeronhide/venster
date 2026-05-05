@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/site";
 import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
@@ -20,12 +22,15 @@ import { Promotion } from "@/components/sections/Promotion";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 import { StructuredData } from "@/components/StructuredData";
-import type { Metadata } from "next";
-import { SITE_URL, site } from "@/lib/site";
 
 export const metadata: Metadata = {
+  title: "Venster Valent — PVC Windows, Doors & Roller Shutters across the Netherlands",
+  description:
+    "PVC windows, doors, roller shutters and sliding doors with European certification. " +
+    "5-year warranty, delivery within 45 days, fair prices. " +
+    "Consultation, measurement and installation across the Netherlands.",
   alternates: {
-    canonical: SITE_URL,
+    canonical: `${SITE_URL}/en`,
     languages: {
       nl: SITE_URL,
       en: `${SITE_URL}/en`,
@@ -33,7 +38,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default function EnHome() {
   return (
     <>
       <Header />

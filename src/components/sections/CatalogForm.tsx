@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { Container } from '@/components/ui/Container';
 import { Section } from '@/components/ui/Section';
-import { useT } from '@/components/LanguageProvider';
+import { useLang } from '@/components/LanguageProvider';
 
 // Tilda block rec1337102151 (T396, dark blue gradient card with form + magazine photo).
 // Card 1168x383, gradient from rgba(0,26,50,1) -> rgba(0,73,145,0). Border radius 16 -> 23.
@@ -14,11 +14,38 @@ import { useT } from '@/components/LanguageProvider';
 
 const CATALOG_IMG = '/images/catalog.webp';
 
+type FormStatus = 'idle' | 'loading' | 'success' | 'error' | 'rate_limited';
+
 export function CatalogForm() {
-  const t = useT();
+  const { t, lang } = useLang();
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [agreed, setAgreed] = useState(false);
+  const [status, setStatus] = useState<FormStatus>('idle');
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (status === 'loading') return;
+    setStatus('loading');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ form_type: 'catalog', email, phone, lang, website: '' }),
+      });
+      const data: { success: boolean; code?: string } = await res.json();
+      if (data.success) {
+        setStatus('success');
+      } else if (data.code === 'rate_limited') {
+        setStatus('rate_limited');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  }
 
   return (
     <Section id='catalog' ariaLabelledby='catalog-title' className='bg-white'>
@@ -36,68 +63,97 @@ export function CatalogForm() {
               {t.catalog.title}
             </h2>
 
-            <form
-              className='mt-[40px] space-y-[20px]'
-              onSubmit={(e) => e.preventDefault()}
-              aria-label={t.catalog.ariaLabel}
-            >
-              <label htmlFor='catalog-email' className='sr-only'>
-                {t.callbackModal.emailLabel}
-              </label>
-              <input
-                id='catalog-email'
-                type='email'
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={t.catalog.emailPlaceholder}
-                className='block h-[64px] w-full rounded-[12px] bg-white px-[20px] text-[18px] text-black outline-none [font-family:Roboto,Arial,sans-serif] placeholder:text-black/40 focus:ring-2 focus:ring-[#66a6e6] sm:h-[72px] sm:text-[20px]'
-              />
+            {status === 'success' ? (
+              <div
+                role='status'
+                aria-live='polite'
+                className='mt-[40px] rounded-[16px] bg-white/10 p-[24px] text-[16px] text-white'
+              >
+                {t.contactForm.success}
+              </div>
+            ) : (
+              <form
+                className='mt-[40px] space-y-[20px]'
+                onSubmit={handleSubmit}
+                aria-label={t.catalog.ariaLabel}
+              >
+                <input
+                  type='text'
+                  name='website'
+                  className='hidden'
+                  aria-hidden='true'
+                  tabIndex={-1}
+                  autoComplete='off'
+                  defaultValue=''
+                  readOnly
+                />
 
-              <div className='flex h-[64px] items-stretch overflow-hidden rounded-[12px] bg-white ring-1 ring-white/10 focus-within:ring-2 focus-within:ring-[#66a6e6] sm:h-[72px]'>
-                <span className='flex items-center gap-[8px] bg-white px-[16px] text-[18px] text-black [font-family:Roboto,Arial,sans-serif] sm:text-[20px]'>
-                  <span
-                    aria-hidden
-                    className='inline-block h-[14px] w-[20px] rounded-[2px] bg-[linear-gradient(to_bottom,#AE1C28_33%,#fff_33%_66%,#21468B_66%)]'
-                  />
-                  +31
-                </span>
-                <label htmlFor='catalog-phone' className='sr-only'>
-                  {t.callbackModal.phoneLabel}
+                <label htmlFor='catalog-email' className='sr-only'>
+                  {t.callbackModal.emailLabel}
                 </label>
                 <input
-                  id='catalog-phone'
-                  type='tel'
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder={t.catalog.phonePlaceholder}
-                  className='h-full flex-1 bg-white px-[12px] text-[18px] text-black outline-none [font-family:Roboto,Arial,sans-serif] placeholder:text-black/40 sm:text-[20px]'
-                />
-              </div>
-
-              <label className='flex items-start gap-[8px] text-[14px] text-white/85 [font-family:Roboto,Arial,sans-serif]'>
-                <input
-                  type='checkbox'
-                  checked={agreed}
-                  onChange={(e) => setAgreed(e.target.checked)}
+                  id='catalog-email'
+                  type='email'
                   required
-                  className='mt-[4px] h-[16px] w-[16px] flex-none accent-[#226CD5]'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={t.catalog.emailPlaceholder}
+                  className='block h-[64px] w-full rounded-[12px] bg-white px-[20px] text-[18px] text-black outline-none [font-family:Roboto,Arial,sans-serif] placeholder:text-black/40 focus:ring-2 focus:ring-[#66a6e6] sm:h-[72px] sm:text-[20px]'
                 />
-                <span>
-                  {t.catalog.privacyBefore}
-                  <a href='#privacy' className='underline'>
-                    {t.catalog.privacyLink}
-                  </a>
-                </span>
-              </label>
 
-              <button
-                type='submit'
-                className='block h-[64px] w-full rounded-[16px] bg-[#226CD5] text-[18px] font-bold capitalize text-white [font-family:Roboto,Arial,sans-serif] sm:h-[72px] sm:text-[22px] lg:h-[86px] lg:text-[29px]'
-              >
-                {t.catalog.submit}
-              </button>
-            </form>
+                <div className='flex h-[64px] items-stretch overflow-hidden rounded-[12px] bg-white ring-1 ring-white/10 focus-within:ring-2 focus-within:ring-[#66a6e6] sm:h-[72px]'>
+                  <span className='flex items-center gap-[8px] bg-white px-[16px] text-[18px] text-black [font-family:Roboto,Arial,sans-serif] sm:text-[20px]'>
+                    <span
+                      aria-hidden
+                      className='inline-block h-[14px] w-[20px] rounded-[2px] bg-[linear-gradient(to_bottom,#AE1C28_33%,#fff_33%_66%,#21468B_66%)]'
+                    />
+                    +31
+                  </span>
+                  <label htmlFor='catalog-phone' className='sr-only'>
+                    {t.callbackModal.phoneLabel}
+                  </label>
+                  <input
+                    id='catalog-phone'
+                    type='tel'
+                    required
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder={t.catalog.phonePlaceholder}
+                    className='h-full flex-1 bg-white px-[12px] text-[18px] text-black outline-none [font-family:Roboto,Arial,sans-serif] placeholder:text-black/40 sm:text-[20px]'
+                  />
+                </div>
+
+                <label className='flex items-start gap-[8px] text-[14px] text-white/85 [font-family:Roboto,Arial,sans-serif]'>
+                  <input
+                    type='checkbox'
+                    checked={agreed}
+                    onChange={(e) => setAgreed(e.target.checked)}
+                    required
+                    className='mt-[4px] h-[16px] w-[16px] flex-none accent-[#226CD5]'
+                  />
+                  <span>
+                    {t.catalog.privacyBefore}
+                    <a href={lang === 'en' ? '/en/privacy' : '/privacy'} target='_blank' rel='noopener' className='underline'>
+                      {t.catalog.privacyLink}
+                    </a>
+                  </span>
+                </label>
+
+                <button
+                  type='submit'
+                  disabled={status === 'loading'}
+                  className='block h-[64px] w-full rounded-[16px] bg-[#226CD5] text-[18px] font-bold capitalize text-white disabled:cursor-not-allowed disabled:opacity-60 [font-family:Roboto,Arial,sans-serif] sm:h-[72px] sm:text-[22px] lg:h-[86px] lg:text-[29px]'
+                >
+                  {status === 'loading' ? t.contactForm.sending : t.catalog.submit}
+                </button>
+
+                {(status === 'error' || status === 'rate_limited') && (
+                  <p role='alert' aria-live='assertive' className='text-[14px] text-red-300'>
+                    {status === 'rate_limited' ? t.contactForm.rateLimited : t.contactForm.error}
+                  </p>
+                )}
+              </form>
+            )}
           </div>
 
           <div className='relative h-full min-h-[280px] sm:min-h-[360px] lg:min-h-[440px]'>
