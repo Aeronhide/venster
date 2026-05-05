@@ -22,7 +22,7 @@ export function Section({
       id={id}
       aria-labelledby={ariaLabelledby}
       aria-label={ariaLabel}
-      className={`scroll-mt-24 py-16 sm:py-20 lg:py-24 ${className}`}
+      className={`scroll-mt-24 py-12 ${className}`}
     >
       {children}
     </Tag>

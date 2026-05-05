@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import { SITE_URL, site } from "@/lib/site";
+import { ScrollToTopOnMount } from "@/components/ScrollToTopOnMount";
 
 const roboto = Roboto({
   subsets: ["latin", "latin-ext"],
@@ -87,7 +88,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang={site.language} className={`${roboto.variable} antialiased`}>
-      <body className="min-h-dvh bg-bg text-fg font-sans">{children}</body>
+      <body className="min-h-dvh bg-bg text-fg font-sans">
+        <ScrollToTopOnMount />
+        {children}
+      </body>
     </html>
   );
 }
