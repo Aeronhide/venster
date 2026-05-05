@@ -8,6 +8,7 @@ import { PvcRoto } from "@/components/sections/PvcRoto";
 import { PvcAccessories } from "@/components/sections/PvcAccessories";
 import { PvcAdvantages } from "@/components/sections/PvcAdvantages";
 import { PvcConsult } from "@/components/sections/PvcConsult";
+import { PvcOnzeWerken } from "@/components/sections/PvcOnzeWerken";
 import { PvcFAQ } from "@/components/sections/PvcFAQ";
 import { Products } from "@/components/sections/Products";
 import { Process } from "@/components/sections/Process";
@@ -40,6 +41,7 @@ export default function PvcRamenPage() {
       <Products images={PVC_PRODUCT_IMAGES} />
       <Process />
       <PvcConsult />
+      <PvcOnzeWerken />
       <PvcAdvantages />
       <div className="bg-[#F5F5F5]">
         <InstallationForm />

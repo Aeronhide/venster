@@ -582,6 +582,13 @@ export const translations = {
           },
         ],
       },
+      onzeWerken: {
+        title: "Onze werken",
+        prevAria: "Vorige slide",
+        nextAria: "Volgende slide",
+        goToAria: "Ga naar slide",
+        altPrefix: "Werken — slide",
+      },
       consult: {
         title: "Heb je professionele advies nodig?",
         subtitle:
@@ -1220,6 +1227,13 @@ export const translations = {
             body: "No need to paint, no rust to fight, and the occasional cleaning with water and soap is hardly tiring.",
           },
         ],
+      },
+      onzeWerken: {
+        title: "Our works",
+        prevAria: "Previous slide",
+        nextAria: "Next slide",
+        goToAria: "Go to slide",
+        altPrefix: "Our works — slide",
       },
       consult: {
         title: "Need professional advice?",
