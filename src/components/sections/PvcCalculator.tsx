@@ -5,7 +5,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
-import { useT } from "@/components/LanguageProvider";
+import { useLang } from "@/components/LanguageProvider";
+import { isPhoneValid, PHONE_MIN_DIGITS } from "@/lib/phone";
 
 type StepOption = { label: string; image?: string };
 type StepInput = { label: string; placeholder: string };
@@ -32,7 +33,7 @@ type Step = {
 };
 
 export function PvcCalculator() {
-  const t = useT();
+  const { t, lang } = useLang();
   const steps = t.pvcRamen.calculator.steps as readonly Step[];
   const [stepIdx, setStepIdx] = useState(0);
   const [selections, setSelections] = useState<Record<number, number>>({});
@@ -41,15 +42,41 @@ export function PvcCalculator() {
   const [finalPhone, setFinalPhone] = useState("");
   const [finalAgreed, setFinalAgreed] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const router = useRouter();
 
-  const submitFinal = () => {
+  const submitFinal = async () => {
     if (!finalPhone.trim() || !finalAgreed || submitting) return;
+    if (!isPhoneValid(finalPhone)) {
+      setSubmitError(t.contactForm.phoneTooShort);
+      return;
+    }
     setSubmitting(true);
-    // Simulate brief network delay so the spinner is visible, then navigate.
-    setTimeout(() => {
-      router.push("/bedankt");
-    }, 700);
+    setSubmitError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          form_type: "pvc_calculator",
+          phone: `+31${finalPhone}`,
+          lang,
+          website: "",
+          page_url: typeof window !== "undefined" ? window.location.href : "",
+          source: "PVC Ramen — Calculator (laatste stap)",
+        }),
+      });
+      const data: { success: boolean; code?: string } = await res.json();
+      if (data.success) {
+        router.push("/bedankt");
+      } else {
+        setSubmitError(data.code === "rate_limited" ? t.contactForm.rateLimited : t.contactForm.error);
+        setSubmitting(false);
+      }
+    } catch {
+      setSubmitError(t.contactForm.error);
+      setSubmitting(false);
+    }
   };
 
   const total = steps.length;
@@ -161,8 +188,11 @@ export function PvcCalculator() {
                       <input
                         id="pvc-calc-final-phone"
                         type="tel"
+                        required
                         inputMode="numeric"
                         pattern="[0-9]*"
+                        autoComplete="tel"
+                        minLength={PHONE_MIN_DIGITS}
                         value={finalPhone}
                         onChange={(e) =>
                           setFinalPhone(e.target.value.replace(/\D/g, ""))
@@ -182,11 +212,16 @@ export function PvcCalculator() {
                       />
                       <span>
                         {step.final.privacyBefore}
-                        <a href="#privacy" className="font-medium underline">
+                        <a href="/privacy" className="font-medium underline">
                           {step.final.privacyLink}
                         </a>
                       </span>
                     </label>
+                    {submitError && (
+                      <p role="alert" aria-live="assertive" className="mt-[10px] text-[12px] text-white/90 sm:text-[13px]">
+                        {submitError}
+                      </p>
+                    )}
                   </div>
 
                 </div>

@@ -67,7 +67,13 @@ export function Products({ images = DEFAULT_PRODUCT_IMAGES }: ProductsProps = {}
                   ))}
                 </ul>
 
-                <button type="button" onClick={() => openCallback()} className={CTA}>
+                <button
+                  type="button"
+                  onClick={() =>
+                    openCallback(`Producten card "${p.title}" (${t.products.cta})`)
+                  }
+                  className={CTA}
+                >
                   {t.products.cta}
                 </button>
               </li>

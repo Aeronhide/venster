@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { useT } from "@/components/LanguageProvider";
+import { useModal } from "@/components/ModalContext";
 
 const PROFILE_IMAGES = [
   "/images/prof1.png",
@@ -13,6 +14,7 @@ const PROFILE_IMAGES = [
 
 export function PvcProfiles() {
   const t = useT();
+  const { openCallback } = useModal();
   return (
     <Section ariaLabelledby="pvc-profiles-title" className="bg-white">
       <Container>
@@ -47,12 +49,15 @@ export function PvcProfiles() {
                   <h3 className="text-center text-[18px] font-semibold leading-[1.35] text-black [font-family:Roboto,Arial,sans-serif] sm:text-[20px] lg:text-[24px]">
                     {p.name}
                   </h3>
-                  <a
-                    href="#contact"
+                  <button
+                    type="button"
+                    onClick={() =>
+                      openCallback(`PVC Ramen — Profielen card "${p.name}" (Prijs ontdekken)`)
+                    }
                     className="mt-[16px] inline-flex h-[48px] items-center justify-center rounded-[10px] bg-[#2D51A3] px-[20px] text-[13px] font-semibold uppercase text-white [font-family:Roboto,Arial,sans-serif] sm:mt-[20px] sm:h-[44px] sm:text-[14px] lg:mt-[24px] lg:h-[40px]"
                   >
                     {t.pvcRamen.profiles.cta}
-                  </a>
+                  </button>
                 </div>
               </li>
             ))}

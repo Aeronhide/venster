@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/site";
 import { Privacy } from "@/components/sections/Privacy";
-import { Header } from "@/components/sections/Header";
-import { Footer } from "@/components/sections/Footer";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Venster Valent",
@@ -19,13 +17,5 @@ export const metadata: Metadata = {
 };
 
 export default function EnPrivacyPage() {
-  return (
-    <>
-      <Header />
-      <main id="main">
-        <Privacy />
-      </main>
-      <Footer />
-    </>
-  );
+  return <Privacy />;
 }

@@ -2,7 +2,16 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { useT } from "@/components/LanguageProvider";
+import { useLang, useT } from "@/components/LanguageProvider";
+import { isPhoneValid, PHONE_MIN_DIGITS } from "@/lib/phone";
+
+type FormStatus =
+  | "idle"
+  | "loading"
+  | "success"
+  | "error"
+  | "rate_limited"
+  | "phone_too_short";
 
 const HERO_BG = "/images/rvc_banner.png";
 const GOOGLE_BADGE = "/images/google-reviews-badge.png";
@@ -137,65 +146,117 @@ export function HeroPvcRamen() {
 /* ----- Card content shared between desktop and mobile (with size-scoped classes) ----- */
 
 function FormCardContent() {
-  const t = useT();
+  const { t, lang } = useLang();
   const [phone, setPhone] = useState("");
   const [agreed, setAgreed] = useState(false);
+  const [status, setStatus] = useState<FormStatus>("idle");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (status === "loading") return;
+    if (!isPhoneValid(phone)) {
+      setStatus("phone_too_short");
+      return;
+    }
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          form_type: "pvc_hero",
+          phone: `+31${phone.replace(/\D/g, "")}`,
+          lang,
+          website: "",
+          page_url: typeof window !== "undefined" ? window.location.href : "",
+          source: "PVC Ramen — Hero banner (desktop)",
+        }),
+      });
+      const data: { success: boolean; code?: string } = await res.json();
+      if (data.success) setStatus("success");
+      else if (data.code === "rate_limited") setStatus("rate_limited");
+      else setStatus("error");
+    } catch {
+      setStatus("error");
+    }
+  }
 
   return (
     <>
       <h2 className="text-[2.2cqi] font-bold leading-[1.25] text-white">
         {t.pvcRamen.formTitle}
       </h2>
-      <form
-        className="mt-[2cqi] space-y-[1.4cqi]"
-        onSubmit={(e) => e.preventDefault()}
-        aria-label={t.pvcRamen.formTitle}
-      >
-        <label
-          htmlFor="rvc-banner-phone-d"
-          className="block text-[1.1cqi] font-medium text-white/85"
-        >
-          {t.pvcRamen.formPhoneLabel}
-        </label>
-        <div className="flex h-[4.5cqi] items-stretch overflow-hidden rounded-[12px] bg-white">
-          <span className="flex items-center gap-[0.6cqi] border-r border-[#c7c7c7] px-[1.4cqi] text-[1.4cqi] text-[#050505]">
-            <span
-              aria-hidden
-              className="inline-block h-[1.2cqi] w-[1.7cqi] rounded-[2px] bg-[linear-gradient(to_bottom,#AE1C28_33%,#fff_33%_66%,#21468B_66%)]"
-            />
-            +31
-          </span>
-          <input
-            id="rvc-banner-phone-d"
-            type="tel"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            placeholder={t.pvcRamen.formPhonePlaceholder}
-            className="h-full flex-1 bg-white px-[1.2cqi] text-[1.4cqi] text-[#050505] outline-none placeholder:text-[#9a9a9a]"
-          />
+      {status === "success" ? (
+        <div role="status" aria-live="polite" className="mt-[2cqi] rounded-[12px] bg-white/15 px-[1.4cqi] py-[1.2cqi] text-[1.2cqi] text-white">
+          {t.contactForm.success}
         </div>
-        <label className="flex items-start gap-[0.8cqi] text-[1cqi] leading-[1.4] text-white/85">
-          <input
-            type="checkbox"
-            checked={agreed}
-            onChange={(e) => setAgreed(e.target.checked)}
-            required
-            className="mt-[0.15cqi] h-[1.4cqi] w-[1.4cqi] flex-none accent-[#226CD5]"
-          />
-          <span>
-            {t.pvcRamen.formPrivacyBefore}
-            <a href="#privacy" className="font-medium underline">
-              {t.pvcRamen.formPrivacyLink}
-            </a>
-          </span>
-        </label>
-        <button
-          type="submit"
-          className="block h-[4cqi] w-full rounded-[12px] bg-[#911700] text-[1.4cqi] font-bold uppercase tracking-tight text-white"
+      ) : (
+        <form
+          className="mt-[2cqi] space-y-[1.4cqi]"
+          onSubmit={handleSubmit}
+          aria-label={t.pvcRamen.formTitle}
         >
-          {t.pvcRamen.formSubmit}
-        </button>
-      </form>
+          <input type="text" name="website" className="hidden" aria-hidden="true" tabIndex={-1} autoComplete="off" defaultValue="" readOnly />
+          <label
+            htmlFor="rvc-banner-phone-d"
+            className="block text-[1.1cqi] font-medium text-white/85"
+          >
+            {t.pvcRamen.formPhoneLabel}
+          </label>
+          <div className="flex h-[4.5cqi] items-stretch overflow-hidden rounded-[12px] bg-white">
+            <span className="flex items-center gap-[0.6cqi] border-r border-[#c7c7c7] px-[1.4cqi] text-[1.4cqi] text-[#050505]">
+              <span
+                aria-hidden
+                className="inline-block h-[1.2cqi] w-[1.7cqi] rounded-[2px] bg-[linear-gradient(to_bottom,#AE1C28_33%,#fff_33%_66%,#21468B_66%)]"
+              />
+              +31
+            </span>
+            <input
+              id="rvc-banner-phone-d"
+              type="tel"
+              required
+              inputMode="tel"
+              autoComplete="tel"
+              minLength={PHONE_MIN_DIGITS}
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder={t.pvcRamen.formPhonePlaceholder}
+              className="h-full flex-1 bg-white px-[1.2cqi] text-[1.4cqi] text-[#050505] outline-none placeholder:text-[#9a9a9a]"
+            />
+          </div>
+          <label className="flex items-start gap-[0.8cqi] text-[1cqi] leading-[1.4] text-white/85">
+            <input
+              type="checkbox"
+              checked={agreed}
+              onChange={(e) => setAgreed(e.target.checked)}
+              required
+              className="mt-[0.15cqi] h-[1.4cqi] w-[1.4cqi] flex-none accent-[#226CD5]"
+            />
+            <span>
+              {t.pvcRamen.formPrivacyBefore}
+              <a href="/privacy" className="font-medium underline">
+                {t.pvcRamen.formPrivacyLink}
+              </a>
+            </span>
+          </label>
+          <button
+            type="submit"
+            disabled={!phone.trim() || !agreed || status === "loading"}
+            className="block h-[4cqi] w-full rounded-[12px] bg-[#911700] text-[1.4cqi] font-bold uppercase tracking-tight text-white disabled:opacity-60"
+          >
+            {status === "loading" ? t.contactForm.sending : t.pvcRamen.formSubmit}
+          </button>
+          {(status === "error" || status === "rate_limited" || status === "phone_too_short") && (
+            <p role="alert" aria-live="assertive" className="text-[1cqi] text-white/90">
+              {status === "rate_limited"
+                ? t.contactForm.rateLimited
+                : status === "phone_too_short"
+                  ? t.contactForm.phoneTooShort
+                  : t.contactForm.error}
+            </p>
+          )}
+        </form>
+      )}
     </>
   );
 }
@@ -242,64 +303,117 @@ function FeaturesCardMobile() {
 }
 
 function FormCardMobile() {
-  const t = useT();
+  const { t, lang } = useLang();
   const [phone, setPhone] = useState("");
   const [agreed, setAgreed] = useState(false);
+  const [status, setStatus] = useState<FormStatus>("idle");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (status === "loading") return;
+    if (!isPhoneValid(phone)) {
+      setStatus("phone_too_short");
+      return;
+    }
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          form_type: "pvc_hero",
+          phone: `+31${phone.replace(/\D/g, "")}`,
+          lang,
+          website: "",
+          page_url: typeof window !== "undefined" ? window.location.href : "",
+          source: "PVC Ramen — Hero banner (mobile)",
+        }),
+      });
+      const data: { success: boolean; code?: string } = await res.json();
+      if (data.success) setStatus("success");
+      else if (data.code === "rate_limited") setStatus("rate_limited");
+      else setStatus("error");
+    } catch {
+      setStatus("error");
+    }
+  }
+
   return (
     <article className="min-w-0 rounded-[14px] border border-white/90 bg-[#473536] p-[20px] sm:p-[24px]">
       <h2 className="text-[16px] font-bold leading-[1.25] text-white sm:text-[20px]">
         {t.pvcRamen.formTitle}
       </h2>
-      <form
-        className="mt-[14px] space-y-[12px] sm:mt-[18px] sm:space-y-[14px]"
-        onSubmit={(e) => e.preventDefault()}
-        aria-label={t.pvcRamen.formTitle}
-      >
-        <label
-          htmlFor="rvc-banner-phone-m"
-          className="block text-[12px] font-medium text-white/85 sm:text-[13px]"
-        >
-          {t.pvcRamen.formPhoneLabel}
-        </label>
-        <div className="flex h-[48px] min-w-0 items-stretch overflow-hidden rounded-[12px] bg-white sm:h-[52px]">
-          <span className="flex shrink-0 items-center gap-[6px] border-r border-[#c7c7c7] px-[10px] text-[14px] text-[#050505] sm:gap-[8px] sm:px-[12px] sm:text-[15px]">
-            <span
-              aria-hidden
-              className="inline-block h-[12px] w-[18px] rounded-[2px] bg-[linear-gradient(to_bottom,#AE1C28_33%,#fff_33%_66%,#21468B_66%)]"
-            />
-            +31
-          </span>
-          <input
-            id="rvc-banner-phone-m"
-            type="tel"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            placeholder={t.pvcRamen.formPhonePlaceholder}
-            className="h-full min-w-0 flex-1 bg-white px-[12px] text-[16px] text-[#050505] outline-none placeholder:text-[#9a9a9a]"
-          />
+      {status === "success" ? (
+        <div role="status" aria-live="polite" className="mt-[14px] rounded-[10px] bg-white/15 px-[14px] py-[12px] text-[13px] text-white sm:text-[14px]">
+          {t.contactForm.success}
         </div>
-        <label className="flex items-start gap-[8px] text-[12px] leading-[1.4] text-white/85 sm:text-[13px]">
-          <input
-            type="checkbox"
-            checked={agreed}
-            onChange={(e) => setAgreed(e.target.checked)}
-            required
-            className="mt-[2px] h-[16px] w-[16px] flex-none accent-[#226CD5]"
-          />
-          <span>
-            {t.pvcRamen.formPrivacyBefore}
-            <a href="#privacy" className="font-medium underline">
-              {t.pvcRamen.formPrivacyLink}
-            </a>
-          </span>
-        </label>
-        <button
-          type="submit"
-          className="block h-[48px] w-full rounded-[12px] bg-[#911700] text-[13px] font-bold uppercase tracking-tight text-white sm:h-[52px] sm:text-[14px]"
+      ) : (
+        <form
+          className="mt-[14px] space-y-[12px] sm:mt-[18px] sm:space-y-[14px]"
+          onSubmit={handleSubmit}
+          aria-label={t.pvcRamen.formTitle}
         >
-          {t.pvcRamen.formSubmit}
-        </button>
-      </form>
+          <input type="text" name="website" className="hidden" aria-hidden="true" tabIndex={-1} autoComplete="off" defaultValue="" readOnly />
+          <label
+            htmlFor="rvc-banner-phone-m"
+            className="block text-[12px] font-medium text-white/85 sm:text-[13px]"
+          >
+            {t.pvcRamen.formPhoneLabel}
+          </label>
+          <div className="flex h-[48px] min-w-0 items-stretch overflow-hidden rounded-[12px] bg-white sm:h-[52px]">
+            <span className="flex shrink-0 items-center gap-[6px] border-r border-[#c7c7c7] px-[10px] text-[14px] text-[#050505] sm:gap-[8px] sm:px-[12px] sm:text-[15px]">
+              <span
+                aria-hidden
+                className="inline-block h-[12px] w-[18px] rounded-[2px] bg-[linear-gradient(to_bottom,#AE1C28_33%,#fff_33%_66%,#21468B_66%)]"
+              />
+              +31
+            </span>
+            <input
+              id="rvc-banner-phone-m"
+              type="tel"
+              required
+              inputMode="tel"
+              autoComplete="tel"
+              minLength={PHONE_MIN_DIGITS}
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder={t.pvcRamen.formPhonePlaceholder}
+              className="h-full min-w-0 flex-1 bg-white px-[12px] text-[16px] text-[#050505] outline-none placeholder:text-[#9a9a9a]"
+            />
+          </div>
+          <label className="flex items-start gap-[8px] text-[12px] leading-[1.4] text-white/85 sm:text-[13px]">
+            <input
+              type="checkbox"
+              checked={agreed}
+              onChange={(e) => setAgreed(e.target.checked)}
+              required
+              className="mt-[2px] h-[16px] w-[16px] flex-none accent-[#226CD5]"
+            />
+            <span>
+              {t.pvcRamen.formPrivacyBefore}
+              <a href="/privacy" className="font-medium underline">
+                {t.pvcRamen.formPrivacyLink}
+              </a>
+            </span>
+          </label>
+          <button
+            type="submit"
+            disabled={!phone.trim() || !agreed || status === "loading"}
+            className="block h-[48px] w-full rounded-[12px] bg-[#911700] text-[13px] font-bold uppercase tracking-tight text-white disabled:opacity-60 sm:h-[52px] sm:text-[14px]"
+          >
+            {status === "loading" ? t.contactForm.sending : t.pvcRamen.formSubmit}
+          </button>
+          {(status === "error" || status === "rate_limited" || status === "phone_too_short") && (
+            <p role="alert" aria-live="assertive" className="text-[12px] text-white/90 sm:text-[13px]">
+              {status === "rate_limited"
+                ? t.contactForm.rateLimited
+                : status === "phone_too_short"
+                  ? t.contactForm.phoneTooShort
+                  : t.contactForm.error}
+            </p>
+          )}
+        </form>
+      )}
     </article>
   );
 }

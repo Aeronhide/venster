@@ -169,7 +169,7 @@ export function Header() {
           {/* CTA — opens callback modal */}
           <button
             type='button'
-            onClick={() => openCallback()}
+            onClick={() => openCallback("Header — desktop CTA (Bel mij terug)")}
             className={CTA}
           >
             {t.header.cta}
@@ -309,7 +309,7 @@ export function Header() {
                 type='button'
                 onClick={() => {
                   setOpen(false);
-                  openCallback();
+                  openCallback("Header — mobile menu CTA (Bel mij terug)");
                 }}
                 className={CTA + ' w-full'}
               >

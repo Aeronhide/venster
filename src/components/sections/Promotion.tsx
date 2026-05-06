@@ -44,7 +44,9 @@ export function Promotion() {
 
                 <button
                   type="button"
-                  onClick={() => openCallback()}
+                  onClick={() =>
+                    openCallback(`Promotie sectie — CTA (${t.promotion.cta})`)
+                  }
                   className="mt-[20px] inline-flex h-[60px] w-full max-w-[400px] items-center justify-center rounded-[12px] bg-[#226CD5] text-[18px] font-bold capitalize text-white [font-family:Roboto,Arial,sans-serif] sm:mt-[28px] sm:h-[76px] sm:rounded-[14px] sm:text-[22px] lg:mt-[36px] lg:h-[86px] lg:rounded-[16px] lg:text-[29px]"
                 >
                   {t.promotion.cta}

@@ -120,7 +120,7 @@ export function Hero() {
             {/* CTA */}
             <button
               type="button"
-              onClick={() => openCallback()}
+              onClick={() => openCallback("Homepage Hero — CTA (mobile)")}
               className="mt-5 inline-flex h-[56px] w-full items-center justify-center rounded-[16px] bg-[#226CD5] px-3 text-center text-[14px] font-bold uppercase leading-[1.1] text-white sm:h-[64px] sm:text-[16px]"
             >
               {t.hero.ctaMobile}
@@ -227,7 +227,11 @@ export function Hero() {
 
         <div className={CLS.subhead}>{t.hero.subhead}</div>
 
-        <button type="button" onClick={() => openCallback()} className={CLS.cta}>
+        <button
+          type="button"
+          onClick={() => openCallback("Homepage Hero — CTA (desktop)")}
+          className={CLS.cta}
+        >
           {t.hero.cta}
         </button>
 

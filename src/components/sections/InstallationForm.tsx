@@ -5,12 +5,19 @@ import { useState } from 'react';
 import { Container } from '@/components/ui/Container';
 import { Section } from '@/components/ui/Section';
 import { useLang } from '@/components/LanguageProvider';
+import { isPhoneValid, PHONE_MIN_DIGITS } from '@/lib/phone';
 
 // Tilda block rec1337102011. Card 1160x471 (#f5f5f5, radius 22). Image 573x382, title fs 28 → 40,
 // body fs 14 → 20, "Montage" tag fs 12 → 17, button "Plan een inmeting" 330x60 → 475x86, fs 20 → 29.
 const INSTALLER_IMG = '/images/valent_img.webp';
 
-type FormStatus = 'idle' | 'loading' | 'success' | 'error' | 'rate_limited';
+type FormStatus =
+  | 'idle'
+  | 'loading'
+  | 'success'
+  | 'error'
+  | 'rate_limited'
+  | 'phone_too_short';
 
 export function InstallationForm() {
   const { t, lang } = useLang();
@@ -21,13 +28,24 @@ export function InstallationForm() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (status === 'loading') return;
+    if (!isPhoneValid(phone)) {
+      setStatus('phone_too_short');
+      return;
+    }
     setStatus('loading');
 
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ form_type: 'installation', phone, lang, website: '' }),
+        body: JSON.stringify({
+          form_type: 'installation',
+          phone,
+          lang,
+          website: '',
+          page_url: typeof window !== 'undefined' ? window.location.href : '',
+          source: 'Inmeting formulier (homepage)',
+        }),
       });
       const data: { success: boolean; code?: string } = await res.json();
       if (data.success) {
@@ -114,6 +132,9 @@ export function InstallationForm() {
                     </span>
                     <input
                       type='tel'
+                      inputMode='tel'
+                      autoComplete='tel'
+                      minLength={PHONE_MIN_DIGITS}
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder={t.installation.phonePlaceholder}
@@ -152,9 +173,13 @@ export function InstallationForm() {
                   {status === 'loading' ? t.contactForm.sending : t.installation.submit}
                 </button>
 
-                {(status === 'error' || status === 'rate_limited') && (
+                {(status === 'error' || status === 'rate_limited' || status === 'phone_too_short') && (
                   <p role='alert' aria-live='assertive' className='text-[14px] text-[#c0392b]'>
-                    {status === 'rate_limited' ? t.contactForm.rateLimited : t.contactForm.error}
+                    {status === 'rate_limited'
+                      ? t.contactForm.rateLimited
+                      : status === 'phone_too_short'
+                        ? t.contactForm.phoneTooShort
+                        : t.contactForm.error}
                   </p>
                 )}
               </form>

@@ -2,15 +2,23 @@
 
 import { useEffect, useState } from "react";
 import { useLang } from "@/components/LanguageProvider";
+import { isPhoneValid, PHONE_MIN_DIGITS } from "@/lib/phone";
 
 type CallbackModalProps = {
   open: boolean;
   onClose: () => void;
+  source?: string;
 };
 
-type FormStatus = "idle" | "loading" | "success" | "error" | "rate_limited";
+type FormStatus =
+  | "idle"
+  | "loading"
+  | "success"
+  | "error"
+  | "rate_limited"
+  | "phone_too_short";
 
-export function CallbackModal({ open, onClose }: CallbackModalProps) {
+export function CallbackModal({ open, onClose, source = "" }: CallbackModalProps) {
   const { t, lang } = useLang();
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -37,13 +45,25 @@ export function CallbackModal({ open, onClose }: CallbackModalProps) {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (status === "loading") return;
+    if (!isPhoneValid(phone)) {
+      setStatus("phone_too_short");
+      return;
+    }
     setStatus("loading");
 
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ form_type: "callback", email, phone, lang, website: "" }),
+        body: JSON.stringify({
+          form_type: "callback",
+          email,
+          phone,
+          lang,
+          website: "",
+          page_url: typeof window !== "undefined" ? window.location.href : "",
+          source: source || "Callback modal",
+        }),
       });
       const data: { success: boolean; code?: string } = await res.json();
       if (data.success) {
@@ -146,6 +166,9 @@ export function CallbackModal({ open, onClose }: CallbackModalProps) {
                   id="cb-phone"
                   type="tel"
                   required
+                  inputMode="tel"
+                  autoComplete="tel"
+                  minLength={PHONE_MIN_DIGITS}
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder={t.callbackModal.phonePlaceholder}
@@ -179,9 +202,13 @@ export function CallbackModal({ open, onClose }: CallbackModalProps) {
               {status === "loading" ? t.contactForm.sending : t.callbackModal.submit}
             </button>
 
-            {(status === "error" || status === "rate_limited") && (
+            {(status === "error" || status === "rate_limited" || status === "phone_too_short") && (
               <p role="alert" aria-live="assertive" className="text-[14px] text-[#c0392b]">
-                {status === "rate_limited" ? t.contactForm.rateLimited : t.contactForm.error}
+                {status === "rate_limited"
+                  ? t.contactForm.rateLimited
+                  : status === "phone_too_short"
+                    ? t.contactForm.phoneTooShort
+                    : t.contactForm.error}
               </p>
             )}
           </form>

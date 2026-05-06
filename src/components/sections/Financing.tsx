@@ -64,7 +64,9 @@ export function Financing() {
 
                 <button
                   type="button"
-                  onClick={() => openCallback()}
+                  onClick={() =>
+                    openCallback(`Financiering sectie — CTA (${t.financing.cta})`)
+                  }
                   className="mt-8 inline-flex h-[64px] w-full max-w-[430px] items-center justify-center rounded-[16px] bg-[#226CD5] px-8 text-center text-[20px] font-bold capitalize text-white [font-family:Roboto,Arial,sans-serif] sm:h-[80px] lg:h-[86px] lg:text-[24px]"
                 >
                   {t.financing.cta}

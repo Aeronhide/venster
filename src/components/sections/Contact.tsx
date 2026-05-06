@@ -97,7 +97,9 @@ export function Contact() {
 
                 <button
                   type="button"
-                  onClick={() => openCallback()}
+                  onClick={() =>
+                    openCallback(`Contact sectie — CTA (${t.contact.cta})`)
+                  }
                   className='mt-[12px] inline-flex h-[64px] w-full max-w-[400px] items-center justify-center rounded-[16px] bg-[#226CD5] text-[18px] font-bold capitalize text-white sm:h-[72px] sm:text-[22px] lg:h-[86px] lg:text-[29px]'
                 >
                   {t.contact.cta}

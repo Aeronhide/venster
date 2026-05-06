@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Container } from '@/components/ui/Container';
 import { Section } from '@/components/ui/Section';
 import { useLang } from '@/components/LanguageProvider';
+import { isPhoneValid, PHONE_MIN_DIGITS } from '@/lib/phone';
 
 // Tilda block rec1337102151 (T396, dark blue gradient card with form + magazine photo).
 // Card 1168x383, gradient from rgba(0,26,50,1) -> rgba(0,73,145,0). Border radius 16 -> 23.
@@ -14,7 +15,13 @@ import { useLang } from '@/components/LanguageProvider';
 
 const CATALOG_IMG = '/images/catalog.webp';
 
-type FormStatus = 'idle' | 'loading' | 'success' | 'error' | 'rate_limited';
+type FormStatus =
+  | 'idle'
+  | 'loading'
+  | 'success'
+  | 'error'
+  | 'rate_limited'
+  | 'phone_too_short';
 
 export function CatalogForm() {
   const { t, lang } = useLang();
@@ -26,13 +33,25 @@ export function CatalogForm() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (status === 'loading') return;
+    if (!isPhoneValid(phone)) {
+      setStatus('phone_too_short');
+      return;
+    }
     setStatus('loading');
 
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ form_type: 'catalog', email, phone, lang, website: '' }),
+        body: JSON.stringify({
+          form_type: 'catalog',
+          email,
+          phone,
+          lang,
+          website: '',
+          page_url: typeof window !== 'undefined' ? window.location.href : '',
+          source: 'Catalogus formulier (homepage)',
+        }),
       });
       const data: { success: boolean; code?: string } = await res.json();
       if (data.success) {
@@ -116,6 +135,9 @@ export function CatalogForm() {
                     id='catalog-phone'
                     type='tel'
                     required
+                    inputMode='tel'
+                    autoComplete='tel'
+                    minLength={PHONE_MIN_DIGITS}
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder={t.catalog.phonePlaceholder}
@@ -147,9 +169,13 @@ export function CatalogForm() {
                   {status === 'loading' ? t.contactForm.sending : t.catalog.submit}
                 </button>
 
-                {(status === 'error' || status === 'rate_limited') && (
+                {(status === 'error' || status === 'rate_limited' || status === 'phone_too_short') && (
                   <p role='alert' aria-live='assertive' className='text-[14px] text-red-300'>
-                    {status === 'rate_limited' ? t.contactForm.rateLimited : t.contactForm.error}
+                    {status === 'rate_limited'
+                      ? t.contactForm.rateLimited
+                      : status === 'phone_too_short'
+                        ? t.contactForm.phoneTooShort
+                        : t.contactForm.error}
                   </p>
                 )}
               </form>

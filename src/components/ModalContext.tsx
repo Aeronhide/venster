@@ -9,7 +9,7 @@ const CallbackModal = dynamic(
 );
 
 type ModalContextType = {
-  openCallback: () => void;
+  openCallback: (source?: string) => void;
 };
 
 const ModalContext = createContext<ModalContextType>({ openCallback: () => {} });
@@ -20,11 +20,19 @@ export function useModal() {
 
 export function ModalProvider({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
+  const [source, setSource] = useState<string>("");
 
   return (
-    <ModalContext.Provider value={{ openCallback: () => setOpen(true) }}>
+    <ModalContext.Provider
+      value={{
+        openCallback: (src?: string) => {
+          setSource(src ?? "");
+          setOpen(true);
+        },
+      }}
+    >
       {children}
-      <CallbackModal open={open} onClose={() => setOpen(false)} />
+      <CallbackModal open={open} onClose={() => setOpen(false)} source={source} />
     </ModalContext.Provider>
   );
 }

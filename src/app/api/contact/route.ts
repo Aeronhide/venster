@@ -1,5 +1,6 @@
 import type { NextRequest } from 'next/server';
 import { sendContactEmail, notifyBitrix } from '@/lib/email';
+import { isPhoneValid } from '@/lib/phone';
 
 const rateLimitMap = new Map<string, { count: number; windowStart: number }>();
 const LIMIT = Number(process.env.RATE_LIMIT_MAX ?? 10);
@@ -17,11 +18,15 @@ function checkRateLimit(ip: string): boolean {
   return true;
 }
 
-const VALID_TYPES = ['callback', 'catalog', 'installation'] as const;
+const VALID_TYPES = ['callback', 'catalog', 'installation', 'pvc_hero', 'pvc_consult', 'pvc_offer', 'pvc_calculator'] as const;
 const FORM_LABELS: Record<string, string> = {
   callback: 'Terugbelverzoek',
   catalog: 'Catalogusaanvraag',
   installation: 'Inmeting aanvraag',
+  pvc_hero: 'PVC Ramen — Banner',
+  pvc_consult: 'PVC Ramen — Gratis consult',
+  pvc_offer: 'PVC Ramen — Offerte',
+  pvc_calculator: 'PVC Ramen — Calculator',
 };
 
 export async function POST(request: NextRequest) {
@@ -40,7 +45,15 @@ export async function POST(request: NextRequest) {
     return Response.json({ success: false, code: 'invalid_json' }, { status: 400 });
   }
 
-  const { form_type = '', email = '', phone = '', lang = '', website = '' } = body;
+  const {
+    form_type = '',
+    email = '',
+    phone = '',
+    lang = '',
+    website = '',
+    page_url = '',
+    source = '',
+  } = body;
 
   if (website) return Response.json({ success: true });
 
@@ -50,10 +63,16 @@ export async function POST(request: NextRequest) {
   const cleanPhone = phone.trim();
   if (!cleanPhone)
     return Response.json({ success: false, code: 'phone_required' }, { status: 422 });
+  if (!isPhoneValid(cleanPhone))
+    return Response.json({ success: false, code: 'phone_too_short' }, { status: 422 });
 
   const cleanEmail = email.trim();
   if (cleanEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail))
     return Response.json({ success: false, code: 'invalid_email' }, { status: 422 });
+
+  // Cap to defend against abuse — these come from the client.
+  const cleanPageUrl = page_url.trim().slice(0, 500);
+  const cleanSource = source.trim().slice(0, 200);
 
   try {
     await sendContactEmail({
@@ -63,17 +82,28 @@ export async function POST(request: NextRequest) {
       lang: lang === 'en' ? 'en' : 'nl',
       clientIP: ip,
       submittedAt: new Date(),
+      pageUrl: cleanPageUrl,
+      source: cleanSource,
     });
   } catch (err) {
     console.error('[contact] email failed:', err);
     return Response.json({ success: false, code: 'send_failed' }, { status: 500 });
   }
 
+  const bitrixComments = [
+    `IP: ${ip}`,
+    `Taal: ${lang}`,
+    cleanSource && `Bron: ${cleanSource}`,
+    cleanPageUrl && `Pagina: ${cleanPageUrl}`,
+  ]
+    .filter(Boolean)
+    .join('\n');
+
   notifyBitrix({
     title: `[Venstervalent.nl] ${FORM_LABELS[form_type]} — Website bezoeker`,
     email: cleanEmail,
     phone: cleanPhone,
-    comments: `IP: ${ip}\nTaal: ${lang}`,
+    comments: bitrixComments,
   }).catch((e) => console.error('[contact] bitrix failed:', e));
 
   return Response.json({ success: true });
